@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Addyer"
+    }
+  },
+  "defaultProject": "Addyer",
+  "cli": {
+    "analytics": false
+  }
 }
