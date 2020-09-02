@@ -22,6 +22,7 @@ import { CreateprojectComponent } from "../app/components/createproject/createpr
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component'
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,11 @@ import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin
     ProfilecolabComponent,
     ViewprojectscolabComponent,
     CreateprojectComponent,
+<<<<<<< HEAD
     OptionAdminComponent,
+=======
+  
+>>>>>>> 8688c534b167e31f8113d8f818300cb01ea21916
     
   ],
   imports: [

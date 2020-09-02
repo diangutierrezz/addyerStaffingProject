@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homecolab.component.css']
 })
 export class HomecolabComponent implements OnInit {
-  
+
   opened = false;
 
   toggleSidebar(){
     this.opened = !this.opened;
   }
-
+  
   constructor() { }
 
   ngOnInit(): void {
