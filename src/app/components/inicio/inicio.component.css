@@ -34,3 +34,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.textoborde {
+    -webkit-text-stroke: 3px black;
+    color: rgb(255, 166, 0);
+    font-size: 60px;
+  }
