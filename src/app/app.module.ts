@@ -21,6 +21,7 @@ import { ViewprojectscolabComponent } from './components/viewprojectscolab/viewp
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProfilecolabComponent,
     ViewprojectscolabComponent,
     CreateprojectComponent,
+  
     
   ],
   imports: [

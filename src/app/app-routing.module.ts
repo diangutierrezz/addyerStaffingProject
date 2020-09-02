@@ -11,6 +11,7 @@ import { ViewprojectsadminComponent  } from "../app/components/viewprojectsadmin
 import {  ViewprojectscolabComponent } from "../app/components/viewprojectscolab/viewprojectscolab.component";
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 
+
 const routes: Routes = [
   { path: "", component:InicioComponent},
   { path: "login", component:LoginComponent},
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: "profilecolab", component:ProfilecolabComponent},
   { path: "viewprojectscolab", component:ViewprojectscolabComponent},
   { path: "createproject", component:CreateprojectComponent},
-  
+
 ];
 
 @NgModule({
