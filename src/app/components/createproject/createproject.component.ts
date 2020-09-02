@@ -12,4 +12,6 @@ export class CreateprojectComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  fechaInicio: string;
+  fechaFin: string;
 }
