@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { AppMaterialModule } from '../app/app-material/app-material.module';
+import { SidebarModule} from 'ng-sidebar'
 
 
 
@@ -39,6 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     AppMaterialModule,
     BrowserAnimationsModule,
+    SidebarModule.forRoot(),
 
     FormsModule,
     CommonModule,
