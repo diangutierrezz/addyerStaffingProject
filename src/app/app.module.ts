@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material/app-material.module';
@@ -15,8 +19,7 @@ import { ProfilecolabComponent } from './components/profilecolab/profilecolab.co
 import { ViewprojectscolabComponent } from './components/viewprojectscolab/viewprojectscolab.component';
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { OptionAdminComponent } from './components/option-admin/option-admin.component';
-import { FormsModule } from '@angular/forms';
+import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component'
 
 @NgModule({
   declarations: [
@@ -35,11 +38,12 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     AppMaterialModule,
-    NgbModule,
-    FormsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    CommonModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

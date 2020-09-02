@@ -1,99 +1,4 @@
-<body class="bg-light">
-    <div style="display: block; margin-left:22em;">
-    <div class="container">
-  <div class="py-5 text-center">
-  
-  </div>
-  
-  <div class="row">
-    
-    <div class="col-md-8 order-md-1">
-      <h4 class="mb-3">Agregar Colaborador</h4>
-      <form class="needs-validation" >
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="validationServerNombre">Nombre</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required [(ngModel)]= "nombres" name ="nombres">
-            <div class="invalid-feedback">
-              Se requiere su Nombre.
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Apellido</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required [(ngModel)]= "apellidos" name ="apellidos">
-            <div class="invalid-feedback">
-              Se requiere su Apellido.
-            </div>
-          </div>
-        </div>
-        
-        <div class="mb-3"> <!--rut-->
-          <label for="rut">Rut</label>
-          <input type="rut" class="form-control" id="rut" placeholder="19.023.551-4" [(ngModel)]= "rut" name ="rut">
-          <div class="invalid-feedback">
-            Por favor ingresar un rut valido.
-          </div>
-        </div> 
-        <div class="mb-3">
-            <form action="">
-             <div class="mb-3">           
-             <label for="start" style=" margin-left: 1em;">Fecha de Nacimiento</label>
-            <input type="date" id="start" name="trip-start" value=""  min="1980-01-01" max="2020-08-26" [(ngModel)]= "fechaNacimiento" name ="fechaNacimiento">
-          </div>
-        </form>   
-        <div class="mb-3">
-            <label for="tel">Teléfono</label>
-            <input type="tel" class="form-control" placeholder="(+56) Número" value="" required [(ngModel)]= "telefono" name ="telefono">
-            <div class="invalid-feedback">
-              Se requiere su número de teléfono.
-            </div> 
-        </div> 
-        
-        <div class="mb-3">                  
-            <label for="username">Email</label>
-            <div class="input-group">
-            <div class="input-group-prepend">        
-        </div>
-            <input type="email" class="form-control" id="email" placeholder="holamundo@example.com" required [(ngModel)]= "correo" name ="correo">
-            <div class="invalid-feedback" style="width: 100%;">
-              Ingresar un Email valido.
-            </div>
-          </div>
-          
-        </div>
 
-        <div class="mb-3"> <!--contrasena-->
-            <label for="contraseña">Contraseña</label>
-            <input type="rut" class="form-control" id="rut" placeholder="Mínimo 4 carácteres" [(ngModel)]= "contra" name = "contra">
-            <div class="invalid-feedback">
-              Mínimo 4 carácteres
-            </div>
-          </div> 
-          <mat-form-field appearance="outline">
-            <mat-label>Habilidades</mat-label>
-            <mat-select required>
-              <mat-option *ngFor="let habilidades of habilidades" [value]="habilidades"> {{habilidades}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field> 
-
-          <mat-form-field appearance="outline">
-            <mat-label>Cargo</mat-label>
-            <mat-select required>
-              <mat-option *ngFor="let cargo of cargo" [value]="cargo"> {{cargo}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>  
-
-     </div>     
-         <button mat-raised-button color="primary" style="margin-top: 1em;">Agregar</button>
-         <button type="reset" mat-raised-button color="warn" style="margin-left: 1em; margin-top: 1em;">Cancelar</button>
-      </form>
-    </div>
-  </div>
-  </div>
-    </div>
-</body>
 <br>
 <br>
 <br>
@@ -128,9 +33,6 @@
       <mat-panel-title>
         Colaboradores
       </mat-panel-title>
-      <mat-panel-description>
-        Type the country name
-      </mat-panel-description>
     </mat-expansion-panel-header>
 
     <mat-form-field>
@@ -141,9 +43,7 @@
 
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <mat-panel-title>
-        Day of the trip
-      </mat-panel-title>
+
       <mat-panel-description>
         Inform the date you wish to travel
         <mat-icon>date_range</mat-icon>
@@ -156,5 +56,65 @@
     </mat-form-field>
   </mat-expansion-panel>
 </mat-accordion>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div style="width: 50%; margin: 2em auto;">
+  <form class="mat-elevation-z4" style="padding: 1em;">
+      <h2 style="text-align: center;">Agregar Colaborador</h2>
+          <mat-form-field style="text-align: center;" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput required placeholder="Nombre del Colaborador">
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+          <mat-form-field style="text-align: center;" appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input matInput required placeholder="Apellido del Colaborador">
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+          <mat-form-field style="text-align: center;" appearance="outline">
+            <mat-label>RUT</mat-label>
+            <input matInput required placeholder="12.345.678-9">
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+          <div class="mb-3">
+            <form action="">
+             <div class="mb-3">           
+             <label for="start" style=" margin-left: 1em;">Fecha de Nacimiento</label>
+            <input type="date" id="start" name="trip-start" value=""  min="1980-01-01" max="2020-08-26" [(ngModel)]= "fechaNacimiento" name ="fechaNacimiento">
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Teléfono</mat-label>
+            <input type="tel" matInput required placeholder="(+56)912345678">
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Correo electrónico</mat-label>
+            <input type="email" matInput required placeholder="correo@ejemplo.com">
+            <mat-hint>Hint</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+              <mat-label>Habilidades</mat-label>
+              <mat-select required>
+                <mat-option *ngFor="let habilidades of habilidades" [value]="habilidades">
+                  {{habilidades}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Cargo</mat-label>
+              <mat-select required>
+                <mat-option *ngFor="let cargo of cargo" [value]="cargo"> {{cargo}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>  
+            <button mat-raised-button color="primary" style="margin-top: 1em;">Agregar</button>
+            <button type="reset" mat-raised-button color="warn" style="margin-left: 1em; margin-top: 1em;">Cancelar</button>
+  </form>
+</div> 
 
 
