@@ -1,103 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Proyectos</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <style type="text/css">
- 	@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700&display=swap');
+<ng-sidebar-container>
+    <!--Sidebar  -->
+    <ng-sidebar [opened]="opened">
+        <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
+        <p style="padding-left: 2.5em;">Sesion colaborador</p>
+        <button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menu </button>
+        <ul class="menu">
+            <li><a style="color: #000000;" routerLink="/homecolab" (click)="toggleSidebar()">Inicio</a></li>
+            <li><a style="color: #000000;" routerLink="/profilecolab" (click)="toggleSidebar()">Perfil Colaborador</a></li>
+            <li><a style="color: #000000;" routerLink="/viewprojectscolab" (click)="toggleSidebar()">Proyectos Asignados</a></li>
+        </ul>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+    <!--Page Header  -->
+    <mat-toolbar style="background-color: #000000; ">
+        <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;" (click)="toggleSidebar()">Abrir menu </a>
+        <span class="example-spacer"></span>
+        <a mat-raised-button style="margin-left: 1em;">Log-out</a>
+    </mat-toolbar>
+    <!--Page Body  -->
 
-
- 	body{
- 		background:  #f8f9f9 ;
-		 font-family: 'Muli', sans-serif;
-		 padding: 5%;
-
-
- 	}
- 	.fa{
- 		color:  #000000 ;
- 		text-align: center;
- 		padding: 30px;
- 		font-size: 46px;
- 	}
- 	.card{
- 		padding: 15px;
- 		margin: 10px;
- 		 box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.01);
-    transition: box-shadow 0.3s ease-in-out;
-    border:1px solid #ddd;
-    cursor: pointer;
-    border-radius: 4px;
- 	}
- 	.card:hover{
- 		box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.3);
- 	}
- 	h3{
- 		text-align: center;
- 		font-size: 22px;
- 		color: #839192;
-    font-weight: 600;
-
- 	}
- 	
- 	p{
- 		padding: 5px;
- 		text-align: center;
- 		font-size: 15px;
- 		color: #839192;
- 		line-height: 1.6;
-    font-weight: 500;
-    padding-top: 5px;
-   
- 	}
- </style>
-</head>
-<body>
-  
-<div class="container mt-5">
-  <h1 class="text-black text-center pb-2">Proyectos</h1>
-  <div class="row">
-  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-  		<div class="card">
-  		<i class="fa fa-archive"></i>
-  		<h3 routerLink="/alpha">Proyecto Alpha</h3>
-  		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  		tempor incididunt ut labore et dolore magna aliqua.</p>
-  	</div>
-  	</div>
-  	  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-  		<div class="card">
-  		<i class="fa fa-archive"></i>
-  		<h3 routerLink="/beta">Proyecto Beta</h3>
-  		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  		tempor incididunt ut labore et dolore magna aliqua.</p>
-  	</div>
-  	</div>
-  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-  		<div class="card">
-  		<i class="fa fa-archive"></i>
-  		<h3 routerLink="/gamma">Proyecto Gamma</h3>
-  		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  		tempor incididunt ut labore et dolore magna aliqua.</p>
-  	</div>
-  	</div>
-  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-  		<div class="card">
-  		<i class="fa fa-archive"></i>
-  		<h3 routerLink="/delta">Proyecto Delta</h3>
-  		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  		tempor incididunt ut labore et dolore magna aliqua.</p>
-  	</div>
-  	</div>
-
-  </div>         
-</div>
-<br>
-
-
-</body>
-</html>
-
+    </div>
+</ng-sidebar-container>
