@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-inicio',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  images = [180, 2, 4].map((n) => `https://picsum.photos/id/${n}/600/200`);
+  
+
+
+  constructor(private_config:NgbCarouselConfig) { }
 
   ngOnInit(): void {
   }
