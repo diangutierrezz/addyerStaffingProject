@@ -23,14 +23,8 @@
     "@angular/platform-browser-dynamic": "~10.0.6",
     "@angular/router": "~10.0.6",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
-<<<<<<< HEAD
-    "@popperjs/core": "^2.4.4",
-    "bootstrap": "^4.5.2",
-    "jquery": "^3.5.1",
-=======
     "bootstrap": "^4.5.0",
     "ng-sidebar": "^9.4.2",
->>>>>>> 02c032a4568c52d192149210904259bd61c5c9ff
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

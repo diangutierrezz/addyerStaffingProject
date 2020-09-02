@@ -3,12 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-<<<<<<< HEAD
-=======
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
-import { AppMaterialModule } from '../app/app-material/app-material.module';
 import { SidebarModule} from 'ng-sidebar'
->>>>>>> 02c032a4568c52d192149210904259bd61c5c9ff
 
 
 
@@ -47,11 +42,8 @@ import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin
     AppRoutingModule,
     AppMaterialModule,
     BrowserAnimationsModule,
-<<<<<<< HEAD
-=======
     SidebarModule.forRoot(),
 
->>>>>>> 02c032a4568c52d192149210904259bd61c5c9ff
     FormsModule,
     CommonModule,
     NgbModule
