@@ -3,8 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { SidebarModule} from 'ng-sidebar'
-
+import { SidebarModule } from 'ng-sidebar';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,11 +34,7 @@ import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin
     ProfilecolabComponent,
     ViewprojectscolabComponent,
     CreateprojectComponent,
-<<<<<<< HEAD
     OptionAdminComponent,
-=======
-  
->>>>>>> 8688c534b167e31f8113d8f818300cb01ea21916
     
   ],
   imports: [

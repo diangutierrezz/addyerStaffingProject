@@ -22,13 +22,9 @@ const routes: Routes = [
   { path: "profilecolab", component:ProfilecolabComponent},
   { path: "viewprojectscolab", component:ViewprojectscolabComponent},
   { path: "createproject", component:CreateprojectComponent},
-<<<<<<< HEAD
   
 
   
-=======
-
->>>>>>> 8688c534b167e31f8113d8f818300cb01ea21916
 ];
 
 @NgModule({
