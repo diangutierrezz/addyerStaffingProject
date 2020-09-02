@@ -1,20 +1,15 @@
-.cajita{
-    background-color: #ffffff;
-    border-radius: 20px;
-  
-  }
+
   
   button{
     width: 80%;
+    border-bottom-style: solid;
   }
   
   
   
   .fondo {
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-  
-    background-size: cover;
+    background-color: #ffdf9a;
+    height: 100%;
   }
   
   .titulo{
@@ -25,3 +20,8 @@
     width: 80%;
   }
   
+  .cajita{
+    border-radius: 82px 82px 82px 82px;
+    border: rgb(204, 176, 117) 3px solid;
+   
+  }

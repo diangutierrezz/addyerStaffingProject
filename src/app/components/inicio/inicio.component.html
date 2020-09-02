@@ -1,17 +1,14 @@
-<div >
-  
+
+  <div class="fondo">
     <mat-toolbar class="barra mb-0" >
-        <span routerLink="" style="cursor: pointer;"><h1>Addyer Staffing Proyect</h1></span>
+        <span routerLink="" style="cursor: pointer;"><h1>Addyer Staffing Project</h1></span>
         <span class="example-spacer"></span>
           <a mat-flat-button  style="margin-left: 1em;" routerLink="/login">
             Login
           </a>
       </mat-toolbar>
-
-
-    <br />
-    <div>
-    <ngb-carousel style="align-content: center;"  *ngIf="images" class="mt-0">
+    <div class="">
+    <ngb-carousel style="align-content: center;"  *ngIf="images" >
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <img class="d-block w-100" src="https://fondationforge.org/assets/img/programa/slider-desarrolla/slide-desarrolla-1.jpg" height="600" alt="First slide">
@@ -19,8 +16,7 @@
         <div class="carousel-caption">
           
           <h1 style="font-weight: bold;"  class="textoborde">Trabajo, educación, valores y compromiso social</h1>
-          <p style="font-weight: bold;">Texto con tamaño 3</p>
-          <p > Inspiramos a jóvenes para que desarrollen su talento y construyan un futuro mejor.</p>
+          <p class="parrafo" > Inspiramos a jóvenes para que desarrollen su talento y construyan un futuro mejor.</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
@@ -28,8 +24,8 @@
           <img class="d-block w-100" src="https://fondationforge.org/assets/img/programa/slider-desarrolla/slide-desarrolla-2.jpg" height="600" alt="First slide">
         </div>
         <div class="carousel-caption">
-          <h3 >Motivamos a jóvenes</h3>
-          <p>para que accedan a una vida de calidad a través del trabajo, el aprendizaje continuo y el compromiso con la comunidad.</p>
+          <h3 class="textoborde" >Motivamos a jóvenes</h3>
+          <p class="parrafo">Queremos accedan a una vida de calidad a través del trabajo, el aprendizaje continuo y el compromiso con la comunidad.</p>
         </div>
       </ng-template>
       <ng-template ngbSlide>
@@ -37,8 +33,8 @@
           <img class="d-block w-100" src="https://fondationforge.org/assets/img/programa/slider-desarrolla/slide-desarrolla-3.jpg" height="600" alt="First slide">
         </div>
         <div class="carousel-caption">
-          <h3 >Innovación, tecnología y escala.</h3>
-          <p >Desarrollamos e implementamos una metodología educativa y construimos alianzas con Estados, ONGs y empresas que nos permiten crecer de forma exponencial.</p>
+          <h3 class="textoborde" >Innovación, tecnología y escala.</h3>
+          <p class="parrafo" >Desarrollamos e implementamos una metodología educativa y construimos alianzas con Estados, ONGs y empresas que nos permiten crecer de forma exponencial.</p>
         </div>
         </ng-template>
         </ngb-carousel>
@@ -46,99 +42,76 @@
         <br />
         <hr />
         <br />
-      
-    <div style="width: 80%; margin-left: 3.5cm;" class="row">
-      <div class="col-md-4 mb-4 d-flex align-items-stretch">
-        <div class="card">
-          <div class="view">
-            <img src="https://portales.inacap.cl/Assets/sedes/puerto-montt/sede-puerto-montt.jpg" class="card-img-top"
-              alt="">
-            <a href="#">
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
     
-          <!--Card content-->
-          <div class="card-body">
-            <!--Title-->
-            <h4 class="card-title">Nuestra sede</h4>
-            <!--Text-->
-            <p class="card-text">La sede del Instituto PTF, esta ubicada en la region de Santiago y fue inaugurada en 2010.
-              Posee ambientes muy tranquilos y aptos para el estudio. Cuenta con instalaciones como Bibilioteca, Oficinas, Salas de reuniones, auditorios
-              y Docentes dispuestos a entregar un buen aprendizaje.
-              De esta manera, se refleja el compromiso por establecer un espacio que acoja a los futuros programadores y posibilite una exitoso camino en su desarrollo profesional.
-            </p>
-          </div>
-    
-        </div>
-        <!--/.Card-->
-    
-      </div>
-      <!-- Column -->
-    
-      <!-- Column -->
-      <div  class="col-md-4 mb-4 d-flex align-items-stretch">
-      <div class="card">
-        <div class="view">
-          <img src="https://lh3.googleusercontent.com/proxy/hStOg2rUmHZSxDB139B9Qf7gf_-sfVeJcgKC3aGhzltJwPZU2IRkF_yLm5IrKZFCWRkUs4QpI6u3EffGFHiBfsoawuf_5zZC7UbWIS3FUMuPwkw2VMB7aJzuiWYA4UQb5hH6FGTAcrh3gFT-55CLE01dnAaNHvI" class="card-img-top"
-            alt="">
-          <a href="#">
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
-    
-        <!--Card content-->
-        <div class="card-body">
-          <!--Title-->
-          <h4 class="card-title">Talleres Extracurriculares</h4>
-          <!--Text-->
-          <p class="card-text">Las Actividades Extracurriculares canalizan inquietudes culturales, artísticas 
-            o sociales de grupos de estudiantes, y otros más recreativos de uso del tiempo libre los que se reúnen en 
-            torno a aptitudes o intereses comunes que fortalecen su formación como persona y como profesionales.
-            Algunos de los talleres que se dictan son:
-            <li>TALLER DE CIRCO</li>
-            <li>AERO-ATACK</li>
-            <li>ZUMBA </li>
-            <li>TALLER DE YOGA</li>
-            <li>FUTBOL FEMENINO Y MASCULINO</li>
-            y muchos otros deportes!
-          </p>
-        </div>
-      </div>
-    </div>
-      <!-- Column -->
-    
-      <!-- Column -->
-      <div class="col-md-4 mb-4 d-flex align-items-stretch">
-    
-        <!--Card-->
-        <div class="card">
-    
-          <!--Card image-->
-          <div class="view">
-            <img src="https://cronicasfreelancer.com/wp-content/uploads/2019/08/seniority-programadores.jpg" class="card-img-top"
-              alt="">
-            <a href="#">
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-    
-          <!--Card content-->
-          <div class="card-body">
-            <!--Title-->
-            <h4 class="card-title">Cursos</h4>
-            <!--Text-->
-            <p class="card-text">Tenemos una gran variedad de cursos orientados a la informatica, los cuales tienen horarios flexibles que te 
-              permitiran trabajar y estudiar. La duracion de los curso es de aproximadamente 3 meses, en donde se enseña programacion en lenguaje 
-              Java o Phyton. Despues de realizar el curso te acompañamos a lo largo de un año para que consigas un trabajo en la programacion, 
-            </p>
-          </div>
-    
-        </div>
-        <!--/.Card-->
-    
-      </div>
-      <!-- Column -->
-    
-    </div>
     <!-- Container -->
+<div class="container">
+    <div class="row ">
+      <div class="col-sm-4">
+        <div class="card borde">
+          <img src="https://cronicasfreelancer.com/wp-content/uploads/2019/08/seniority-programadores.jpg" class="card-img-top"
+              alt="">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-warning">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card borde">
+          <img src="https://cronicasfreelancer.com/wp-content/uploads/2019/08/seniority-programadores.jpg" class="card-img-top"
+          alt="">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-warning">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card borde">
+          <img src="https://cronicasfreelancer.com/wp-content/uploads/2019/08/seniority-programadores.jpg" class="card-img-top"
+          alt="">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-warning">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mt-3">
+        <div class="card borde">
+          <img src="https://cronicasfreelancer.com/wp-content/uploads/2019/08/seniority-programadores.jpg" class="card-img-top"
+          alt="">
+          <div class="card-body ">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-warning">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mt-3">
+        <div class="card borde">
+          <img src="https://cronicasfreelancer.com/wp-content/uploads/2019/08/seniority-programadores.jpg" class="card-img-top"
+          alt="">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-warning">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 mt-3">
+        <div class="card borde">
+          <img src="https://cronicasfreelancer.com/wp-content/uploads/2019/08/seniority-programadores.jpg" class="card-img-top"
+          alt="">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-warning">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,11 +3,11 @@
   }
 
   .fondo {
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-    background: url("https://fondationforge.org/assets/img/programa/slider-desarrolla/slide-desarrolla-3.jpg") 50% fixed;
+    font-family: monospace;
+    height: 100%;
     background-size: cover;
-    color: rgb(15, 132, 235);
+    color: rgb(0, 0, 0);
+    background-color: #ffe7b3;
   }
 
   .barra{
@@ -40,3 +40,13 @@
     color: rgb(255, 166, 0);
     font-size: 60px;
   }
+
+.parrafo{
+    -webkit-text-stroke: 1px  rgb(92, 60, 0);
+    color: rgb(255, 166, 0);
+    font-size: 30px;
+}
+
+.borde{
+    border: rgb(0, 0, 0) 1px solid;
+}
