@@ -1,5 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import { AppMaterialModule } from '../app/app-material/app-material.module';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +18,7 @@ import { HomecolabComponent } from './components/homecolab/homecolab.component';
 import { ProfilecolabComponent } from './components/profilecolab/profilecolab.component';
 import { ViewprojectscolabComponent } from './components/viewprojectscolab/viewprojectscolab.component';
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +36,13 @@ import { CreateprojectComponent } from "../app/components/createproject/createpr
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppMaterialModule,
+    BrowserAnimationsModule,
+
+    FormsModule,
+    CommonModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
