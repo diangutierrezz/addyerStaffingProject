@@ -13,6 +13,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from "@angular/material/core";
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FormsModule } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     MatNativeDateModule,
     MatDatepickerModule,
     MatExpansionModule,
-    FormsModule
+    FormsModule,
+    MatChipsModule
   ]
 })
 export class AppMaterialModule { }

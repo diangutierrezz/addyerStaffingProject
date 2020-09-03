@@ -28,4 +28,7 @@ ng-sidebar-container{
     display: block;
     width: 100%;
 }
+.example-chip-list {
+    width: 100%;
+  }
 

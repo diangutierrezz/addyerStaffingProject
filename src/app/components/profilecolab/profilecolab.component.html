@@ -18,15 +18,25 @@
         <a mat-raised-button style="margin-left: 1em;">Log-out</a>
     </mat-toolbar>
     <!--Page Body  -->
-    <div style="width: 40%; margin: 2em auto;">
+    <div style="width: 50%; margin: 2em auto;">
         <form class="mat-elevation-z4" style="padding: 2em; padding-top: 4em; ">
-            <h6 style="font-family: Arial, Helvetica, sans-serif; padding-left: 2em;">Agregar nueva habilidad</h6>
-            <img src="https://thumbs.dreamstime.com/b/var%C3%B3n-y-hembra-person-profile-avatar-del-vector-icono-de-la-gente-102655370.jpg" width="200" height="200" class="img-fluid rounded-circle" style="padding-left:7em;">
+            <h5 style="text-align: center;">Agregar nueva habilidad</h5>
+            <img src="https://thumbs.dreamstime.com/b/var%C3%B3n-y-hembra-person-profile-avatar-del-vector-icono-de-la-gente-102655370.jpg" width="210" height="210" class="img-fluid rounded-circle" style="padding-left:7em;">
             <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" style="padding-left:7em;">
-            <mat-form-field appearance="outline">
-                <mat-label>Habilidades Tecnicas</mat-label>
-                <input matInput name="habilidades" type="text" matInput required placeholder="habilidades">
-            </mat-form-field>
+            <mat-form-field class="example-chip-list">
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                           [removable]="removable" (removed)="remove(fruit)">
+                    {{fruit.name}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <input placeholder="New fruit..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+              </mat-form-field>            
            <br>
           <button mat-raised-button color="primary" style="margin: 1em 8em 0 2em;">Guardar Cambios</button>
           <button mat-raised-button color="warn" style="margin: 1em 1em 0 0;">Cancelar</button>
@@ -34,4 +44,3 @@
     </div>
   </div>
 </ng-sidebar-container>
-
