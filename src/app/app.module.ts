@@ -3,6 +3,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+<<<<<<< HEAD
+=======
+import { SidebarModule } from 'ng-sidebar';
+
+>>>>>>> c20755814dadc79ac4122f4783b4f70fb2181513
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material/app-material.module';
@@ -18,6 +23,7 @@ import { ViewprojectscolabComponent } from './components/viewprojectscolab/viewp
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component'
+
 
 @NgModule({
   declarations: [
@@ -39,6 +45,8 @@ import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin
     AppRoutingModule,
     AppMaterialModule,
     BrowserAnimationsModule,
+    SidebarModule.forRoot(),
+
     FormsModule,
     CommonModule,
     NgbModule

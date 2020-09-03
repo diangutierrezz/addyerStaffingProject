@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
     validar(user,pass){
       if(this.user=="admin" && this.pass=="12345"){
         this.router.navigate(['homeadmin']);
+      } if(this.user=="colab" && this.pass=="12345"){
+        this.router.navigate(['homecolab']);
       } else {
           this.mensaje="Datos incorrectos"
           this.user;
