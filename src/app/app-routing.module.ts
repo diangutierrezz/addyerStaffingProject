@@ -11,11 +11,12 @@ import { ViewprojectsadminComponent  } from "../app/components/viewprojectsadmin
 import {  ViewprojectscolabComponent } from "../app/components/viewprojectscolab/viewprojectscolab.component";
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 
+
 const routes: Routes = [
   { path: "", component:InicioComponent},
   { path: "login", component:LoginComponent},
   { path: "homeadmin", component:HomeAdminComponent},
-  { path: "adduser", component:AddusserComponent},
+  { path: "addusser", component:AddusserComponent},
   { path: "viewprojectsadmin", component:ViewprojectsadminComponent},
   { path: "homecolab", component:HomecolabComponent},
   { path: "profilecolab", component:ProfilecolabComponent},

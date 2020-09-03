@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { SidebarModule } from 'ng-sidebar';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,7 @@ import { ViewprojectscolabComponent } from './components/viewprojectscolab/viewp
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component'
+
 
 @NgModule({
   declarations: [
@@ -41,6 +42,8 @@ import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin
     AppRoutingModule,
     AppMaterialModule,
     BrowserAnimationsModule,
+    SidebarModule.forRoot(),
+
     FormsModule,
     CommonModule,
     NgbModule

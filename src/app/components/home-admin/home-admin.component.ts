@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-admin.component.css']
 })
 export class HomeAdminComponent implements OnInit {
+  
+  opened = false;
+
+  toggleSidebar(){
+    this.opened = !this.opened;
+  }
 
   constructor() { }
 

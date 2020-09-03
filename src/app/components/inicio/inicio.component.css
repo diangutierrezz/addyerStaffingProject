@@ -11,7 +11,7 @@
   }
 
   .barra{
-      background-color: #f0a500;
+      background-color: #000000;
   }
     
  .boton{
@@ -36,17 +36,18 @@
 }
 
 .textoborde {
-    -webkit-text-stroke: 3px black;
-    color: rgb(255, 166, 0);
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
 .parrafo{
-    -webkit-text-stroke: 1px  rgb(92, 60, 0);
-    color: rgb(255, 166, 0);
+    -webkit-text-stroke: 2px  rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 30px;
 }
 
 .borde{
-    border: rgb(0, 0, 0) 1px solid;
+    border: rgb(0, 0, 0) 2px solid;
 }
