@@ -1,124 +1,116 @@
-<mat-toolbar color="primary">
-    <span routerLink="" style="cursor: pointer;"><h1>Addyer Staffing Proyect</h1></span>
-    <span class="example-spacer"></span>
-      <a mat-flat-button color="primary" style="margin-left: 1em;" routerLink="/inicio">
-        Cerrar Sesion
-      </a>
-      <a mat-flat-button color="primary" style="margin-left: 1em;" routerLink="/inicio">
-        Ayuda
-      </a>
-  </mat-toolbar>
-
-  <!DOCTYPE html>
-<html>
-<head>
-	<title> Mis Proyectos</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<style type="text/css">
-		body{
-			background: url(https://image.freepik.com/foto-gratis/desarrollador-programador-desarrollo-diseno-sitios-web-tecnologias-codificacion-que-trabajan-oficina-compania-software_18497-1234.jpg) ;
-			height: 100%;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-			padding: 10%;
-			
-			
-      
-		}		
-		.fa{
-			font-size: 80px;
-			padding: 25px 15px 0px 10px;
-		}
-		.text{
-			padding-left: 100px;
-		}
-		.title{
-			color:#fff;
-			text-shadow: -4px -4px 0 #000000;
-			margin-left: 350px;
-			font-size: 4em;
-		}
-		section{
-			margin: 50px auto;
-		}
-		h3{
-			padding: 20px 0 0 10px;
-			margin: 0;
-		}
-		.box{
-			
-			transition: .3s;
-			border-radius: 20px;
-			margin: 10px;
-			background: #ddd;
-			padding: 10px;
-			
-
-		}
-		.box:hover{
-			background:  #5dade2 ;
-			border-radius: 20px;
-			transition: .5s;
-			color: #fff;
-			cursor: pointer;
-			align-content: space-between;
-
-		}
-		p{
-			padding: 10px;
-			left: 10%
-		}
-		@media(max-width: 992px){
-			.fa{
-				font-size: 70px;
-			}
-		}
-		@media(max-width: 768px){
-			.box{
-				text-align: center;
-			}
-		}
-	</style>
-</head>
-<body>
-	<h1 class="title">¡Bienvenido!</h1>
-<section>
-	
-<div class="container-fluid">
-	
-	<div class="row">
-		<div class="col-md-6 p-0 col-sm-6 col-xs-12 col-sm-6">
-			<div class="box" routerLink="/profilecolab">
-			<div class="row">
-				<div class="col-md-2">
-					<i class="fa fa-id-card" aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10">
-					<h3 class="text" >Perfil</h3>
-					<p class="text">Ver perfil y edicion de el.</p>
-				</div>
-			</div>
-		</div>
-		</div>
-		<div class="col-md-6 p-0 col-sm-6 col-xs-12">
-			<div class="box" routerLink="/viewprojectscolab">
-				<div class="row">
-				<div class="col-md-2">
-					<i class="fa fa-handshake-o" aria-hidden="true"></i>
-				</div>
-				<div class="col-md-10">
-					<h3 class="text" >Proyectos</h3>
-					<p class="text">Ver proyectos en los cuales participa.</p>
-				</div>
-			</div>
-			</div>
-		</div>		
-		</div>
-	</div>
-</section>
-</body>
-</html>
+<ng-sidebar-container>
+    <!--Sidebar  -->
+    <ng-sidebar [opened]="opened">
+        <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
+        <p style="padding-left: 2.5em;">Sesion colaborador</p>
+        <button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menu </button>
+        <ul class="menu">
+            <li><a style="color: #000000;" routerLink="/homecolab" (click)="toggleSidebar()">Inicio</a></li>
+            <li><a style="color: #000000;" routerLink="/profilecolab" (click)="toggleSidebar()">Perfil Colaborador</a></li>
+            <li><a style="color: #000000;" routerLink="/viewprojectscolab" (click)="toggleSidebar()">Proyectos Asignados</a></li>
+        </ul>
+    </ng-sidebar>
+    <!--Page Header  -->
+    <div ng-sidebar-content>
+        <mat-toolbar style="background-color: #000000; ">
+            <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;"  (click)="toggleSidebar()">Abrir menu </a>
+            <span class="example-spacer"></span>
+            <a mat-raised-button style="margin-left: 1em;">Log-out</a>
+        </mat-toolbar>        
+    <!--Page Body  -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Proyecto</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style type="text/css">
+            body{
+                padding: 0;
+                margin: 0;
+          overflow-x: hidden;
+          
+            }
+            .fa{
+                font-size: 80px;
+                padding: 25px 15px 0px 10px;
+            }
+            section{
+                margin: 50px auto;
+            }
+            h3{
+                padding: 20px 0 0 10px;
+                margin: 0;
+            }
+            .box{
+                transition: .3s;
+                border-radius: 20px;
+                margin: 10px;
+                background: #ddd;
+                padding: 10px;
+                
+    
+            }
+            .box:hover{
+                background:  #5dade2 ;
+                border-radius: 20px;
+                transition: .5s;
+                color: #fff;
+                cursor: pointer;
+    
+            }
+            p{
+                padding: 10px;
+            }
+            @media(max-width: 992px){
+                .fa{
+                    font-size: 70px;
+                }
+            }
+            @media(max-width: 768px){
+                .box{
+                    text-align: center;
+                }
+            }
+        </style>
+    </head>
+    <body>
+    <section>
+    <div class="container-fluid">
+        <h1 class="text-center">Colaborador</h1>
+        <div class="row">
+            <div class="col-md-6 p-0 col-sm-6 col-xs-12 col-sm-6">
+                <div class="box">
+                <div class="row">
+                    <div class="col-md-2">
+                        <i class="fa fa-globe" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10">
+                        <h3 routerLink="/viewprojectscolab">Proyectos Asignados</h3>
+                        <p>Ver todos los proyectos asignados.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-6 p-0 col-sm-6 col-xs-12">
+                <div class="box">
+                    <div class="row">
+                    <div class="col-md-2">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10">
+                        <h3 routerLink="/profilecolab">Perfil</h3>
+                        <p>Ver y agregar habilidades </p>
+                    </div>
+                </div>
+                </div>
+            </div>		
+            </div>
+        </div>
+    </section>
+    </body>
+    </html>
+    </div>
+</ng-sidebar-container>
