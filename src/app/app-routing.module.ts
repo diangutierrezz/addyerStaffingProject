@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: "", component:InicioComponent},
   { path: "login", component:LoginComponent},
   { path: "homeadmin", component:HomeAdminComponent},
-  { path: "adduser", component:AddusserComponent},
+  { path: "addusser", component:AddusserComponent},
   { path: "viewprojectsadmin", component:ViewprojectsadminComponent},
   { path: "homecolab", component:HomecolabComponent},
   { path: "profilecolab", component:ProfilecolabComponent},
