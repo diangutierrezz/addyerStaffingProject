@@ -1,25 +1,25 @@
-mat-form-field{
-    width: 80%;
+button{
+  width: 40%;
+  border-bottom-style: solid;
 }
+
+.fondo {
+  background-color: #ffdf9a;
+  height: 100%;
+}
+
+.titulo{
+  text-decoration-color: #ff7171;
+}
+
+mat-form-field {
+  width: 80%;
+}
+
 .cajita{
-    background-color: #ffffff;
-    border-radius: 20px;
-  
-  }
-  
-  button{
-    width: 40%;
-  }
-  
-  .fondo {
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-  
-    background-size: cover;
-  }
-  
-  .titulo{
-    text-decoration-color: #ff7171;
-  }
+  border-radius: 82px 82px 82px 82px;
+  border: rgb(204, 176, 117) 3px solid;
+ 
+}
 
   

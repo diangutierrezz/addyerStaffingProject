@@ -1,56 +1,35 @@
+button{
+  width: 40%;
+  border-bottom-style: solid;
+}
+
+.fondo {
+  background-color: #ffdf9a;
+  height: 100%;
+}
+
+.titulo{
+  text-decoration-color: #ff7171;
+}
+
 mat-form-field {
   width: 80%;
 }
-.cajita{
-  background-color: #ffffff;
-  border-radius: 20px;
 
+mat-header-cell{
+  background-color: rgb(240, 231, 231);
 }
 
-.example-action-buttons {
-    padding-bottom: 20px;
-  }
-  
-.example-headers-align .mat-expansion-panel-header-title,
-.example-headers-align .mat-expansion-panel-header-description {
-    flex-basis: 0;
-  }
-  
-.example-headers-align .mat-expansion-panel-header-description {
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-.example-headers-align .mat-form-field + .mat-form-field {
-    margin-left: 1em;
-  }
 
-  .cajita{
-    background-color: #ffffff;
-    border-radius: 20px;
-  
-  }
-  
-  button{
-    width: 40%;
-    
-  }
-  
-.botonAgregar {
-  color: #cf7500;
-  }
-  
-  
-  .fondo {
-    font-family: "Open Sans", sans-serif;
-    height: 100vh;
-  
-    background-size: cover;
-  }
-  
-  .titulo{
-    text-decoration-color: #ff7171;
-  }
-  
+.cajita{
+  border-radius: 82px 82px 82px 82px;
+  border: rgb(204, 176, 117) 3px solid;
+ 
+}
+
+.cajita2{
+  border: rgb(204, 176, 117) 3px solid;
+  border-radius: 10px 10px 10px 10px;
+}
 
   

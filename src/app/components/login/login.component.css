@@ -5,8 +5,6 @@
     border-bottom-style: solid;
   }
   
-  
-  
   .fondo {
     background-color: #ffdf9a;
     height: 100%;
@@ -19,15 +17,9 @@
   mat-form-field {
     width: 80%;
   }
-<<<<<<< HEAD
-
-  
-  
-=======
   
   .cajita{
     border-radius: 82px 82px 82px 82px;
     border: rgb(204, 176, 117) 3px solid;
    
   }
->>>>>>> c20755814dadc79ac4122f4783b4f70fb2181513
