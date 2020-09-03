@@ -1,50 +1,77 @@
-<div style="width: 50%; margin: 2em auto;">
-    <form class="mat-elevation-z4" style="padding: 1em;">
-        <h2 style="text-align: center;">Crear Nuevo Proyecto</h2>
-            <mat-form-field appearance="outline">
-              <mat-label>Nombre del proyecto</mat-label>
-              <input matInput required placeholder="Nombre completo">
-              </mat-form-field>
+
+<div class="container">
+  <div class="card text-center mat-elevation-z4 mt-5 cajita">
+    <div class="card-header p-4"><h3>Crear Proyecto</h3></div>
+    <div class="card-body">
+      <img src="https://lh3.googleusercontent.com/proxy/Jk0nlIn8xSGVRol-L2QMoXvU4PpZ8bTTCC90JQoXQi2CIXSkngs94lDgWmMnIAoxNg0pD0F1yJYtlUY55OE-xX2UMiB3S6A_QP99idzYkAjAM4KQ1nqAnp4" alt="">
+        <div class="mt-5">
+          <div class="mt-5">
+            <form class="text-center" style="padding: 1em;">
             <br>
-            <mat-form-field appearance="outline">
-              <mat-label>Descripción del Proyecto</mat-label>
-              <textarea matInput></textarea>
-            </mat-form-field>
-            <div class="mb-3">
-                <form action="">
-                 <div class="mb-3">           
-                 <label for="start" style=" margin-left: 1em;">Fecha de Inicio</label>
-                <input type="date" id="start" name="trip-start" value=""  min="1980-01-01" max="2020-09-30" [(ngModel)]= "fechaInicio" name ="fechaInicio">
-              </div>
-              <div class="mb-3">
-                <form action="">
-                 <div >           
-                 <label for="start" style=" margin-left: 1em;">Fecha de Término</label>
-                <input type="date" id="start" name="trip-start" value=""  min="1980-01-01" max="2020-09-30" [(ngModel)]= "fechaFin" name ="fechaFin">
-              </div>
-              <form action="../../form-result.php" target="_blank">
-                <p>Habilidades</p>
-                <p>
-                  
-                  <select name="habilidades[]" multiple>
+              <mat-form-field appearance="outline">
+                <mat-label>Nombre del proyecto</mat-label>
+                <input matInput required placeholder="Nombre completo">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Descripción del Proyecto</mat-label>
+                <textarea matInput required placeholder="Escriba una descripción detallada del proyecto"></textarea>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Fecha de Inicio</mat-label>
+                <input matInput [matDatepicker]="picker1" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
               
-                    <option>Java</option>
-              
-                    <option>Base de Datos</option>
-              
-                    <option>Sprin</option>
-              
-                    <option>Angular</option>
-              
-                    <option>Front-End</option>
-              
-                    <option>Back-End</option>
-              
-                  </select>
-                </p>
-            
-              </form>
-              <button mat-raised-button color="primary" style="margin-top: 1em;">Crear</button>
-              <button type="reset" mat-raised-button color="warn" style="margin-left: 1em; margin-top: 1em;">Cancelar</button>
-    </form>
+              <mat-form-field appearance="outline">
+                <mat-label>Fecha de Término</mat-label>
+                <input matInput [matDatepicker]="picker2" required>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 color="primary"></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="example-chip-list" >
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                           [removable]="removable" (removed)="remove(fruit)">
+                    {{fruit.name}}
+                    <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
+                  </mat-chip>
+                  <input placeholder="Habilidades Requeridas"
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+              </mat-form-field>
+              <mat-form-field class="example-chip-list" >
+                <mat-chip-list #chipList2 aria-label="Fruit2 selection">
+                  <mat-chip *ngFor="let fruit2 of fruits2" [selectable]="selectable2"
+                           [removable]="removable2" (removed)="remove2(fruit2)">
+                    {{fruit2.name2}}
+                    <mat-icon matChipRemove *ngIf="removable2">x</mat-icon>
+                  </mat-chip>
+                  <input placeholder="Colaboradores"
+                         [matChipInputFor]="chipList2"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes2"
+                         [matChipInputAddOnBlur]="addOnBlur2"
+                         (matChipInputTokenEnd)="add2($event)">
+                </mat-chip-list>
+              </mat-form-field>
+              <button class="btn btn-warning">Crear</button>
+              <button class="btn btn-danger">Cancelar</button>
+           <p  class="text-danger mt-2"> {{mensaje}}</p>
+            </form>
+          </div>
+    </div>
+    <div class="card-footer text-muted">
+      Mesa de Ayuda 22700345 
+      <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+    </div>
+  </div>
 </div>
+</div>
+<br>
+<br>
+<br>
+
+

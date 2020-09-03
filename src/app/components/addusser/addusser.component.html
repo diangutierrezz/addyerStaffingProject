@@ -1,120 +1,117 @@
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="example-action-buttons">
-  <button mat-raised-button (click)="accordion.openAll()">Expandir Todo</button>
-  <button mat-raised-button (click)="accordion.closeAll()">Cerrar Todo</button>
+<div class="container">
+  <div class="card text-center mat-elevation-z4 mt-5 cajita">
+    <div class="card-header p-4"><h3>Agregar Colaborador</h3></div>
+      <div class="card-body">
+        <img src="https://lh3.googleusercontent.com/proxy/Jk0nlIn8xSGVRol-L2QMoXvU4PpZ8bTTCC90JQoXQi2CIXSkngs94lDgWmMnIAoxNg0pD0F1yJYtlUY55OE-xX2UMiB3S6A_QP99idzYkAjAM4KQ1nqAnp4" width="100" alt="">
+          <div class="mt-5">
+            <form class="text-center" style="padding: 1em;">
+                <br>
+                <mat-form-field  appearance="outline">
+                  <mat-label>Nombre</mat-label>
+                  <input matInput required placeholder="Nombre del Colaborador">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Apellido</mat-label>
+                  <input matInput required placeholder="Apellido del Colaborador">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>RUT</mat-label>
+                  <input matInput required placeholder="12.345.678-9">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Fecha de Nacimiento</mat-label>
+                  <input matInput [matDatepicker]="picker" required>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Teléfono</mat-label>
+                  <input type="tel" matInput required placeholder="(+56) 9 12345678">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Correo Electrónico</mat-label>
+                  <input type="email" matInput required placeholder="correo@ejemplo.com">
+                  <mat-hint>La contraseña debe contener al menos una letra, un dígio y mínimo cuatro caracteres</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Contraseña</mat-label>
+                  <input type="password" matInput required placeholder="">
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Cargo</mat-label>
+                  <mat-select required>
+                    <mat-option *ngFor="let cargo of cargo" [value]="cargo"> {{cargo}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-chip-list" >
+                  <mat-chip-list #chipList aria-label="Fruit selection">
+                    <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                             [removable]="removable" (removed)="remove(fruit)">
+                      {{fruit.name}}
+                      <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
+                    </mat-chip>
+                    <input placeholder="Habilidades Requeridas"
+                           [matChipInputFor]="chipList"
+                           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                           [matChipInputAddOnBlur]="addOnBlur"
+                           (matChipInputTokenEnd)="add($event)">
+                  </mat-chip-list>
+                </mat-form-field>
+                <button class="btn btn-warning">Agregar</button>
+                <button class="btn btn-danger">Cancelar</button>
+            <p  class="text-danger mt-2"> {{mensaje}}</p>
+            </form>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      Mesa de Ayuda 22700345 
+      <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+    </div>
+  </div>
 </div>
-<mat-accordion class="example-headers-align" multi>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Agregar Colaborador
-      </mat-panel-title>
-    </mat-expansion-panel-header>
+<hr>
+  <h2 style="text-align: center; margin-top:2em">Colaboradores</h2>
+  <br>
+<div style="width: 70%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
+    <mat-table [dataSource]="colab">
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef> <b>NOMBRE</b> </mat-header-cell>
+            <mat-cell *matCellDef="let colab">{{colab.nombre}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="apellido">
+            <mat-header-cell *matHeaderCellDef> <b>APELLIDO</b>  </mat-header-cell>
+            <mat-cell *matCellDef="let colab">{{colab.apellido}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="rut">
+            <mat-header-cell *matHeaderCellDef> <b>RUT</b>  </mat-header-cell>
+            <mat-cell *matCellDef="let colab">{{colab.rut}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="fecha">
+            <mat-header-cell *matHeaderCellDef> <b>FECHA DE <br>NACIMIENTO</b>  </mat-header-cell>
+            <mat-cell *matCellDef="let colab">{{colab.fecha}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="telefono">
+            <mat-header-cell *matHeaderCellDef> <b>TELÉFONO</b>  </mat-header-cell>
+            <mat-cell *matCellDef="let colab">{{colab.telefono}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="correo">
+            <mat-header-cell *matHeaderCellDef> <b>CORREO ELECTRÓNICO</b>  </mat-header-cell>
+            <mat-cell *matCellDef="let colab">{{colab.correo}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="cargo">
+          <mat-header-cell *matHeaderCellDef> <b>CARGO</b>  </mat-header-cell>
+          <mat-cell *matCellDef="let colab">{{colab.cargo}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="habilidades">
+        <mat-header-cell *matHeaderCellDef> <b>HABILIDADES</b> </mat-header-cell>
+        <mat-cell *matCellDef="let colab">{{colab.habilidades}}</mat-cell>
+    </ng-container>
+        <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
+        <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
+    </mat-table>
 
-    <mat-form-field>
-      <mat-label>First name</mat-label>
-      <input matInput>
-    </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Age</mat-label>
-      <input matInput type="number" min="1">
-    </mat-form-field>
-
-  </mat-expansion-panel>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Colaboradores
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-
-    <mat-form-field>
-      <mat-label>Country</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-
-      <mat-panel-description>
-        Inform the date you wish to travel
-        <mat-icon>date_range</mat-icon>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <mat-form-field>
-      <mat-label>First name</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </mat-expansion-panel>
-</mat-accordion>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div style="width: 50%; margin: 2em auto;">
-  <form class="mat-elevation-z4" style="padding: 1em;">
-      <h2 style="text-align: center;">Agregar Colaborador</h2>
-          <mat-form-field style="text-align: center;" appearance="outline">
-            <mat-label>Nombre</mat-label>
-            <input matInput required placeholder="Nombre del Colaborador">
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-          <mat-form-field style="text-align: center;" appearance="outline">
-            <mat-label>Apellido</mat-label>
-            <input matInput required placeholder="Apellido del Colaborador">
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-          <mat-form-field style="text-align: center;" appearance="outline">
-            <mat-label>RUT</mat-label>
-            <input matInput required placeholder="12.345.678-9">
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-          <div class="mb-3">
-            <form action="">
-             <div class="mb-3">           
-             <label for="start" style=" margin-left: 1em;">Fecha de Nacimiento</label>
-            <input type="date" id="start" name="trip-start" value=""  min="1980-01-01" max="2020-08-26" [(ngModel)]= "fechaNacimiento" name ="fechaNacimiento">
-          </div>
-          <mat-form-field appearance="outline">
-            <mat-label>Teléfono</mat-label>
-            <input type="tel" matInput required placeholder="(+56)912345678">
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Correo electrónico</mat-label>
-            <input type="email" matInput required placeholder="correo@ejemplo.com">
-            <mat-hint>Hint</mat-hint>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-              <mat-label>Habilidades</mat-label>
-              <mat-select required>
-                <mat-option *ngFor="let habilidades of habilidades" [value]="habilidades">
-                  {{habilidades}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-              <mat-label>Cargo</mat-label>
-              <mat-select required>
-                <mat-option *ngFor="let cargo of cargo" [value]="cargo"> {{cargo}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>  
-            <button mat-raised-button color="primary" style="margin-top: 1em;">Agregar</button>
-            <button type="reset" mat-raised-button color="warn" style="margin-left: 1em; margin-top: 1em;">Cancelar</button>
-  </form>
-</div> 
 
 
