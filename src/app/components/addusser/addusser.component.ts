@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ViewChild} from '@angular/core';
-import {MatAccordion} from '@angular/material/expansion';
+
 
 @Component({
   selector: 'app-addusser',
@@ -8,7 +7,13 @@ import {MatAccordion} from '@angular/material/expansion';
   styleUrls: ['./addusser.component.css']
 })
 export class AddusserComponent implements OnInit {
-  @ViewChild(MatAccordion) accordion: MatAccordion;
+
+  opened = false;
+
+  toggleSidebar(){
+    this.opened = !this.opened;
+  }
+
 
   constructor() { }
 

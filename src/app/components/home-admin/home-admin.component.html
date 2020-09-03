@@ -3,8 +3,8 @@
     <!--Sidebar  -->
     <ng-sidebar [opened]="opened">
         <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
-        <p style="padding-left: 2.5em;">Sesion Administrador</p>
-        <button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menu </button>
+        <p style="padding-left: 2.0em;">Sesion Administrador</p>
+        <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menu </a>
         <ul class="menu">
             <li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
             <li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
@@ -80,10 +80,10 @@
     <body>
     <section>
     <div class="container-fluid">
-        <h1 class="text-center">Colaborador</h1>
+        <h1 class="text-center">Administrador</h1>
         <div class="row">
             <div class="col-md-6 p-0 col-sm-6 col-xs-12 col-sm-6">
-                <div class="box " routerLink="/viewprojectscolab">
+                <div class="box " routerLink="/viewprojectsadmin">
                 <div class="row">
                     <div class="col-md-2">
                         <i class="fa fa-globe" aria-hidden="true"></i>
