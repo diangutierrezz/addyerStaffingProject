@@ -21,4 +21,10 @@ export class ViewprojectsadminComponent implements OnInit {
   ]
 
   columnasAMostrar: String[] = ['nombre', 'descripcion', 'inicio', 'fin', 'habilidades', 'colaboradores'];
+
+  opened = false;
+
+  toggleSidebar(){
+    this.opened = !this.opened;
+  }
 }

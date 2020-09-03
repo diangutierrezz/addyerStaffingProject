@@ -91,5 +91,10 @@ export class AddusserComponent implements OnInit {
 
   columnasAMostrar: String[] = ['nombre', 'apellido', 'rut', 'fecha', 'telefono', 'correo', 'cargo', 'habilidades'];
  
+  opened = false;
+
+  toggleSidebar(){
+    this.opened = !this.opened;
+  }
   
 }
