@@ -11,16 +11,6 @@ export class ViewprojectsadminComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  proyectos = [
-    {nombre:'Addyer', descripcion: 'muchas', inicio: 'hoy', fin:'mañana', habilidades:'buenas', colaboradores:'varios'},
-    {nombre:'Addyer', descripcion: 'muchas', inicio: 'hoy', fin:'mañana', habilidades:'buenas', colaboradores:'varios'},
-    {nombre:'Addyer', descripcion: 'muchas', inicio: 'hoy', fin:'mañana', habilidades:'buenas', colaboradores:'varios'},
-    {nombre:'Addyer', descripcion: 'muchas', inicio: 'hoy', fin:'mañana', habilidades:'buenas', colaboradores:'varios'},
-    
-
-  ]
-
-  columnasAMostrar: String[] = ['nombre', 'descripcion', 'inicio', 'fin', 'habilidades', 'colaboradores'];
 
   opened = false;
 
