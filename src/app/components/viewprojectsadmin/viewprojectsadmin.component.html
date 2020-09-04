@@ -1,24 +1,128 @@
-<ng-sidebar-container>
-    <!--Sidebar  -->
-    <ng-sidebar [opened]="opened">
-        <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
-        <p style="padding-left: 2.0em;">Sesion Administrador</p>
-        <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menu </a>
-        <ul class="menu">
-            <li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
-            <li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
-            <li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Crear Usuarios</a></li>
-        </ul>
-    </ng-sidebar>
-    <!--Page Header  -->
-    <div ng-sidebar-content>
-        <mat-toolbar style="background-color: #000000; ">
-            <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;"  (click)="toggleSidebar()">Abrir menu </a>
-            <span class="example-spacer"></span>
-            <a mat-raised-button style="margin-left: 1em;">Log-out</a>
-        </mat-toolbar>        
-    <!--Page Body  -->
-    <h2 style="text-align: center; margin-top:2em">Listas de Proyectos</h2>
+<div class="container mt-5">
+    <h1 class="text-black text-center pb-2">Proyectos</h1>
+    <br>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+            <div class="card">
+            <i class="fa fa-archive"></i>
+            <h3>Proyecto Alpha</h3>
+            <p><b>Descripción:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.</p>
+            <span>
+            <b>Habilidades requeridas:</b>
+            <ul>
+                <li>Trabajo en Equipo</li>
+                <li>Tolerancia a la Frustración</li>
+                <li>Autogestión</li>
+                <li>Y otra cosa que termine en on</li>
+            </ul>
+            <b>Colaboradores:</b>
+            <ul>
+                <li>Evelyn</li>
+                <li>Diandra</li>
+                <li>Diana</li>
+                <li>Rodrigo</li>
+                <li>Yana</li>
+                <li>Annerys</li>
+            </ul>
+        </span>
+        </div>
+        </div>
+              <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+            <div class="card">
+            <i class="fa fa-archive"></i>
+            <h3>Proyecto Beta</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.</p>
+            <span>
+                <b>Habilidades requeridas:</b>
+                <ul>
+                    <li>Trabajo en Equipo</li>
+                    <li>Tolerancia a la Frustración</li>
+                    <li>Autogestión</li>
+                    <li>Y otra cosa que termine en on</li>
+                </ul>
+                <b>Colaboradores:</b>
+                <ul>
+                    <li>Evelyn</li>
+                    <li>Diandra</li>
+                    <li>Diana</li>
+                    <li>Rodrigo</li>
+                    <li>Yana</li>
+                    <li>Annerys</li>
+                </ul>
+            </span>
+        </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+            <div class="card">
+            <i class="fa fa-archive"></i>
+            <h3>Proyecto Gamma</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.</p>
+            <span>
+                <b>Habilidades requeridas:</b>
+                <ul>
+                    <li>Trabajo en Equipo</li>
+                    <li>Tolerancia a la Frustración</li>
+                    <li>Autogestión</li>
+                    <li>Y otra cosa que termine en on</li>
+                </ul>
+                <b>Colaboradores:</b>
+                <ul>
+                    <li>Evelyn</li>
+                    <li>Diandra</li>
+                    <li>Diana</li>
+                    <li>Rodrigo</li>
+                    <li>Yana</li>
+                    <li>Annerys</li>
+                </ul>
+            </span>
+        </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+            <div class="card">
+            <i class="fa fa-archive"></i>
+            <h3>Proyecto Delta</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.</p>
+            <span>
+                <b>Habilidades requeridas:</b>
+                <ul>
+                    <li>Trabajo en Equipo</li>
+                    <li>Tolerancia a la Frustración</li>
+                    <li>Autogestión</li>
+                    <li>Y otra cosa que termine en on</li>
+                </ul>
+                <b>Colaboradores:</b>
+                <ul>
+                    <li>Evelyn</li>
+                    <li>Diandra</li>
+                    <li>Diana</li>
+                    <li>Rodrigo</li>
+                    <li>Yana</li>
+                    <li>Annerys</li>
+                </ul>
+            </span>
+        </div>
+        </div>
+  
+    </div>         
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  <h2 style="text-align: center; margin-top:2em">Listas de Proyectos</h2>
 <div style="width: 70%; margin: 1em auto;" class="mat-elevation-z2">
     <mat-table [dataSource]="proyectos">
         <ng-container matColumnDef="nombre">
@@ -48,6 +152,5 @@
         <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
         <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
     </mat-table>
-  </div>
  </div>
-</ng-sidebar-container>
+
