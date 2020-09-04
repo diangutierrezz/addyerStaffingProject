@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {ViewChild} from '@angular/core';
-import {MatAccordion} from '@angular/material/expansion';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 
@@ -11,7 +9,14 @@ import {MatChipInputEvent} from '@angular/material/chips';
   styleUrls: ['./addusser.component.css']
 })
 export class AddusserComponent implements OnInit {
- 
+
+  opened = false;
+
+  toggleSidebar(){
+    this.opened = !this.opened;
+  }
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -38,7 +43,6 @@ export class AddusserComponent implements OnInit {
     "Ayudante",
     "Profesor habilidades blandas",
     "Coordinador",
-
   ]
 
   visible = true;
@@ -74,10 +78,6 @@ export class AddusserComponent implements OnInit {
       this.fruits.splice(index, 1);
     }
   }
-
-  
-  
-
   colab = [
     {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
     {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
@@ -85,8 +85,6 @@ export class AddusserComponent implements OnInit {
     {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
     {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
     
-    
-
   ]
 
   columnasAMostrar: String[] = ['nombre', 'apellido', 'rut', 'fecha', 'telefono', 'correo', 'cargo', 'habilidades'];

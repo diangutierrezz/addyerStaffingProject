@@ -3,7 +3,7 @@
     <ng-sidebar [opened]="opened">
         <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
         <p style="padding-left: 2.5em;">Sesion colaborador</p>
-        <button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menu </button>
+        <a mat-raised-button style = "margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menu </a>
         <ul class="menu">
             <li><a style="color: #000000;" routerLink="/homecolab" (click)="toggleSidebar()">Inicio</a></li>
             <li><a style="color: #000000;" routerLink="/profilecolab" (click)="toggleSidebar()">Perfil Colaborador</a></li>
@@ -18,20 +18,36 @@
         <a mat-raised-button style="margin-left: 1em;" routerLink="">Cerrar sesión</a>
     </mat-toolbar>
     <!--Page Body  -->
-    <div style="width: 40%; margin: 2em auto;">
-        <form class="mat-elevation-z4" style="padding: 2em; padding-top: 4em; ">
-            <h6 style="font-family: Arial, Helvetica, sans-serif; padding-left: 2em;">Agregar nueva habilidad</h6>
-            <img src="https://thumbs.dreamstime.com/b/var%C3%B3n-y-hembra-person-profile-avatar-del-vector-icono-de-la-gente-102655370.jpg" width="200" height="200" class="img-fluid rounded-circle" style="padding-left:7em;">
-            <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" style="padding-left:7em;">
-            <mat-form-field appearance="outline">
-                <mat-label>Habilidades Tecnicas</mat-label>
-                <input matInput name="habilidades" type="text" matInput required placeholder="habilidades">
-            </mat-form-field>
+    <div style="width: 50%; margin: 2em auto;">
+        <form class="mat-elevation-z4 cajita2" style="padding: 2em; padding-top: 4em; ">
+            <h5 style="text-align: center;">Agregar nueva habilidad</h5>
+            <img src="https://thumbs.dreamstime.com/b/var%C3%B3n-y-hembra-person-profile-avatar-del-vector-icono-de-la-gente-102655370.jpg" width="250" height="250" class="img-fluid rounded-circle" style="padding-left:7em;">
+            <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="250" height="250" class="img-fluid rounded-circle" style="padding-left:7em;">
+              <mat-form-field style="width: 100%;" appearance="outline">
+                <mat-label>Nueva Habilidad</mat-label>
+                <input matInput  name="correo" type="text"  required placeholder="Habilidad">
+            </mat-form-field >            
            <br>
           <button mat-raised-button color="primary" style="margin: 1em 8em 0 2em;">Guardar Cambios</button>
           <button mat-raised-button color="warn" style="margin: 1em 1em 0 0;">Cancelar</button>
         </form>
     </div>
+    <hr>
+    <div style="width: 50%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
+      <mat-table [dataSource]="colab">
+        <ng-container matColumnDef="habilidades">
+          <mat-header-cell *matHeaderCellDef> <b>HABILIDADES</b> </mat-header-cell>
+          <mat-cell *matCellDef="let colab">{{colab.habilidades}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="boton">
+        <mat-header-cell *matHeaderCellDef > <b>ELIMINAR</b> </mat-header-cell>
+         <mat-cell *matCellDef="let colab" > 
+           <button mat-mini-fab color="warn"> 
+           <mat-icon>delete</mat-icon> </button> </mat-cell>
+           </ng-container>
+          <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
+          <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
+      </mat-table>
+    </div>
   </div>
 </ng-sidebar-container>
-
