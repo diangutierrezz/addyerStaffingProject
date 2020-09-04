@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewprojectsadminComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   opened = false;
 
   toggleSidebar(){
     this.opened = !this.opened;
   }
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }

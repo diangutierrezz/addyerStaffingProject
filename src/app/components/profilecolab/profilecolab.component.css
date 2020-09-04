@@ -28,6 +28,14 @@ ng-sidebar-container{
     display: block;
     width: 100%;
 }
+.example-chip-list {
+    width: 100%;
+  }
+.cajita2{
+    border: rgb(204, 176, 117) 3px solid;
+    border-radius: 10px 10px 10px 10px;
+}
+  
 
 h1,h2,h3{
     font-family: verdana
