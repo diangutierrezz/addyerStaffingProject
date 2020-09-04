@@ -21,5 +21,7 @@
   .cajita{
     border-radius: 82px 82px 82px 82px;
     border: rgb(204, 176, 117) 3px solid;
-   
+   width: 60%;
+   margin-left: auto;
+   margin-right:auto
   }
