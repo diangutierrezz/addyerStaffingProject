@@ -29,3 +29,41 @@ ng-sidebar-container{
   width: 100%;
 
 }
+
+.barra{
+  background-color: #f0a500 ;
+}
+
+.carousel{
+  margin-top: 0;
+}
+.carousel-item{
+  background-color:  #f7ba37;
+  height: 300px;
+}
+.carousel-caption{
+  bottom: 12%;
+}
+.carousel-indicators li{
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+}
+
+.texto{
+  color: black;
+}
+
+.centrado{
+  z-index: 100;
+  position: absolute;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  left: 500px;
+  top: 320px;
+}
+
+h1,h2,h3{
+  font-family: verdana
+}

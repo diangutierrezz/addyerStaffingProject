@@ -24,7 +24,7 @@
     <div class="card text-center mat-elevation-z4 mt-5 cajita">
       <div class="card-header p-4"><h3>Agregar Colaborador</h3></div>
         <div class="card-body">
-          <img src="https://lh3.googleusercontent.com/proxy/Jk0nlIn8xSGVRol-L2QMoXvU4PpZ8bTTCC90JQoXQi2CIXSkngs94lDgWmMnIAoxNg0pD0F1yJYtlUY55OE-xX2UMiB3S6A_QP99idzYkAjAM4KQ1nqAnp4" width="100" alt="">
+          <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt="">
             <div class="mt-5">
               <form class="text-center" style="padding: 1em;">
                   <br>
@@ -53,10 +53,10 @@
                   <mat-form-field appearance="outline">
                     <mat-label>Correo Electrónico</mat-label>
                     <input type="email" matInput required placeholder="correo@ejemplo.com">
-                    <mat-hint>La contraseña debe contener al menos una letra, un dígio y mínimo cuatro caracteres</mat-hint>
+                    <mat-hint >La contraseña debe contener al menos una letra, un dígito y mínimo cuatro caracteres</mat-hint>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
-                    <mat-label>Contraseña</mat-label>
+                    <mat-label style="margin-top: 2em;">Contraseña</mat-label>
                     <input type="password" matInput required placeholder="">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
@@ -81,7 +81,7 @@
                     </mat-chip-list>
                   </mat-form-field>
                   <button class="btn btn-warning">Agregar</button>
-                  <button class="btn btn-danger">Cancelar</button>
+                  <button type="reset" class="btn btn-danger">Cancelar</button>
               <p  class="text-danger mt-2"> {{mensaje}}</p>
               </form>
         </div>
@@ -95,38 +95,38 @@
   <hr>
     <h2 style="text-align: center; margin-top:2em">Colaboradores</h2>
     <br>
-  <div style="width: 70%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
+  <div style="width: 90%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
       <mat-table [dataSource]="colab">
           <ng-container matColumnDef="nombre">
-              <mat-header-cell *matHeaderCellDef> <b>NOMBRE</b> </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>NOMBRE</b> </mat-header-cell>
               <mat-cell *matCellDef="let colab">{{colab.nombre}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="apellido">
-              <mat-header-cell *matHeaderCellDef> <b>APELLIDO</b>  </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>APELLIDO</b>  </mat-header-cell>
               <mat-cell *matCellDef="let colab">{{colab.apellido}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="rut">
-              <mat-header-cell *matHeaderCellDef> <b>RUT</b>  </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>RUT</b>  </mat-header-cell>
               <mat-cell *matCellDef="let colab">{{colab.rut}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="fecha">
-              <mat-header-cell *matHeaderCellDef> <b>FECHA DE <br>NACIMIENTO</b>  </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>FECHA DE NACIMIENTO</b>  </mat-header-cell>
               <mat-cell *matCellDef="let colab">{{colab.fecha}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="telefono">
-              <mat-header-cell *matHeaderCellDef> <b>TELÉFONO</b>  </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>TELÉFONO</b>  </mat-header-cell>
               <mat-cell *matCellDef="let colab">{{colab.telefono}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="correo">
-              <mat-header-cell *matHeaderCellDef> <b>CORREO ELECTRÓNICO</b>  </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>CORREO ELECTRÓNICO</b>  </mat-header-cell>
               <mat-cell *matCellDef="let colab">{{colab.correo}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="cargo">
-            <mat-header-cell *matHeaderCellDef> <b>CARGO</b>  </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>CARGO</b>  </mat-header-cell>
             <mat-cell *matCellDef="let colab">{{colab.cargo}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="habilidades">
-          <mat-header-cell *matHeaderCellDef> <b>HABILIDADES</b> </mat-header-cell>
+          <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>HABILIDADES</b> </mat-header-cell>
           <mat-cell *matCellDef="let colab">{{colab.habilidades}}</mat-cell>
       </ng-container>
           <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>

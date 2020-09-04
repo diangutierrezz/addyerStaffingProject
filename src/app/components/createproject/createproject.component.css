@@ -19,6 +19,9 @@ mat-form-field {
 .cajita{
   border-radius: 82px 82px 82px 82px;
   border: rgb(204, 176, 117) 3px solid;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
  
 }
 .example-spacer {
@@ -51,6 +54,10 @@ ng-sidebar-container{
   display: block;
   width: 100%;
 
+}
+
+h1,h2,h3{
+  font-family: verdana
 }
 
 

@@ -24,7 +24,9 @@ mat-header-cell{
 .cajita{
   border-radius: 82px 82px 82px 82px;
   border: rgb(204, 176, 117) 3px solid;
- 
+  width: 63%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cajita2{
@@ -39,8 +41,6 @@ mat-header-cell{
 ng-sidebar-container{
   height: 100vh;
 }
-
-
 
 ::ng-deep .ng-sidebar{
   background-color: #f0a500;
@@ -64,4 +64,44 @@ ng-sidebar-container{
 
 }
 
+.mat-column-nombre{
+  justify-content: center;
+}
+
+.mat-column-apellido {
+  justify-content: center;
+}
+.mat-column-rut {
+  justify-content: center;
+ 
+}
+.mat-column-fecha {
+  justify-content: center;
+ 
+}
+
+.mat-column-telefono{
+  justify-content: center;
+ 
+}
+  
+.mat-column-correo{
+  justify-content: center;
+ 
+}
+  
+.mat-column-cargo{
+  justify-content: center;
+ 
+}
+  
+.mat-column-habilidades {
+  justify-content: center;
+ 
+}
+
+h1,h2,h3{
+  font-family: verdana
+}
+  
   
