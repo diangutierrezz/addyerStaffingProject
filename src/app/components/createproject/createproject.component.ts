@@ -94,5 +94,10 @@ export class CreateprojectComponent implements OnInit {
     }
   }
 
+  opened = false;
+
+  toggleSidebar(){
+    this.opened = !this.opened;
+  }
  
 }

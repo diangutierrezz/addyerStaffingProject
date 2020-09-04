@@ -63,3 +63,7 @@ ng-sidebar-container{
   left: 500px;
   top: 320px;
 }
+
+h1,h2,h3{
+  font-family: verdana
+}

@@ -29,7 +29,7 @@ export class ProfilecolabComponent implements OnInit {
 
   colab = [
     {habilidades: 'Trabajo en equipo'},
-    {habilidades: 'Autogestion'}
+    {habilidades: 'Autogestión'}
     
   ]
 

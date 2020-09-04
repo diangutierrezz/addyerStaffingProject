@@ -1,14 +1,51 @@
-<div class="container mt-5">
-    <h1 class="text-black text-center pb-2">Proyectos</h1>
-    <br>
-    <div class="row">
-        <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-            <div class="card">
-            <i class="fa fa-archive"></i>
-            <h3>Proyecto Alpha</h3>
-            <p><b>Descripción:</b> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.</p>
-            <span>
+<ng-sidebar-container>
+    <!--Sidebar  -->
+    <ng-sidebar [opened]="opened">
+        <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
+        <p style="padding-left: 1.5em; margin-top: 1em;">Sesión Administrador</p>
+        <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menú </a>
+        <ul class="menu">
+            <li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
+            <li><a style="color: #000000;" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a></li>
+            <li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
+            <li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Ver y Agregar Colaboradores</a></li>
+        </ul>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+    <!--Page Header  -->
+    <mat-toolbar style="background-color: #000000; ">
+        <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;" (click)="toggleSidebar()">Abrir menú </a>
+        <span class="example-spacer"></span>
+        <a mat-raised-button style="margin-left: 1em;" routerLink="">Cerrar Sesión</a>
+    </mat-toolbar>
+    <!--Page Body  -->  
+    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Proyectos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <style type="text/css">
+ 	@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700&display=swap');
+
+ </style>
+</head>
+<body>
+  
+<div class="container ">
+  <h1 class="text-black text-center pb-2">Proyectos</h1>
+  <div class="row">
+  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+  		<div class="card">
+  		<i class="fa fa-archive"></i>
+  		<h3>Proyecto Alpha</h3>
+  		<p><b>Descripción:</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		  tempor incididunt ut labore et dolore magna aliqua.</p>
+		  <span>
             <b>Habilidades requeridas:</b>
             <ul>
                 <li>Trabajo en Equipo</li>
@@ -25,133 +62,96 @@
                 <li>Yana</li>
                 <li>Annerys</li>
             </ul>
+           <p><b>Finaliza el:</b> 01-10-2020</p>
+        </span>  
+  	</div>
+  	</div>
+  	  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+  		<div class="card">
+  		<i class="fa fa-archive"></i>
+  		<h3>Proyecto Beta</h3>
+  		<p><b>Descripción:</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		  tempor incididunt ut labore et dolore magna aliqua.</p>
+		  <span>
+			<b>Habilidades requeridas:</b>
+			<ul>
+				<li>Trabajo en Equipo</li>
+				<li>Tolerancia a la Frustración</li>
+				<li>Autogestión</li>
+				<li>Y otra cosa que termine en on</li>
+			</ul>
+			<b>Colaboradores:</b>
+			<ul>
+				<li>Evelyn</li>
+				<li>Diandra</li>
+				<li>Diana</li>
+				<li>Rodrigo</li>
+				<li>Yana</li>
+				<li>Annerys</li>
+			</ul>
         </span>
-        </div>
-        </div>
-              <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-            <div class="card">
-            <i class="fa fa-archive"></i>
-            <h3>Proyecto Beta</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.</p>
-            <span>
-                <b>Habilidades requeridas:</b>
-                <ul>
-                    <li>Trabajo en Equipo</li>
-                    <li>Tolerancia a la Frustración</li>
-                    <li>Autogestión</li>
-                    <li>Y otra cosa que termine en on</li>
-                </ul>
-                <b>Colaboradores:</b>
-                <ul>
-                    <li>Evelyn</li>
-                    <li>Diandra</li>
-                    <li>Diana</li>
-                    <li>Rodrigo</li>
-                    <li>Yana</li>
-                    <li>Annerys</li>
-                </ul>
-            </span>
-        </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-            <div class="card">
-            <i class="fa fa-archive"></i>
-            <h3>Proyecto Gamma</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.</p>
-            <span>
-                <b>Habilidades requeridas:</b>
-                <ul>
-                    <li>Trabajo en Equipo</li>
-                    <li>Tolerancia a la Frustración</li>
-                    <li>Autogestión</li>
-                    <li>Y otra cosa que termine en on</li>
-                </ul>
-                <b>Colaboradores:</b>
-                <ul>
-                    <li>Evelyn</li>
-                    <li>Diandra</li>
-                    <li>Diana</li>
-                    <li>Rodrigo</li>
-                    <li>Yana</li>
-                    <li>Annerys</li>
-                </ul>
-            </span>
-        </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-            <div class="card">
-            <i class="fa fa-archive"></i>
-            <h3>Proyecto Delta</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.</p>
-            <span>
-                <b>Habilidades requeridas:</b>
-                <ul>
-                    <li>Trabajo en Equipo</li>
-                    <li>Tolerancia a la Frustración</li>
-                    <li>Autogestión</li>
-                    <li>Y otra cosa que termine en on</li>
-                </ul>
-                <b>Colaboradores:</b>
-                <ul>
-                    <li>Evelyn</li>
-                    <li>Diandra</li>
-                    <li>Diana</li>
-                    <li>Rodrigo</li>
-                    <li>Yana</li>
-                    <li>Annerys</li>
-                </ul>
-            </span>
-        </div>
-        </div>
-  
-    </div>         
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  
-  <h2 style="text-align: center; margin-top:2em">Listas de Proyectos</h2>
-<div style="width: 70%; margin: 1em auto;" class="mat-elevation-z2">
-    <mat-table [dataSource]="proyectos">
-        <ng-container matColumnDef="nombre">
-            <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-            <mat-cell *matCellDef="let proyectos">{{proyectos.nombre}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="descripcion">
-            <mat-header-cell *matHeaderCellDef> Descripción </mat-header-cell>
-            <mat-cell *matCellDef="let proyectos">{{proyectos.descripcion}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="inicio">
-            <mat-header-cell *matHeaderCellDef> Fecha Inicio </mat-header-cell>
-            <mat-cell *matCellDef="let proyectos">{{proyectos.inicio}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="fin">
-            <mat-header-cell *matHeaderCellDef> Fecha Término </mat-header-cell>
-            <mat-cell *matCellDef="let proyectos">{{proyectos.fin}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="habilidades">
-            <mat-header-cell *matHeaderCellDef> Habilidades </mat-header-cell>
-            <mat-cell *matCellDef="let proyectos">{{proyectos.habilidades}}</mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="colaboradores">
-            <mat-header-cell *matHeaderCellDef> Colaboradores </mat-header-cell>
-            <mat-cell *matCellDef="let proyectos">{{proyectos.colaboradores}}</mat-cell>
-        </ng-container>
-        <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
-        <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
-    </mat-table>
-</div>
+        <p><b>Finaliza el:</b> 01-10-2020</p>
+  	</div>
+  	</div>
+  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+  		<div class="card">
+  		<i class="fa fa-archive"></i>
+  		<h3>Proyecto Gamma</h3>
+  		<p><b>Descripción:</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		  tempor incididunt ut labore et dolore magna aliqua.</p>
+		  <span>
+			<b>Habilidades requeridas:</b>
+			<ul>
+				<li>Trabajo en Equipo</li>
+				<li>Tolerancia a la Frustración</li>
+				<li>Autogestión</li>
+				<li>Y otra cosa que termine en on</li>
+			</ul>
+			<b>Colaboradores:</b>
+			<ul>
+				<li>Evelyn</li>
+				<li>Diandra</li>
+				<li>Diana</li>
+				<li>Rodrigo</li>
+				<li>Yana</li>
+				<li>Annerys</li>
+            </ul>
+            <p><b>Finaliza el:</b> 01-10-2020</p>
+		</span>
+  	</div>
+  	</div>
+  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+  		<div class="card">
+  		<i class="fa fa-archive"></i>
+  		<h3>Proyecto Delta</h3>
+  		<p><b>Descripción:</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		  tempor incididunt ut labore et dolore magna aliqua.</p>
+		  <span>
+			<b>Habilidades requeridas:</b>
+			<ul>
+				<li>Trabajo en Equipo</li>
+				<li>Tolerancia a la Frustración</li>
+				<li>Autogestión</li>
+				<li>Y otra cosa que termine en on</li>
+			</ul>
+			<b>Colaboradores:</b>
+			<ul>
+				<li>Evelyn</li>
+				<li>Diandra</li>
+				<li>Diana</li>
+				<li>Rodrigo</li>
+				<li>Yana</li>
+				<li>Annerys</li>
+			</ul>
+        </span>
+        <p><b>Finaliza el:</b> 01-10-2020</p>
+  	</div>
+  	</div>
 
-<h1></h1>
+  </div>         
+</div>
+ </body>
+</html>
+</div>
+</ng-sidebar-container>
+
