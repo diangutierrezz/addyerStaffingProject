@@ -10,6 +10,7 @@ import { ProfilecolabComponent  } from "../app/components/profilecolab/profileco
 import { ViewprojectsadminComponent  } from "../app/components/viewprojectsadmin/viewprojectsadmin.component";
 import {  ViewprojectscolabComponent } from "../app/components/viewprojectscolab/viewprojectscolab.component";
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
+import { LogincolabComponent } from "../app/components/logincolab/logincolab.component";
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: "profilecolab", component:ProfilecolabComponent},
   { path: "viewprojectscolab", component:ViewprojectscolabComponent},
   { path: "createproject", component:CreateprojectComponent},
+  { path: "logincolab", component:LogincolabComponent},
   
 
   

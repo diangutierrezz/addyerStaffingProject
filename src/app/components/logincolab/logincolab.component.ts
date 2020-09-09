@@ -5,12 +5,15 @@ import { StaffingService } from "src/app/staffing.service";
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './logincolab.component.html',
+  styleUrls: ['./logincolab.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LogincolabComponent implements OnInit {
 
   usuario: Usuario;
+  mensaje;
+  usser;
+  pass;
   constructor(private router: Router, private service: StaffingService) {
   
   }
@@ -19,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginAdmin(correo: String, contraseña: String) {
+  logincolab(correo: String, contraseña: String) {
 
     /* ningun campo vacío */
     if (!correo.trim()) {
@@ -33,9 +36,8 @@ export class LoginComponent implements OnInit {
         verificación de logueo */
     else {
       let usuarioDatos = JSON.parse(localStorage.getItem("usuario"));
-      this.service.loginAdmin({ correo, contraseña } as Usuario).subscribe(_ => { alert("Logueo exitoso"); this.router.navigate(['homeadmin']) }, error => { alert("Los datos no coinciden") })
+      this.service.logincolab({ correo, contraseña } as Usuario).subscribe(_ => { alert("Logueo exitoso"); this.router.navigate(['homecolab']) }, error => { alert("Los datos no coinciden") })
     }
-
   }
 }
 

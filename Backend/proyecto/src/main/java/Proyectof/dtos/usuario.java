@@ -1,6 +1,6 @@
 package Proyectof.dtos;
 
-public class Usuario {
+public class usuario {
 
     private long id;
     private String rol;
@@ -11,7 +11,7 @@ public class Usuario {
     private String contraseña;
     private String cargo;
 
-    public Usuario(long id, String rol, String nombre, String apellido, String rut, String correo, String contraseña, String cargo) {
+    public usuario(long id, String rol, String nombre, String apellido, String rut, String correo, String contraseña, String cargo) {
         this.id = id;
         this.rol = rol;
         this.nombre = nombre;

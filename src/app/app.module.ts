@@ -19,7 +19,9 @@ import { ProfilecolabComponent } from './components/profilecolab/profilecolab.co
 import { ViewprojectscolabComponent } from './components/viewprojectscolab/viewprojectscolab.component';
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component'
+import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component';
+import { LogincolabComponent } from './components/logincolab/logincolab.component'
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin
     ViewprojectscolabComponent,
     CreateprojectComponent,
     OptionAdminComponent,
+    LogincolabComponent,
     
   ],
   imports: [
@@ -43,10 +46,10 @@ import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin
     AppMaterialModule,
     BrowserAnimationsModule,
     SidebarModule.forRoot(),
-
     FormsModule,
     CommonModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

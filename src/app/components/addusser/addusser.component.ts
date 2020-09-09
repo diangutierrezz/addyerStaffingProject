@@ -3,6 +3,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 
 
+
 @Component({
   selector: 'app-addusser',
   templateUrl: './addusser.component.html',
@@ -89,5 +90,5 @@ export class AddusserComponent implements OnInit {
 
   columnasAMostrar: String[] = ['nombre', 'apellido', 'rut', 'fecha', 'telefono', 'correo', 'cargo', 'habilidades'];
  
-  
+
 }
