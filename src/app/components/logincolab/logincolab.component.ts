@@ -35,9 +35,12 @@ export class LogincolabComponent implements OnInit {
     /* 
         verificación de logueo */
     else {
-      let usuarioDatos = JSON.parse(localStorage.getItem("usuario"));
-      this.service.logincolab({ correo, contraseña } as Usuario).subscribe(_ => { alert("Logueo exitoso"); this.router.navigate(['homecolab']) }, error => { alert("Los datos no coinciden") })
-    }
+      
+      this.service.logincolab({ correo, contraseña } as Usuario).subscribe(userResponse => { localStorage.setItem("usuario",JSON.stringify(userResponse));
+      this.router.navigate(['homecolab'])
+    });
+    }   
   }
+  
 }
 

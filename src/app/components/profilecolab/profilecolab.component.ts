@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 
 
@@ -9,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilecolabComponent implements OnInit {
 
+  
+  dato;
   habilidad : String ="";
-
   opened = false;
 
   toggleSidebar(){
@@ -19,11 +21,15 @@ export class ProfilecolabComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.dato = JSON.parse(localStorage.getItem("usuario")).id;
   }
 
   habilidadcolab:[
     {habilidades:'Trabajo en equipo'}
   ]
+  
+
+  
 
   columnasAVer: String[] = ['habilidad','boton'];
 
@@ -33,8 +39,10 @@ export class ProfilecolabComponent implements OnInit {
     
   ]
 
-  columnasAMostrar: String[] = ['habilidades', 'boton'];
  
 
+  columnasAMostrar: String[] = ['habilidades', 'boton'];
+ 
+  
 }
 
