@@ -56,8 +56,6 @@ export class CreateprojectComponent implements OnInit {
     }
   }
 
-
-
   name2: string;
 
   visible2 = true;
@@ -100,4 +98,54 @@ export class CreateprojectComponent implements OnInit {
     this.opened = !this.opened;
   }
  
+  filterPost = '';
+  posts = [
+    {
+      "id": 1,
+      "nombre": "Mary",
+      "apellido": "Casanova",
+      "rut": "12.345.678-9",
+      "correo": "djkkjdknka",
+      "cargo" : "ayudante",
+      "habilidades" : "java, base de datos"
+    },
+    {
+      "id": 2,
+      "nombre": "laura",
+      "apellido": "Casanova",
+      "rut": "12.345.678-9",
+      "correo": "djkkjdknka",
+      "cargo" : "ayudante",
+      "habilidades" : "front"
+    },
+    {
+      "id": 3,
+      "nombre": "raul",
+      "apellido": "Casanova",
+      "rut": "12.345.678-9",
+      "correo": "djkkjdknka",
+      "cargo" : "ayudante",
+      "habilidades" : "php, base de datos"
+    },
+    {
+      "id": 4,
+      "nombre": "karina",
+      "apellido": "Casanova",
+      "rut": "12.345.678-9",
+      "correo": "djkkjdknka",
+      "cargo" : "ayudante",
+      "habilidades" : "back"
+    },
+    {
+      "id": 5,
+      "nombre": "Mary",
+      "apellido": "Casanova",
+      "rut": "12.345.678-9",
+      "correo": "djkkjdknka",
+      "cargo" : "ayudante",
+      "habilidades" : "angular"
+    }
+  ];
+  
+
 }

@@ -19,7 +19,8 @@ import { ProfilecolabComponent } from './components/profilecolab/profilecolab.co
 import { ViewprojectscolabComponent } from './components/viewprojectscolab/viewprojectscolab.component';
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component'
+import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component';
+import { FilterPipe } from './pipes/filter.pipe'
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin
     ViewprojectscolabComponent,
     CreateprojectComponent,
     OptionAdminComponent,
+    FilterPipe,
     
   ],
   imports: [
