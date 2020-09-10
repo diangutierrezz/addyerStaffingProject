@@ -3,12 +3,23 @@ package Proyectof.dao;
 import Proyectof.ConnectionManager;
 import Proyectof.dtos.usuario;
 
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.Session;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class UsuarioDAO {
   private ConnectionManager db = new ConnectionManager();
@@ -37,26 +48,10 @@ public class UsuarioDAO {
     return COLABORADORES;
   }
 
-  public void agregarUsuario(usuario n) throws SQLException {
-    String query = "insert into usuario ( ROL, NOMBRE, APELLIDO, RUT, CORREO, CONTRASEÑA, CARGO) " +
-      " values ( ?, ?, ?, ?, ?, ?, ?)";
-
-    PreparedStatement pstmt = this.db.obtenerConexion().prepareStatement(query);
-    pstmt.setString(1, n.getRol());
-    pstmt.setString(2, n.getNombre());
-    pstmt.setString(3, n.getApellido());
-    pstmt.setString(4, n.getRut());
-    pstmt.setString(5, n.getCorreo());
-    pstmt.setString(6, n.getContraseña());
-    pstmt.setString(7, n.getCargo());
-
-    pstmt.executeUpdate();
-    this.db.cerrarConexion();
-  }
 
   public usuario loginAdmin(usuario u) throws SQLException {
     String sql = "SELECT * FROM USUARIO WHERE CORREO = '" + u.getCorreo() + "' AND CONTRASEÑA = '" + u.getContraseña() +
-      "' AND ROL = 'Admin'";
+      "' AND ROL = 'Administrador'";
     PreparedStatement ps = this.db.obtenerConexion().prepareStatement(sql);
     ResultSet rs = ps.executeQuery();
     rs.next();
@@ -75,7 +70,7 @@ public class UsuarioDAO {
 
   public usuario logincolab(usuario a) throws SQLException {
     String sql = "SELECT * FROM USUARIO WHERE CORREO = '" + a.getCorreo() + "' AND CONTRASEÑA = '" + a.getContraseña() +
-      "' AND ROL = 'colab'";
+      "' AND ROL = 'Colaborador'";
     PreparedStatement ps = this.db.obtenerConexion().prepareStatement(sql);
     ResultSet rs = ps.executeQuery();
     rs.next();
@@ -91,4 +86,64 @@ public class UsuarioDAO {
     return new usuario(idu, rolu, nombreu, apellidou, rutu, correou, contraseñau, cargou);
   }
 
+  public void agregarUsuario(usuario u) throws SQLException {
+    String query = "insert into usuario (rol, nombre, apellido, rut, correo, contraseña, cargo) " +
+      "values (?, ?, ?, ?, ?, ?, ?)";
+
+    PreparedStatement pstmt = this.db.obtenerConexion().prepareStatement(query);
+    pstmt.setString(1, u.getRol());
+    pstmt.setString(2, u.getNombre());
+    pstmt.setString(3, u.getApellido());
+    pstmt.setString(4, u.getRut());
+    pstmt.setString(5, u.getCorreo());
+    pstmt.setString(6, u.getContraseña());
+    pstmt.setString(7, u.getCargo());
+
+    pstmt.executeUpdate();
+    this.db.cerrarConexion();
+
+    String remitente = "addyer.staffing.project@gmail.com";
+    String clave = "paraelproyecto321";
+    String destino = u.getCorreo();
+
+    Properties props = new Properties();
+    props.put("mail.smtp.host", "smtp.gmail.com");
+    props.put("mail.smtp.port", "587");
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.starttls.enable", "true");
+    props.put("mail.smtp.user", remitente);
+    props.put("mail.smtp.clave", clave);
+
+    Session session = Session.getDefaultInstance(props);
+    MimeMessage mensaje = new MimeMessage(session);
+
+    try {
+      mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
+      mensaje.setSubject("Acceso al Sistema Staffing de Forge");
+      //mensaje.setText("Estimado "+u.getNombre()+ "<br><br><br> Su contraseña para acceder al sistema es: "+u.getContraseña(), "utf-8", "html");
+      BodyPart parteTexto = new MimeBodyPart();
+      parteTexto.setContent("¡Hola "+u.getNombre()+"! <br><br><br> Su contraseña para acceder al sistema es: "+"<b>"+u.getContraseña()+"</b>", "text/html");
+
+
+      MimeMultipart todasLasPartes = new MimeMultipart();
+      todasLasPartes.addBodyPart(parteTexto);
+
+      mensaje.setContent(todasLasPartes);
+
+      Transport transport = session.getTransport("smtp");
+      transport.connect("smtp.gmail.com", remitente, clave);
+      transport.sendMessage(mensaje, mensaje.getAllRecipients());
+      transport.close();
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+  }
+
+  public void borrarUsuario(long id) throws SQLException {
+    String sql = "delete from usuario where id = ? ";
+    PreparedStatement ps = this.db.obtenerConexion().prepareStatement(sql);
+    ps.setLong(1, id);
+    ps.executeUpdate();
+
+  }
 }

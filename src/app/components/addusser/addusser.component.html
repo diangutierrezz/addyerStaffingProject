@@ -28,6 +28,13 @@
             <div class="mt-5">
               <form class="text-center" style="padding: 1em;">
                   <br>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Rol</mat-label>
+                    <mat-select required>
+                      <mat-option *ngFor="let rol of rol" [value]="rol"> {{rol}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                   <mat-form-field  appearance="outline">
                     <mat-label>Nombre</mat-label>
                     <input matInput required placeholder="Nombre del Colaborador">
@@ -39,16 +46,6 @@
                   <mat-form-field appearance="outline">
                     <mat-label>RUT</mat-label>
                     <input matInput required placeholder="12.345.678-9">
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Fecha de Nacimiento</mat-label>
-                    <input matInput [matDatepicker]="picker" required>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Teléfono</mat-label>
-                    <input type="tel" matInput required placeholder="(+56) 9 12345678">
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Correo Electrónico</mat-label>
@@ -66,20 +63,7 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <mat-form-field class="example-chip-list" >
-                    <mat-chip-list #chipList aria-label="Fruit selection">
-                      <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
-                               [removable]="removable" (removed)="remove(fruit)">
-                        {{fruit.name}}
-                        <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
-                      </mat-chip>
-                      <input placeholder="Habilidades Requeridas"
-                             [matChipInputFor]="chipList"
-                             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                             [matChipInputAddOnBlur]="addOnBlur"
-                             (matChipInputTokenEnd)="add($event)">
-                    </mat-chip-list>
-                  </mat-form-field>
+
                   <button class="btn btn-warning">Agregar</button>
                   <button type="reset" class="btn btn-danger">Cancelar</button>
               <p  class="text-danger mt-2"> {{mensaje}}</p>
@@ -114,11 +98,11 @@
               <mat-cell *matCellDef="let colab">{{colab.fecha}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="telefono">
-              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>TELÉFONO</b>  </mat-header-cell>
-              <mat-cell *matCellDef="let colab">{{colab.telefono}}</mat-cell>
+            <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>CARGO</b>  </mat-header-cell>
+            <mat-cell *matCellDef="let colab">{{colab.cargo}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="correo">
-              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>CORREO ELECTRÓNICO</b>  </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>CORREO ELECTRÒNICO </b>  </mat-header-cell>
               <mat-cell *matCellDef="let colab">{{colab.correo}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="cargo">

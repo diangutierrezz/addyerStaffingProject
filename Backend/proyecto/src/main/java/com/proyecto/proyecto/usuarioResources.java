@@ -38,7 +38,7 @@ public class usuarioResources {
         System.out.println(e.toString());
 
         throw new ResponseStatusException(
-          HttpStatus.INTERNAL_SERVER_ERROR, "Se ha producido un error al insertar la noticia"
+          HttpStatus.INTERNAL_SERVER_ERROR, "Se ha producido un error al insertar la usuario"
         );
       }
     }
@@ -51,7 +51,10 @@ public class usuarioResources {
   public usuario loginUsuario(@RequestBody usuario a) throws SQLException {
     return new UsuarioDAO().logincolab(a);
   }
-
+  @RequestMapping(method = RequestMethod.DELETE, value = "/usuario/{id}")
+  public void borrarUsuario(@PathVariable("id") long id) throws SQLException {
+    new UsuarioDAO().borrarUsuario(id);
+  }
 
 
 

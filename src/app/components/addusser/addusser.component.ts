@@ -46,6 +46,11 @@ export class AddusserComponent implements OnInit {
     "Coordinador",
   ]
 
+  rol: string[] = [
+    "Colaborador",
+    "Administrador"
+  ]
+
   visible = true;
   selectable = true;
   removable = true;
