@@ -20,6 +20,7 @@ import { ViewprojectscolabComponent } from './components/viewprojectscolab/viewp
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component';
+import { FilterPipe } from './pipes/filter.pipe'
 import { LogincolabComponent } from './components/logincolab/logincolab.component'
 import { HttpClientModule } from '@angular/common/http';
 
@@ -37,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     ViewprojectscolabComponent,
     CreateprojectComponent,
     OptionAdminComponent,
+    FilterPipe,
     LogincolabComponent,
     
   ],

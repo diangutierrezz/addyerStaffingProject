@@ -14,6 +14,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -36,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatExpansionModule,
     MatChipsModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule
   ]
 })
 export class AppMaterialModule { }

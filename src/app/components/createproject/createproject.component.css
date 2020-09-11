@@ -24,6 +24,11 @@ mat-form-field {
   margin-right: auto;
  
 }
+
+.cajita2{
+  border: rgb(204, 176, 117) 3px solid;
+  border-radius: 10px 10px 10px 10px;
+}
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -61,4 +66,3 @@ h1,h2,h3{
 }
 
 
-  

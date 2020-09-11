@@ -89,11 +89,46 @@
         </div>
       </div>
       </div>
+      <br>
+      <div class="text-center mt-2" ><h3>Filtro</h3></div>
+      <div style="width: 90%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <input type="text" class="form-control" name="filterPost" placeholder="Buscar Colaboradores por Habilidades" [(ngModel)]="filterPost">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <table class="table table-striped">
+            <thead >
+              <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>APELLIDO</th>
+                <th>RUT</th>
+                <th>CORREO</th>
+                <th>CARGO</th>
+                <th>HABILIDADES</th>
+              </tr>
+            </thead>
+            <tbody >
+              <tr *ngFor="let post of posts | filter:filterPost">
+                <td>{{post.id}}</td>
+                <td>{{post.nombre}}</td>
+                <td>{{post.apellido}}</td>
+                <td>{{post.rut}}</td>
+                <td>{{post.correo}}</td>
+                <td>{{post.cargo}}</td>
+                <td>{{post.habilidades}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
   </ng-sidebar-container>
 
 
