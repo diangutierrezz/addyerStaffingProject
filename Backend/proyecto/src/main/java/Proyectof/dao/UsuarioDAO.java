@@ -102,18 +102,14 @@ public class UsuarioDAO {
     pstmt.setString(6, u.getContraseña());
     pstmt.setString(7, u.getCargo());
     pstmt.setString(8, u.getHabilidad());
-    pstmt.executeUpdate(); 
+    pstmt.executeUpdate();
 
-    if(pstmt.executeUpdate() == 1){
+
       String qry = "insert into Habilidades values ((select habilidad from " +
         " usuario where id = (SELECT MAX(ID) FROM usuario)))";
 
       PreparedStatement ps = this.db.obtenerConexion().prepareStatement(qry);
-      ps.setString(1,u.getHabilidad());
-
       ps.executeUpdate();
-    }
-
     this.db.cerrarConexion();
 
     String remitente = "addyer.staffing.project@gmail.com";
