@@ -16,12 +16,12 @@ import java.util.List;
 public class UsuarioHabilidadesResource {
   private UsuarioHabilidadesDAO dao = new UsuarioHabilidadesDAO();
 
-  @RequestMapping(method = RequestMethod.GET, value = "/usuariohabilidades/")
-  public List<UsuarioHabilidades> getUsuarioHabilidades() {
+  @RequestMapping(method = RequestMethod.GET, value = "/usuariohabilidades/{id}")
+  public List<UsuarioHabilidades> getUsuarioHabilidades(@PathVariable("id") long id) {
     List<UsuarioHabilidades> usuarioHabilidades = new ArrayList<>();
 
     try {
-      usuarioHabilidades = this.dao.mostrarUsuarioHabilidades();
+      usuarioHabilidades = this.dao.mostrarUsuarioHabilidades(id);
     } catch (SQLException e) {
       System.out.println(e.toString());
     }

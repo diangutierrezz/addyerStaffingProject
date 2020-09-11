@@ -29,7 +29,7 @@ public class UsuarioDAO {
 
     Statement stmt = this.db.obtenerConexion().createStatement();
     ResultSet rs = stmt.executeQuery("select ID, ROL, NOMBRE, APELLIDO, RUT, " +
-      " CORREO, CONTRASEÑA, CARGO from USUARIO");
+      " CORREO, CONTRASEÑA, CARGO, HABILIDAD from USUARIO");
 
     while (rs.next()) {
       usuario n = new usuario(
@@ -40,7 +40,8 @@ public class UsuarioDAO {
         rs.getString("RUT"),
         rs.getString("CORREO"),
         rs.getString("CONTRASEÑA"),
-        rs.getString("CARGO")
+        rs.getString("CARGO"),
+        rs.getString("HABILIDAD")
       );
       COLABORADORES.add(n);
     }
@@ -63,8 +64,9 @@ public class UsuarioDAO {
       String correou = rs.getString(6);
       String contraseñau = rs.getString(7);
       String cargou = rs.getString(8);
+    String habilidadu = rs.getString(9);
 
-      return new usuario(idu, rolu, nombreu, apellidou, rutu, correou, contraseñau, cargou);
+      return new usuario(idu, rolu, nombreu, apellidou, rutu, correou, contraseñau, cargou, habilidadu);
 
   }
 
@@ -82,14 +84,15 @@ public class UsuarioDAO {
     String correou = rs.getString(6);
     String contraseñau = rs.getString(7);
     String cargou = rs.getString(8);
+    String habilidadu = rs.getString(9);
 
-    return new usuario(idu, rolu, nombreu, apellidou, rutu, correou, contraseñau, cargou);
+    return new usuario(idu, rolu, nombreu, apellidou, rutu, correou, contraseñau, cargou, habilidadu);
   }
 
   public void agregarUsuario(usuario u) throws SQLException {
-    String query = "insert into usuario (rol, nombre, apellido, rut, correo, contraseña, cargo) " +
-      "values (?, ?, ?, ?, ?, ?, ?)";
 
+    String query = "insert into usuario (rol, nombre, apellido, rut, correo, contraseña, cargo, habilidad) " +
+      "values (?, ?, ?, ?, ?, ?, ?, ?)";
     PreparedStatement pstmt = this.db.obtenerConexion().prepareStatement(query);
     pstmt.setString(1, u.getRol());
     pstmt.setString(2, u.getNombre());
@@ -98,8 +101,19 @@ public class UsuarioDAO {
     pstmt.setString(5, u.getCorreo());
     pstmt.setString(6, u.getContraseña());
     pstmt.setString(7, u.getCargo());
+    pstmt.setString(8, u.getHabilidad());
+    pstmt.executeUpdate(); 
 
-    pstmt.executeUpdate();
+    if(pstmt.executeUpdate() == 1){
+      String qry = "insert into Habilidades values ((select habilidad from " +
+        " usuario where id = (SELECT MAX(ID) FROM usuario)))";
+
+      PreparedStatement ps = this.db.obtenerConexion().prepareStatement(qry);
+      ps.setString(1,u.getHabilidad());
+
+      ps.executeUpdate();
+    }
+
     this.db.cerrarConexion();
 
     String remitente = "addyer.staffing.project@gmail.com";
@@ -137,6 +151,8 @@ public class UsuarioDAO {
     }catch (Exception e){
       e.printStackTrace();
     }
+
+
   }
 
   public void borrarUsuario(long id) throws SQLException {

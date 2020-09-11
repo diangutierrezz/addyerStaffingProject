@@ -22,6 +22,7 @@ export class ProfilecolabComponent implements OnInit {
 
   ngOnInit(): void {
     this.dato = JSON.parse(localStorage.getItem("usuario")).id;
+    console.log(this.dato)
   }
 
   habilidadcolab:[

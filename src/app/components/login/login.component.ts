@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         verificación de logueo */
     else {
       let usuarioDatos = JSON.parse(localStorage.getItem("usuario"));
-      this.service.loginAdmin({ correo, contraseña } as Usuario).subscribe(_ => { alert("Logueo exitoso"); this.router.navigate(['homeadmin']) }, error => { alert("Los datos no coinciden") })
+      this.service.loginAdmin({ correo, contraseña } as Usuario).subscribe(_ => { this.router.navigate(['homeadmin']) }, error => { alert("Los datos no coinciden") })
     }
 
   }
