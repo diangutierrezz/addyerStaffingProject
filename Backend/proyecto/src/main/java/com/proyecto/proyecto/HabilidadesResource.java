@@ -48,4 +48,16 @@ public class HabilidadesResource {
   public void borrarHabilidad(@PathVariable("id") long id) throws SQLException {
     new HabilidadesDAO().borrarHabilidad(id);
   }
+
+  @RequestMapping(method = RequestMethod.GET, value = "/habilidades/colab/{id}")
+  public List<Habilidades> getHabilidadesColab (@PathVariable("id") long id) throws SQLException {
+    List<Habilidades> habilidades = new HabilidadesDAO().obtenerHabilidadesColab(id);
+    return habilidades;
+  }
+
+  @RequestMapping(method = RequestMethod.GET, value = "/habilidades/proyecto/{id}")
+  public List<Habilidades> getHabilidadesProyecto (@PathVariable("id") long id) throws SQLException {
+    List<Habilidades> habilidades = new HabilidadesDAO().obtenerHabilidadesProyecto(id);
+    return habilidades;
+  }
 }

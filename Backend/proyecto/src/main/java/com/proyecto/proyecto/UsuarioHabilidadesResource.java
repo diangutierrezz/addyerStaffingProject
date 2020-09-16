@@ -1,5 +1,6 @@
 package com.proyecto.proyecto;
 
+import Proyectof.dao.UsuarioDAO;
 import Proyectof.dao.UsuarioHabilidadesDAO;
 import Proyectof.dtos.UsuarioHabilidades;
 import org.springframework.http.HttpStatus;
@@ -29,10 +30,11 @@ public class UsuarioHabilidadesResource {
     return usuarioHabilidades;
   }
 
-  @RequestMapping(method = RequestMethod.POST, value = "/usuariohabilidades/agregar/")
-  public void setUsuarioHabilidades(@RequestBody UsuarioHabilidades uh) {
+
+  @RequestMapping(method = RequestMethod.POST, value = "/usuariohabilidades/agregar/{uh}/{h}")
+  public void setUsuarioHabilidades(@RequestBody UsuarioHabilidades uh,@PathVariable("h") String h) {
     try {
-      this.dao.agregarUsuarioHabilidades(uh);
+      this.dao.agregarUsuarioHabilidades(uh, h);
     } catch (SQLException e) {
       System.out.println(e.toString());
 
@@ -40,4 +42,18 @@ public class UsuarioHabilidadesResource {
         HttpStatus.INTERNAL_SERVER_ERROR, "Se ha producido un error al agregar");
     }
   }
+
+  @RequestMapping(method = RequestMethod.POST, value = "/usuariohabilidades/crear/{rut}/{h}")
+  public void CREATEUsuarioHabilidades(@PathVariable("rut") String rut,@PathVariable("h") String h) {
+    try {
+      this.dao.CrearUsuarioHabilidades(rut, h);
+    } catch (SQLException e) {
+      System.out.println(e.toString());
+
+      throw new ResponseStatusException(
+        HttpStatus.INTERNAL_SERVER_ERROR, "Se ha producido un error al agregar");
+    }
+  }
+
+
 }

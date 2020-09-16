@@ -5,10 +5,11 @@
       <p style="padding-left: 1.2em; margin-top: 1em;">Sesión Administrador</p>
       <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menú </a>
       <ul class="menu">
-          <li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
-          <li><a style="color: #000000;" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a></li>
-          <li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
-          <li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Ver y Agregar Colaboradores</a></li>
+        <li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
+        <li><a style="color: #000000;" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a></li>
+        <li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
+        <li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Agregar Colaboradores</a></li>
+        <li><a style="color: #000000;" routerLink="/viewcolabs" (click)="toggleSidebar()">Ver Colaboradores</a></li>
       </ul>
   </ng-sidebar>
   <!--Page Header  -->
@@ -48,34 +49,7 @@
                       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                       <mat-datepicker #picker2 color="primary"></mat-datepicker>
                     </mat-form-field>
-                    <mat-form-field class="example-chip-list" >
-                      <mat-chip-list #chipList aria-label="Fruit selection">
-                        <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
-                                 [removable]="removable" (removed)="remove(fruit)">
-                          {{fruit.name}}
-                          <mat-icon matChipRemove *ngIf="removable">x</mat-icon>
-                        </mat-chip>
-                        <input placeholder="Habilidades Requeridas"
-                               [matChipInputFor]="chipList"
-                               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                               [matChipInputAddOnBlur]="addOnBlur"
-                               (matChipInputTokenEnd)="add($event)">
-                      </mat-chip-list>
-                    </mat-form-field>
-                    <mat-form-field class="example-chip-list" >
-                      <mat-chip-list #chipList2 aria-label="Fruit2 selection">
-                        <mat-chip *ngFor="let fruit2 of fruits2" [selectable]="selectable2"
-                                 [removable]="removable2" (removed)="remove2(fruit2)">
-                          {{fruit2.name2}}
-                          <mat-icon matChipRemove *ngIf="removable2">x</mat-icon>
-                        </mat-chip>
-                        <input placeholder="Colaboradores"
-                               [matChipInputFor]="chipList2"
-                               [matChipInputSeparatorKeyCodes]="separatorKeysCodes2"
-                               [matChipInputAddOnBlur]="addOnBlur2"
-                               (matChipInputTokenEnd)="add2($event)">
-                      </mat-chip-list>
-                    </mat-form-field>
+
                     <button class="btn btn-warning">Crear</button>
                     <button type="reset" class="btn btn-danger">Cancelar</button>
                  <p  class="text-danger mt-2"> {{mensaje}}</p>

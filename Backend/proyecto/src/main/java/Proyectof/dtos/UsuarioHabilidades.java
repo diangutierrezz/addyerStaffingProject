@@ -2,38 +2,38 @@ package Proyectof.dtos;
 
 public class UsuarioHabilidades {
 
-  private long id;
-  private long id_usuario;
-  private String habilidad;
+  private int id;
+  private int id_usuario;
+  private int id_habilidad;
 
-  public UsuarioHabilidades(long id, long id_usuario, String habilidad) {
+  public UsuarioHabilidades(int id, int id_usuario, int id_habilidad) {
     this.id = id;
     this.id_usuario = id_usuario;
-    this.habilidad = habilidad;
+    this.id_habilidad = id_habilidad;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
-  public long getId_usuario() {
+  public int getId_usuario() {
     return id_usuario;
   }
 
-  public void setId_usuario(long id_usuario) {
+  public void setId_usuario(int id_usuario) {
     this.id_usuario = id_usuario;
   }
 
-  public String getHabilidad() {
-    return habilidad;
+  public int getId_habilidad() {
+    return id_habilidad;
   }
 
-  public void setHabilidad(String habilidad) {
-    this.habilidad = habilidad;
+  public void setId_habilidad(int id_habilidad) {
+    this.id_habilidad = id_habilidad;
   }
 
   @Override
@@ -41,7 +41,7 @@ public class UsuarioHabilidades {
     return "UsuarioHabilidades{" +
       "id=" + id +
       ", id_usuario=" + id_usuario +
-      ", habilidad=" + habilidad +
+      ", id_habilidad=" + id_habilidad +
       '}';
   }
 }

@@ -47,4 +47,43 @@ public class HabilidadesDAO {
     ps.executeUpdate();
 
   }
+  public List<Habilidades> obtenerHabilidadesColab(long id) throws SQLException {
+    List<Habilidades> habilidadesColab = new ArrayList<>();
+
+    Statement stmt = this.db.obtenerConexion().createStatement();
+    ResultSet rs = stmt.executeQuery("select id_habilidades, habilidad  from  usuario " +
+      "join usuariohabilidades as u on usuario.id = u.id_usuario join habilidades " +
+      "on u.id_habilidades = habilidades.id where usuario.id = "+ Long.toString(id));
+
+    while (rs.next()) {
+      Habilidades h = new Habilidades(
+        rs.getLong("id_habilidades"),
+        rs.getString("habilidad")
+      );
+      habilidadesColab.add(h);
+    }
+    this.db.cerrarConexion();
+
+    return habilidadesColab;
+  }
+
+  public List<Habilidades> obtenerHabilidadesProyecto(long id) throws SQLException {
+    List<Habilidades> habilidadesColab = new ArrayList<>();
+
+    Statement stmt = this.db.obtenerConexion().createStatement();
+    ResultSet rs = stmt.executeQuery("select id_habilidades, habilidad  from  proyecto join " +
+      "proyectohabilidades as u on proyecto.id = u.id_proyecto join habilidades  " +
+      "on u.id_habilidades = habilidades.id where proyecto.id = "+ Long.toString(id));
+
+    while (rs.next()) {
+      Habilidades h = new Habilidades(
+        rs.getLong("id_habilidades"),
+        rs.getString("habilidad")
+      );
+      habilidadesColab.add(h);
+    }
+    this.db.cerrarConexion();
+
+    return habilidadesColab;
+  }
 }

@@ -17,17 +17,17 @@ public class UsuarioHabilidadesDAO {
     List<UsuarioHabilidades> usuarioHabilidades = new ArrayList<>();
 
     Statement stmt = this.db.obtenerConexion().createStatement();
-    ResultSet rs = stmt.executeQuery("select Distinct u.id, u.id_usuario, u.habilidad "+
-      "from usuario join usuariohabilidades as u on usuario.id = u.id_usuario "+
-      "join habilidades on u.habilidad = u.habilidad "+
+    ResultSet rs = stmt.executeQuery("select Distinct u.id, u.id_usuario, u.habilidad " +
+      "from usuario join usuariohabilidades as u on usuario.id = u.id_usuario " +
+      "join habilidades on u.habilidad = u.habilidad " +
       "where u.id_usuario = " + Long.toString(id));
 
 
     while (rs.next()) {
       UsuarioHabilidades uh = new UsuarioHabilidades(
-        rs.getLong("id"),
-        rs.getLong("id_usuario"),
-        rs.getString("habilidad")
+        rs.getInt("id"),
+        rs.getInt("id_usuario"),
+        rs.getInt("id_habilidad")
       );
       usuarioHabilidades.add(uh);
     }
@@ -37,15 +37,30 @@ public class UsuarioHabilidadesDAO {
 
   }
 
-  public void agregarUsuarioHabilidades (UsuarioHabilidades uh) throws SQLException {
-    String query = "insert into usuariohabilidades (id_usuario, habilidad) values (?, ?)";
+  public void agregarUsuarioHabilidades(UsuarioHabilidades uh, String h) throws SQLException {
+    String query = "insert into usuariohabilidades (id_usuario, id_habilidad) values " +
+      " (?,(select id from habilidades where habilidad = ?))";
 
     PreparedStatement pstmt = this.db.obtenerConexion().prepareStatement(query);
-    pstmt.setLong(1,uh.getId_usuario());
-    pstmt.setString(2,uh.getHabilidad());
+    pstmt.setInt(1, uh.getId_usuario());
+    pstmt.setString(2, h);
+
 
     pstmt.executeUpdate();
     this.db.cerrarConexion();
   }
+
+  public void CrearUsuarioHabilidades(String rut, String h) throws SQLException {
+    String query = " insert into usuariohabilidades (id_usuario, id_habilidad) values " +
+      " ((select id from usuario where rut = ?),(select id from habilidades where habilidad = ?))";
+
+    PreparedStatement pstmt = this.db.obtenerConexion().prepareStatement(query);
+    pstmt.setString(1, rut);
+    pstmt.setString(2, h);
+    pstmt.executeUpdate();
+    this.db.cerrarConexion();
+  }
+
+
 
 }

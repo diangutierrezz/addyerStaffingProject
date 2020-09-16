@@ -17,7 +17,7 @@ public class usuarioResources {
 
     private UsuarioDAO dao = new UsuarioDAO();
 
-    @RequestMapping(method = RequestMethod.GET, value = "/usuario/")
+   @RequestMapping(method = RequestMethod.GET, value = "/usuario/")
     public List<usuario> getNoticia() {
       List<usuario> colab = new ArrayList<>();
 
@@ -55,8 +55,17 @@ public class usuarioResources {
   public void borrarUsuario(@PathVariable("id") long id) throws SQLException {
     new UsuarioDAO().borrarUsuario(id);
   }
+  @RequestMapping(method = RequestMethod.PUT, value = "/usuario/modificar/{id}")
+  public void editarUsuario(@PathVariable("id") long id,
+                            @RequestBody usuario p) throws SQLException {
+    new UsuarioDAO().modificarUsuario(id,p);
+  }
+  @RequestMapping(method = RequestMethod.GET, value = "/enviarClave/{correo}")
+  public void enviarClave(@PathVariable("correo") String correo
+                                 ) throws SQLException {
+   new UsuarioDAO().enviarClave(correo);
 
-
+  }
 
   }
 

@@ -1,23 +1,39 @@
 package Proyectof.dtos;
 
+import java.util.List;
+
 public class usuario {
 
-    private long id;
-    private String rol;
-    private String nombre;
-    private String apellido;
-    private String rut;
-    private String correo;
-    private String contraseña;
-    private String cargo;
-    private String habilidad;
+  private int id;
+  private String rol;
+  private String nombre;
+  private String apellido;
+  private String rut;
+  private String correo;
+  private String contraseña;
+  private String cargo;
 
-  public long getId() {
+  public usuario(int id, String rol, String nombre, String apellido, String rut, String correo, String contraseña, String cargo) {
+    this.id = id;
+    this.rol = rol;
+    this.nombre = nombre;
+    this.apellido = apellido;
+    this.rut = rut;
+    this.correo = correo;
+    this.contraseña = contraseña;
+    this.cargo = cargo;
+  }
+
+  public int getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
+  }
+
+  public String getContraseña() {
+    return contraseña;
   }
 
   public String getRol() {
@@ -60,9 +76,6 @@ public class usuario {
     this.correo = correo;
   }
 
-  public String getContraseña() {
-    return contraseña;
-  }
 
   public void setContraseña(String contraseña) {
     this.contraseña = contraseña;
@@ -76,14 +89,6 @@ public class usuario {
     this.cargo = cargo;
   }
 
-  public String getHabilidad() {
-    return habilidad;
-  }
-
-  public void setHabilidad(String habilidad) {
-    this.habilidad = habilidad;
-  }
-
   @Override
   public String toString() {
     return "usuario{" +
@@ -95,21 +100,6 @@ public class usuario {
       ", correo='" + correo + '\'' +
       ", contraseña='" + contraseña + '\'' +
       ", cargo='" + cargo + '\'' +
-      ", habilidad='" + habilidad + '\'' +
       '}';
-  }
-
-  public usuario(long id, String rol, String nombre, String apellido, String rut, String correo, String contraseña, String cargo, String habilidad) {
-    this.id = id;
-    this.rol = rol;
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.rut = rut;
-    this.correo = correo;
-    this.contraseña = contraseña;
-    this.cargo = cargo;
-    this.habilidad = habilidad;
-
-
   }
 }

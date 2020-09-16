@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewprojectcolabService } from "src/app/components/viewprojectscolab/viewprojectcolab.service";
+
 
 @Component({
   selector: 'app-viewprojectscolab',
@@ -7,16 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewprojectscolabComponent implements OnInit {
 
+  usuario=null;
+
+  constructor(private viewprojectcolabService:ViewprojectcolabService){}
+  
   opened = false;
 
   toggleSidebar(){
     this.opened = !this.opened;
   }
 
+  ngOnInit() {
+    this.recuperarUsuario();
+    console.log(this.recargar())
+  }  
 
-  constructor() { }
-
-  ngOnInit(): void {
+  recargar() {
+    this.recuperarUsuario();
   }
 
+  recuperarUsuario() {
+    this.viewprojectcolabService.retornar()
+      .subscribe( result =>  {this.usuario = result});  
+      console.log()  
+  }
+  
 }

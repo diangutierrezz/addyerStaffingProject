@@ -1,16 +1,14 @@
 package Proyectof.dtos;
 
-import Proyectof.ConnectionManager;
-
-public class UsuarioProyecto {
+public class ProyectoHabilidades {
   private long id;
-  private long id_usuario;
   private long id_proyecto;
+  private long id_habilidades;
 
-  public UsuarioProyecto(long id, long id_usuario, long id_proyecto) {
+  public ProyectoHabilidades(long id, long id_proyecto, long id_habilidades) {
     this.id = id;
-    this.id_usuario = id_usuario;
     this.id_proyecto = id_proyecto;
+    this.id_habilidades = id_habilidades;
   }
 
   public long getId() {
@@ -21,14 +19,6 @@ public class UsuarioProyecto {
     this.id = id;
   }
 
-  public long getId_usuario() {
-    return id_usuario;
-  }
-
-  public void setId_usuario(long id_usuario) {
-    this.id_usuario = id_usuario;
-  }
-
   public long getId_proyecto() {
     return id_proyecto;
   }
@@ -36,5 +26,12 @@ public class UsuarioProyecto {
   public void setId_proyecto(long id_proyecto) {
     this.id_proyecto = id_proyecto;
   }
-}
 
+  public long getId_habilidades() {
+    return id_habilidades;
+  }
+
+  public void setId_habilidades(long id_habilidades) {
+    this.id_habilidades = id_habilidades;
+  }
+}

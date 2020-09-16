@@ -11,6 +11,10 @@ import { ViewprojectsadminComponent  } from "../app/components/viewprojectsadmin
 import {  ViewprojectscolabComponent } from "../app/components/viewprojectscolab/viewprojectscolab.component";
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { LogincolabComponent } from "../app/components/logincolab/logincolab.component";
+import { ModifyuserComponent } from "../app/components/modifyuser/modifyuser.component";
+import { ViewcolabsComponent } from "../app/components/viewcolabs/viewcolabs.component";
+import { AddSkillComponent } from "../app/components/add-skill/add-skill.component";
+import { RecoverpassComponent } from "../app/components/recoverpass/recoverpass.component";
 
 
 const routes: Routes = [
@@ -24,6 +28,10 @@ const routes: Routes = [
   { path: "viewprojectscolab", component:ViewprojectscolabComponent},
   { path: "createproject", component:CreateprojectComponent},
   { path: "logincolab", component:LogincolabComponent},
+  { path: "modifycolab", component:ModifyuserComponent},
+  { path: "viewcolabs", component:ViewcolabsComponent},
+  { path:"addskill", component:AddSkillComponent},
+  { path:"recoverpass", component:RecoverpassComponent}
   
 
   

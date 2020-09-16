@@ -1,17 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
-import {FormControl} from '@angular/forms';
-import { Usuario } from "src/app/models/usuario";
-import { MatTableDataSource } from '@angular/material/table';
-
 
 @Component({
-  selector: 'app-addusser',
-  templateUrl: './addusser.component.html',
-  styleUrls: ['./addusser.component.css']
+  selector: 'app-viewcolabs',
+  templateUrl: './viewcolabs.component.html',
+  styleUrls: ['./viewcolabs.component.css']
 })
-export class AddusserComponent implements OnInit {
+export class ViewcolabsComponent implements OnInit {
 
   opened = false;
 
@@ -90,13 +86,6 @@ export class AddusserComponent implements OnInit {
     }
   }
 
-  remove(fruit): void {
-    const index = this.fruits.indexOf(fruit);
-
-    if (index >= 0) {
-      this.fruits.splice(index, 1);
-    }
-  }
   colab = [
     {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
     {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},

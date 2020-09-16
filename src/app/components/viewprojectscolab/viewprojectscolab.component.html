@@ -19,7 +19,7 @@
     </mat-toolbar>
     <!--Page Body  -->  
     
-
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,6 +194,46 @@
   </div>         
 </div>
  </body>
+ 
 </html>
+
+-->  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Proyectos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <style type="text/css">
+ 	@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700&display=swap');
+
+ </style>
+</head>
+<body>
+	<div class="contenedor">
+		<mat-card class="tarjeta" *ngIf="usuario!=null">
+			<mat-card-header>
+		   
+		<mat-card-title>
+		<p> {{usuario.results[0].name.project}}</p>
+		</mat-card-title>
+			</mat-card-header>
+			
+		  <mat-card-content>
+			 
+		<p> src="{{usuario.results[0].decripcion.project}}"</p>
+		<p>Colaboradores:{{usuario.results[0].colaboradores}}</p>
+	  	<p>Fecha de inicio:{{usuario.results[0].fechainicio}}</p>
+		<p>Fecha de final:{{usuario.results[0].fechafinal}}</p>
+			
+		  </mat-card-content> 
+		</mat-card>
+	  </div>
+</body>
+</html>
+
+
 </div>
 </ng-sidebar-container>

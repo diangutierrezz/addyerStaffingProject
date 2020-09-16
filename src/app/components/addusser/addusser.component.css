@@ -140,3 +140,7 @@ h1,h2,h3{
 }
   
   
+.example-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}

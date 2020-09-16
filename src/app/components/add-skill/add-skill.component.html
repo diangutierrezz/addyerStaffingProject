@@ -1,0 +1,41 @@
+
+<div class="container">
+    <div class="card text-center mat-elevation-z4 mt-5 cajita " >
+        <div class="card-header p-4">
+          <h3> Agregar Habilidades</h3>
+        </div>
+        <div class="card-body">
+          <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt="">
+          
+          
+            <div class="mt-5" >
+    <form class=" text-center" style="padding: 1em;">
+        <br>
+        <mat-form-field appearance="outline">
+            <mat-label>Habilidades</mat-label>
+      <div class="height:200px width:200px">
+          <select style="width: 100%" name="miselect" [(ngModel)]="seleccionado">
+        <option [value]="habilidades" *ngFor="let habilidades of habilidades">{{habilidades}}</option>
+        </select>
+      </div>
+    
+          </mat-form-field>
+          <button class="btn btn-primary" (click)="mostrar()">Agregar Habilidad</button>
+
+          <p>{{mensaje}}</p>
+        <br>
+        <hr>
+        <button class="btn btn-warning" routerLink="/viewcolabs"  >Crear usuario</button>
+      </form>
+    </div>
+        </div>
+        <div class="card-footer text-muted">
+          Mesa de Ayuda 22700345 
+          <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+        </div>
+      </div>
+
+      <p>
+
+    </div>
+    
