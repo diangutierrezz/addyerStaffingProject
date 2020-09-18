@@ -11,7 +11,7 @@ public class ProyectoHabilidadesDAO {
   private ConnectionManager db = new ConnectionManager();
 
   public void agregarProyectoHabilidades(ProyectoHabilidades uh, String h) throws SQLException {
-    String query = "insert into proyectohabilidades (id_proyecto, id_habilidad) values " +
+    String query = "insert into proyectohabilidades (id_proyecto, id_habilidades) values " +
       " (?,(select id from habilidades where habilidad = ?))";
 
     PreparedStatement pstmt = this.db.obtenerConexion().prepareStatement(query);

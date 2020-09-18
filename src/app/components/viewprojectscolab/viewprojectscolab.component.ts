@@ -20,20 +20,12 @@ export class ViewprojectscolabComponent implements OnInit {
   }
 
     ngOnInit(): void {
-      
+    this.dato = JSON.parse(localStorage.getItem("usuario")).id;
+    console.log(this.dato)
+    this.viewprojectcolabService.retornar(this.dato).subscribe( result =>  {this.proyectos = result}); 
       
     }
   
-    recargar() {
-      this.recuperarProyectos();
-    }
-
-  recuperarProyectos() {
-    this.dato = JSON.parse(localStorage.getItem("usuario")).id;
-    console.log(this.dato)
-    this.viewprojectcolabService.retornar(this.dato).subscribe( result =>  {this.proyectos = result});  
-    
-  }
 
   cerrarsesion(){
     localStorage.removeItem("usuario");

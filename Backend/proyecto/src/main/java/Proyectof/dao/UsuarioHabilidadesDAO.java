@@ -39,7 +39,7 @@ public class UsuarioHabilidadesDAO {
   }
 
   public void agregarUsuarioHabilidades(UsuarioHabilidades uh, String h) throws SQLException {
-    String query = "insert into usuariohabilidades (id_usuario, id_habilidad) values " +
+    String query = "insert into usuariohabilidades (id_usuario, id_habilidades) values " +
       " (?,(select id from habilidades where habilidad = ?))";
 
     PreparedStatement pstmt = this.db.obtenerConexion().prepareStatement(query);
@@ -52,7 +52,7 @@ public class UsuarioHabilidadesDAO {
   }
 
   public void CrearUsuarioHabilidades(String rut, String h) throws SQLException {
-    String query = " insert into usuariohabilidades (id_usuario, id_habilidad) values " +
+    String query = " insert into usuariohabilidades (id_usuario, id_habilidades) values " +
       " ((select id from usuario where rut = ?),(select id from habilidades where habilidad = ?))";
 
     PreparedStatement pstmt = this.db.obtenerConexion().prepareStatement(query);
