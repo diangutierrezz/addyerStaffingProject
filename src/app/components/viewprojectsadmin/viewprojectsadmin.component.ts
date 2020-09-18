@@ -18,4 +18,7 @@ export class ViewprojectsadminComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cerrarsesion(){
+    localStorage.removeItem("usuario");
+  }
 }

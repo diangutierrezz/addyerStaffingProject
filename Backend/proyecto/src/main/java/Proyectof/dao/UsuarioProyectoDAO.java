@@ -22,4 +22,12 @@ public class UsuarioProyectoDAO {
     pstmt.executeUpdate();
     this.db.cerrarConexion();
   }
+
+  public void borrarColabProyecto(UsuarioProyecto p) throws SQLException {
+    String sql = " delete from usuarioproyecto where id_usuario =  ? and id_proyecto = ? ";
+    PreparedStatement ps = this.db.obtenerConexion().prepareStatement(sql);
+    ps.setInt(1, p.getId_usuario());
+    ps.setInt(2, p.getId_proyecto());
+    ps.executeUpdate();
+  }
 }

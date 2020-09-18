@@ -15,7 +15,14 @@ export class HomeAdminComponent implements OnInit {
 
   constructor() { }
 
+  dato;
   ngOnInit(): void {
+    this.dato = JSON.parse(localStorage.getItem("usuario")).id;
+    console.log(this.dato)
+  }
+
+  cerrarsesion(){
+    localStorage.removeItem("usuario");
   }
 
 }

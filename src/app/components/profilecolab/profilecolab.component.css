@@ -1,111 +1,64 @@
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 ng-sidebar-container{
-    height: 100vh;
+  height: 100vh;
 }
 
-
-
 ::ng-deep .ng-sidebar{
-    background-color: #f0a500;
-    width: 300px;
-    padding: 2em 3em;
-    box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
+  background-color: #f0a500;
+  width: 300px;
+  padding: 2em 3em;
+  box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
 }
 
 .menu{
-    margin-top: 2em;
-    display: block;
+  margin-top: 2em;
+  display: block;
 }
 
 .menu li{
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .menu li a{
-    display: block;
-    width: 100%;
-
+  display: block;
+  width: 100%;
 }
-body{
-    padding: 0;
-    margin: 0;
-overflow-x: hidden;
-
+.example-chip-list {
+  width: 100%;
 }
-.fa{
-    font-size: 80px;
-    padding: 25px 15px 0px 10px;
+.cajita{
+  border-radius: 82px 82px 82px 82px;
+border: rgb(204, 176, 117) 3px solid;
+width: 60%;
+margin-left: auto;
+margin-right: auto;
 }
-section{
-    margin: 50px auto;
+.cajita2{
+  border: rgb(204, 176, 117) 3px solid;
+  border-radius: 10px 10px 10px 10px;
+  width: 60%;
 }
-h3{
-    padding: 20px 0 0 10px;
-    margin: 0;
-}
-.box{
-    transition: .3s;
-    border-radius: 20px;
-    margin: 10px;
-    background: #ddd;
-    padding: 10px;
-    
-
-}
-.box:hover{
-    background:  #5dade2 ;
-    border-radius: 20px;
-    transition: .5s;
-    color: #fff;
-    cursor: pointer;
-
-}
-p{
-    padding: 10px;
-}
-@media(max-width: 992px){
-    .fa{
-        font-size: 70px;
-    }
-}
-@media(max-width: 768px){
-    .box{
-        text-align: center;
-    }
-}
-.carousel{
-    margin-top: 0;
-  }
-  .carousel-item{
-    background-color:  #f7ba37;
-    height: 300px;
-  }
-  .carousel-caption{
-    bottom: 12%;
-  }
-  .carousel-indicators li{
-    border-radius: 50%;
-    height: 15px;
-    width: 15px;
-  }
-  
-  .texto{
-    color: black;
-  }
-
-  .centrado{
-    z-index: 100;
-    position: absolute;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    left: 500px;
-    top: 320px;
+button{
+  width: 50%;
+  border-bottom-style: solid;
 }
 
 h1,h2,h3{
-    font-family: verdana
-  }
+  font-family: verdana  
+}
+.mat-column-habilidades {
+  justify-content: center;
+ 
+}
+
+.mat-column-boton {
+  justify-content: center;
+ 
+}
+
+mat-header-cell{
+  background-color: rgb(240, 231, 231);
+}

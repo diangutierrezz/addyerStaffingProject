@@ -34,14 +34,17 @@ public class ProyectoDAO {
     return proyectos;
   }
   public List<Proyecto> obtenerProyectoColab(int id) throws SQLException {
-    List<Proyecto> proyectosColab = new ArrayList<>();
 
+    List<Proyecto> proyectosColab = new ArrayList<>();
+    String sql = " select id_proyecto, nombreproyecto, descripcion, fechainicio, fechafinal" +
+      " from  usuario join usuarioproyecto as u on usuario.id = u.id_usuario join" +
+      " proyecto on u.id_proyecto = proyecto.id where usuario.id = " + Long.toString(id);
     Statement stmt = this.db.obtenerConexion().createStatement();
-    ResultSet rs = stmt.executeQuery("");
+    ResultSet rs = stmt.executeQuery(sql);
 
     while (rs.next()) {
       Proyecto p = new Proyecto(
-        rs.getInt("id"),
+        rs.getInt("id_proyecto"),
         rs.getString("nombreproyecto"),
         rs.getString("descripcion"),
         rs.getString("fechainicio"),

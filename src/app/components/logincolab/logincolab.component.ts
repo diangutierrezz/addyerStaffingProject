@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Usuario } from "src/app/models/usuario";
 import { StaffingService } from "src/app/staffing.service";
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import { RecoverpassComponent } from '../recoverpass/recoverpass.component';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LogincolabComponent implements OnInit {
   mensaje;
   usser;
   pass;
-  constructor(private router: Router, private service: StaffingService) {
+  constructor(private router: Router, private service: StaffingService,public dialog: MatDialog) {
   
   }
   
@@ -40,6 +42,14 @@ export class LogincolabComponent implements OnInit {
       this.router.navigate(['homecolab'])
     });
     }   
+  }
+  
+  openDialog() {
+    const dialogRef = this.dialog.open(RecoverpassComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   
 }

@@ -25,7 +25,7 @@ public class UsuarioDAO {
 
     Statement stmt = this.db.obtenerConexion().createStatement();
     ResultSet rs = stmt.executeQuery("select ID, ROL, NOMBRE, APELLIDO, RUT, " +
-      " CORREO, CONTRASEÑA, CARGO, HABILIDAD from USUARIO");
+      " CORREO, CONTRASEÑA, CARGO from USUARIO");
 
     while (rs.next()) {
       usuario n = new usuario(
@@ -220,5 +220,13 @@ public class UsuarioDAO {
     return a;
   }
 
+  public void modificarContraseña(long id, usuario u) throws SQLException {
 
+    String sql = "update Usuario set contraseña=? where id=? ";
+    PreparedStatement ps = this.db.obtenerConexion().prepareStatement(sql);
+    ps.setString(1, u.getContraseña());
+    ps.setLong(2, id);
+    ps.executeUpdate();
+
+  }
 }

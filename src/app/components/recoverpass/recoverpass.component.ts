@@ -12,4 +12,8 @@ export class RecoverpassComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+  cerrarsesion(){
+    localStorage.removeItem("usuario");
+  }
 }

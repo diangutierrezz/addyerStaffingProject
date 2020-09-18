@@ -44,10 +44,10 @@ public class HabilidadesResource {
     }
   }
 
-  @RequestMapping(method = RequestMethod.DELETE, value = "/habilidad/{id}")
+  /*@RequestMapping(method = RequestMethod.DELETE, value = "/habilidad/{id}")
   public void borrarHabilidad(@PathVariable("id") long id) throws SQLException {
     new HabilidadesDAO().borrarHabilidad(id);
-  }
+  }*/
 
   @RequestMapping(method = RequestMethod.GET, value = "/habilidades/colab/{id}")
   public List<Habilidades> getHabilidadesColab (@PathVariable("id") long id) throws SQLException {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homecolab',
@@ -13,9 +14,16 @@ export class HomecolabComponent implements OnInit {
     this.opened = !this.opened;
   }
   
-  constructor() { }
+  constructor(private router: Router) { }
 
+  dato;
   ngOnInit(): void {
+    this.dato = JSON.parse(localStorage.getItem("usuario")).id;
+    console.log(this.dato)
+  }
+
+  cerrarsesion(){
+    localStorage.removeItem("usuario");
   }
 
 }

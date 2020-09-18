@@ -18,7 +18,7 @@ public class usuarioResources {
     private UsuarioDAO dao = new UsuarioDAO();
 
    @RequestMapping(method = RequestMethod.GET, value = "/usuario/")
-    public List<usuario> getNoticia() {
+    public List<usuario> obtenerUsuario() {
       List<usuario> colab = new ArrayList<>();
 
       try {
@@ -31,7 +31,7 @@ public class usuarioResources {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/usuario/agregar/")
-    public void setNoticia(@RequestBody usuario n) {
+    public void AgregarUsuario(@RequestBody usuario n) {
       try {
         this.dao.agregarUsuario(n);
       } catch (SQLException e) {
@@ -51,10 +51,10 @@ public class usuarioResources {
   public usuario loginUsuario(@RequestBody usuario a) throws SQLException {
     return new UsuarioDAO().logincolab(a);
   }
-  @RequestMapping(method = RequestMethod.DELETE, value = "/usuario/{id}")
+ /* @RequestMapping(method = RequestMethod.DELETE, value = "/usuario/{id}")
   public void borrarUsuario(@PathVariable("id") long id) throws SQLException {
     new UsuarioDAO().borrarUsuario(id);
-  }
+  }*/
   @RequestMapping(method = RequestMethod.PUT, value = "/usuario/modificar/{id}")
   public void editarUsuario(@PathVariable("id") long id,
                             @RequestBody usuario p) throws SQLException {
@@ -65,6 +65,12 @@ public class usuarioResources {
                                  ) throws SQLException {
    new UsuarioDAO().enviarClave(correo);
 
+  }
+
+  @RequestMapping(method = RequestMethod.PUT, value = "/Usuario/{id}")
+  public void modificarContraseña(@PathVariable("id") long id,
+                                  @RequestBody usuario u) throws SQLException {
+    new UsuarioDAO().modificarContraseña(id, u);
   }
 
   }

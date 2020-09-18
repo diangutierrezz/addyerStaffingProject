@@ -19,7 +19,7 @@ import java.util.List;
 public class ProyectoResource {
   private ProyectoDAO dao = new ProyectoDAO();
 
-  @RequestMapping(method = RequestMethod.GET, value = "/api/proyectos")
+  @RequestMapping(method = RequestMethod.GET, value = "/proyectos")
   public List<Proyecto> getProyectos() {
     List<Proyecto> proyectos = new ArrayList<>();
 
@@ -38,10 +38,10 @@ public class ProyectoResource {
     return proyectos;
   }
 
-  @RequestMapping(method = RequestMethod.DELETE, value = "/proyecto/{id}")
+ /* @RequestMapping(method = RequestMethod.DELETE, value = "/proyecto/{id}")
   public void borrarProyecto(@PathVariable("id") long id) throws SQLException {
     new ProyectoDAO().borrarProyecto(id);
-  }
+  }*/
 
   @RequestMapping(method = RequestMethod.PUT, value = "/proyecto/modificiar/{id}")
   public void editarProyecto(@PathVariable("id") long id,

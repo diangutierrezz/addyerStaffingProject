@@ -97,5 +97,8 @@ export class ViewcolabsComponent implements OnInit {
 
   columnasAMostrar: String[] = ['nombre', 'apellido', 'rut', 'fecha', 'telefono', 'correo', 'cargo', 'habilidades'];
 
+  cerrarsesion(){
+    localStorage.removeItem("usuario");
+  }
 
 }

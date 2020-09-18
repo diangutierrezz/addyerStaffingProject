@@ -77,4 +77,3 @@ export class ProfilecolabComponent implements OnInit {
 
   columnasAMostrar: String[] = ['habilidades', 'boton'];
 }
-

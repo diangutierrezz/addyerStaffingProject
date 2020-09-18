@@ -2,7 +2,9 @@ package com.proyecto.proyecto;
 
 import Proyectof.dao.UsuarioDAO;
 import Proyectof.dao.UsuarioHabilidadesDAO;
+import Proyectof.dao.UsuarioProyectoDAO;
 import Proyectof.dtos.UsuarioHabilidades;
+import Proyectof.dtos.UsuarioProyecto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,7 +19,7 @@ import java.util.List;
 public class UsuarioHabilidadesResource {
   private UsuarioHabilidadesDAO dao = new UsuarioHabilidadesDAO();
 
-  @RequestMapping(method = RequestMethod.GET, value = "/usuariohabilidades/{id}")
+ /* @RequestMapping(method = RequestMethod.GET, value = "/usuariohabilidades/{id}")
   public List<UsuarioHabilidades> getUsuarioHabilidades(@PathVariable("id") long id) {
     List<UsuarioHabilidades> usuarioHabilidades = new ArrayList<>();
 
@@ -28,7 +30,7 @@ public class UsuarioHabilidadesResource {
     }
 
     return usuarioHabilidades;
-  }
+  }*/
 
 
   @RequestMapping(method = RequestMethod.POST, value = "/usuariohabilidades/agregar/{uh}/{h}")
@@ -53,6 +55,12 @@ public class UsuarioHabilidadesResource {
       throw new ResponseStatusException(
         HttpStatus.INTERNAL_SERVER_ERROR, "Se ha producido un error al agregar");
     }
+  }
+  @RequestMapping(method = RequestMethod.DELETE, value = "/usuarioHabilidad/{p}")
+  public void borrarUsuarioHabilidad(@RequestBody UsuarioHabilidades p )throws SQLException {
+    new UsuarioHabilidadesDAO().borrarHabilidadProyecto(p);
+
+
   }
 
 

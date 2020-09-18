@@ -29,5 +29,10 @@ public class UsuarioProyectoResource {
     }
   }
 
+  @RequestMapping(method = RequestMethod.DELETE, value = "/usuarioproyecto/{p}")
+  public void borrarUsuarioProyecto(@RequestBody UsuarioProyecto p )throws SQLException {
+    new UsuarioProyectoDAO().borrarColabProyecto(p);
 
+
+}
 }

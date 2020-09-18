@@ -19,14 +19,13 @@ import { ProfilecolabComponent } from './components/profilecolab/profilecolab.co
 import { ViewprojectscolabComponent } from './components/viewprojectscolab/viewprojectscolab.component';
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {OptionAdminComponent} from 'src/app/components/option-admin/option-admin.component';
 import { FilterPipe } from './pipes/filter.pipe'
 import { LogincolabComponent } from './components/logincolab/logincolab.component'
 import { HttpClientModule } from '@angular/common/http';
 import { AddSkillComponent } from './components/add-skill/add-skill.component';
 import { RecoverpassComponent } from './components/recoverpass/recoverpass.component';
 import { ViewcolabsComponent } from './components/viewcolabs/viewcolabs.component';
-import { ModifyuserComponent } from './components/modifyuser/modifyuser.component';
+
 
 
 @NgModule({
@@ -41,13 +40,12 @@ import { ModifyuserComponent } from './components/modifyuser/modifyuser.componen
     ProfilecolabComponent,
     ViewprojectscolabComponent,
     CreateprojectComponent,
-    OptionAdminComponent,
     FilterPipe,
     LogincolabComponent,
     AddSkillComponent,
     RecoverpassComponent,
     ViewcolabsComponent,
-    ModifyuserComponent,
+ 
     
   ],
   imports: [

@@ -16,7 +16,7 @@ export class AddSkillComponent implements OnInit {
   mensaje;
 
   mostrar(){
-    this.mensaje = this.seleccionado
+    this.mensaje ='Se agrego la habilidad ' + this.seleccionado + ' correctamente.'
   }
 
   habilidades: string[] = [

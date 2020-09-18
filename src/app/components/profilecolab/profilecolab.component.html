@@ -1,9 +1,8 @@
-
 <ng-sidebar-container>
   <!--Sidebar  -->
   <ng-sidebar [opened]="opened">
       <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
-      <p style="padding-left: 1.2em;">Sesión Colaborador</p>
+      <p style="padding-left: 1.2em; margin-top: 1em;">Sesión Colaborador</p>
       <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menú </a>
       <ul class="menu">
           <li><a style="color: #000000;" routerLink="/homecolab" (click)="toggleSidebar()">Inicio</a></li>
@@ -11,99 +10,98 @@
           <li><a style="color: #000000;" routerLink="/viewprojectscolab" (click)="toggleSidebar()">Proyectos Asignados</a></li>
       </ul>
   </ng-sidebar>
-  <!--Page Header  -->
   <div ng-sidebar-content>
-      <mat-toolbar style="background-color: #000000; ">
-          <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;"  (click)="toggleSidebar()">Abrir menú </a>
-          <span class="example-spacer"></span>
-          <a mat-raised-button style="margin-left: 1em;" routerLink="">Cerrar Sesión</a>
-      </mat-toolbar>        
+  <!--Page Header  -->
+  <mat-toolbar style="background-color: #000000; ">
+      <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;" (click)="toggleSidebar()">Abrir menú</a>
+      <span class="example-spacer"></span>
+      <a mat-raised-button style="margin-left: 1em;" routerLink="">Cerrar Sesión</a>
+  </mat-toolbar>
   <!--Page Body  -->
-  <!DOCTYPE html>
-  <html>
-  <head>
-      <title>Proyecto</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <style type="text/css">
-
-      </style>
-  </head>
-  <body>
-  <section>
-  <div class="container-fluid">
-      <h1 class="text-center">Colaborador</h1>
-      <div class="row">
-          <div class="col-md-6 p-0 col-sm-6 col-xs-12 col-sm-6">
-              <div class="box " routerLink="/viewprojectscolab">
-              <div class="row">
-                  <div class="col-md-2">
-                      <i class="fa fa-handshake-o" aria-hidden="true"></i>
-                  </div>
-                  <div class="col-md-10">
-                      <h3 >Proyectos Asignados</h3>
-                      <p>Ver todos los proyectos asignados.</p>
-                  </div>
-              </div>
-          </div>
-          </div>
-          <div class="col-md-6 p-0 col-sm-6 col-xs-12">
-              <div class="box" routerLink="/profilecolab">
-                  <div class="row">
-                  <div class="col-md-2">
-                      <i class="fa fa-id-card" aria-hidden="true"></i>
-                  </div>
-                  <div class="col-md-10">
-                      <h3 >Perfil</h3>
-                      <p>Ver y agregar habilidades </p>
-                  </div>
-              </div>
-              </div>
-          </div>		
-          </div>
-          <img class="img-fluid" src="//fondationforge.org/assets/img/nosotros/header-nosotros.jpg" alt="">
-          <div class="centrado"> <h3 style="font-weight: bold;"  class="textoborde">Juntos cambiamos vidas</h3></div>
-<div  class="carousel slide" data-ride="carousel">
-<ul class="carousel-indicators">
-  <li data-target="#demo" data-slide-to="0" class="active"></li>
-  <li data-target="#demo" data-slide-to="1"></li>
-  <li data-target="#demo" data-slide-to="2"></li>
-</ul>
-<div class="carousel-inner ">
-  <div class="carousel-item active">
-  <div class="carousel-caption texto">
-    <img src="https://image.flaticon.com/icons/svg/323/323284.svg" width="100" height="100">
-    <h5 class="mt-3 ">¡Próxima fiesta de Fechas Patrias!</h5>
-    <p>17, Septiembre. Dirección: Ñuñoa 2233</p>
-    
-  </div>   
-  </div>
-  <div class="carousel-item ">
-  <div class="carousel-caption texto">
-    <img src="https://image.flaticon.com/icons/svg/1087/1087815.svg" width="100" height="100">
-   <h5 class="mt-3 ">¡Recuerda participar en nuestro Concurso de Innovación!.</h5>
-    <p>Fecha límite 28-09-2020</p>
-    
-  </div>   
-  </div>
-  <div class="carousel-item">
-  <div class="carousel-caption texto">
-    <img src="https://image.flaticon.com/icons/svg/3159/3159408.svg" width="100" height="100">
-   <h5 class="mt-3 ">Cumpleaños del Mes.</h5>
-    <li >Sebastián Ferrada 10-09-2020</li>
-    <li>Belén Zambeat 22-07-2020</li>
-    <li>Juan Arraigada 30-07-2020</li>
-     
-  </div>   
-  </div>
-</div>	
-</div>
-
+  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" style="width: 70%; margin: 2em auto;">
+    <mat-tab label="Ver Datos del Perfil"> <div class="container">
+      <div class="card text-center mat-elevation-z4 mt-5 cajita">
+        <div class="card-header p-4">
+          <h3>Datos del Perfil</h3>
+        </div>
+        <div class="card-body">
+          <img src="https://thumbs.dreamstime.com/b/var%C3%B3n-y-hembra-person-profile-avatar-del-vector-icono-de-la-gente-102655370.jpg" width="150" alt="" class="img-fluid rounded-circle">
+            <div class="mt-1">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Nombres:</b> María Fernanda</li>
+                <li class="list-group-item"><b>Apellidos:</b> Pérez López</li>
+                <li class="list-group-item"><b>Rut:</b> 12.345.678-9</li>
+                <li class="list-group-item"><b>Correo Electrónico:</b> mariap12@forge.cl</li>
+                <li class="list-group-item"><b>Cargo:</b> Profesor(a) habilidades blandas</li>
+              </ul>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+          Mesa de Ayuda 22700345 
+          <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+        </div>
       </div>
-  </section>
-  </body>
-  </html>
-  </div>
+    </div></mat-tab>
+    <mat-tab label="Agregar Habilidad"> 
+          <div class="container">
+            <div class="card text-center mat-elevation-z4 mt-5 cajita">
+              <div class="card-header p-4">
+                <h3>Agregar Nueva Habilidad</h3>
+              </div>
+              <div class="card-body">
+                <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt="" class="img-fluid rounded-circle">
+                  <div class="mt-5">
+                    <form class=" text-center" style="padding: 1em;">
+                        <mat-form-field style="width: 100%;" appearance="outline">
+                          <mat-label>Nueva Habilidad</mat-label>
+                          <input matInput  name="correo" type="text"  required placeholder="Habilidad">
+                      </mat-form-field >  
+                      <mat-form-field class="example-chip-list" >
+                        <mat-chip-list #chipList aria-label="Fruit selection">
+                          <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
+                                   [removable]="removable" (removed)="remove(fruit)">
+                            {{fruit.name}}
+                            <mat-icon matChipRemove *ngIf="removable"> x </mat-icon>
+                          </mat-chip>
+                          <input placeholder="Nueva Habilidad"
+                                 [matChipInputFor]="chipList"
+                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                 [matChipInputAddOnBlur]="addOnBlur"
+                                 (matChipInputTokenEnd)="add($event)" required>
+                        </mat-chip-list>
+                      </mat-form-field>          
+                     <br>
+                     <button class="btn btn-warning">Guardar Cambios</button>
+                     <button type="reset" class="btn btn-danger">Cancelar</button>
+                  </form>
+                  </div>
+              </div>
+              <div class="card-footer text-muted">
+                Mesa de Ayuda 22700345 
+                <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <h3 style="text-align: center; margin-top:2em">Habilidades Agregadas</h3>
+            <br>
+          <div style="width: 50%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
+            <mat-table [dataSource]="colab">
+              <ng-container matColumnDef="habilidades">
+                <mat-header-cell *matHeaderCellDef> <b>HABILIDADES</b> </mat-header-cell>
+                <mat-cell *matCellDef="let colab">{{colab.habilidades}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="boton">
+              <mat-header-cell *matHeaderCellDef > <b>ELIMINAR</b> </mat-header-cell>
+               <mat-cell *matCellDef="let colab" > 
+                 <button mat-mini-fab color="warn"> 
+                 <mat-icon>delete</mat-icon> </button> </mat-cell>
+                 </ng-container>
+                <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
+                <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
+            </mat-table>
+          </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
 </ng-sidebar-container>

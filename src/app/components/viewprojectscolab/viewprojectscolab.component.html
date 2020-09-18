@@ -15,7 +15,7 @@
     <mat-toolbar style="background-color: #000000; ">
         <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;" (click)="toggleSidebar()">Abrir menú </a>
         <span class="example-spacer"></span>
-        <a mat-raised-button style="margin-left: 1em;" routerLink="">Cerrar Sesión</a>
+        <a mat-raised-button style="margin-left: 1em;" routerLink="" (click)="cerrarsesion()">Cerrar Sesión</a>
     </mat-toolbar>
     <!--Page Body  -->  
     
@@ -212,24 +212,25 @@
  </style>
 </head>
 <body>
-	<div class="contenedor">
-		<mat-card class="tarjeta" *ngIf="usuario!=null">
-			<mat-card-header>
-		   
-		<mat-card-title>
-		<p> {{usuario.results[0].name.project}}</p>
-		</mat-card-title>
-			</mat-card-header>
-			
-		  <mat-card-content>
-			 
-		<p> src="{{usuario.results[0].decripcion.project}}"</p>
-		<p>Colaboradores:{{usuario.results[0].colaboradores}}</p>
-	  	<p>Fecha de inicio:{{usuario.results[0].fechainicio}}</p>
-		<p>Fecha de final:{{usuario.results[0].fechafinal}}</p>
-			
-		  </mat-card-content> 
-		</mat-card>
+
+	<button (click)="recuperarProyectos()">ESTE BOTON</button>
+	<div class="contenedor" *ngFor="let proyecto of proyectos">
+		<div *ngIf="proyectos!=null" >
+			<mat-card class="tarjeta">
+				<mat-card-header>	
+					<mat-card-title>
+						<p> Nombre:{{proyecto.nombreproyecto}}</p>
+					</mat-card-title>
+				</mat-card-header>
+						
+				<mat-card-content>
+						 
+					<p> Descripción {{proyecto.descripcion}}</p>
+					<p>Fecha de inicio:{{proyecto.fechainicio}}</p>
+					<p>Fecha de final:{{proyecto.fechafinal}}</p>	
+				</mat-card-content> 
+			</mat-card>
+		</div>
 	  </div>
 </body>
 </html>

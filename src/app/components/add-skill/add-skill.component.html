@@ -13,8 +13,8 @@
         <br>
         <mat-form-field appearance="outline">
             <mat-label>Habilidades</mat-label>
-      <div class="height:200px width:200px">
-          <select style="width: 100%" name="miselect" [(ngModel)]="seleccionado">
+      <div >
+          <select class="form-control" name="miselect" [(ngModel)]="seleccionado">
         <option [value]="habilidades" *ngFor="let habilidades of habilidades">{{habilidades}}</option>
         </select>
       </div>
@@ -22,7 +22,7 @@
           </mat-form-field>
           <button class="btn btn-primary" (click)="mostrar()">Agregar Habilidad</button>
 
-          <p>{{mensaje}}</p>
+          <p class="mt-3 ">{{mensaje}}</p>
         <br>
         <hr>
         <button class="btn btn-warning" routerLink="/viewcolabs"  >Crear usuario</button>

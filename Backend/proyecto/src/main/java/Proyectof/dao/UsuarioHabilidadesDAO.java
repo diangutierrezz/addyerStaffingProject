@@ -2,6 +2,7 @@ package Proyectof.dao;
 import Proyectof.ConnectionManager;
 import Proyectof.dtos.UsuarioHabilidades;
 import Proyectof.dtos.UsuarioHabilidades;
+import Proyectof.dtos.UsuarioProyecto;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,6 +62,37 @@ public class UsuarioHabilidadesDAO {
     this.db.cerrarConexion();
   }
 
+  public List<UsuarioHabilidades> mostrarUsuarioHabilidadesPorRut(String rut) throws SQLException {
+    List<UsuarioHabilidades> usuarioHabilidades = new ArrayList<>();
+
+    Statement stmt = this.db.obtenerConexion().createStatement();
+    ResultSet rs = stmt.executeQuery("select Distinct u.id, u.id_usuario, u.habilidad " +
+      "from usuario join usuariohabilidades as u on usuario.id = u.id_usuario " +
+      "join habilidades on u.habilidad = u.habilidad " +
+      "where u.rut = ?");
+
+
+    while (rs.next()) {
+      UsuarioHabilidades uh = new UsuarioHabilidades(
+        rs.getInt("id"),
+        rs.getInt("id_usuario"),
+        rs.getInt("id_habilidad")
+      );
+      usuarioHabilidades.add(uh);
+    }
+    this.db.cerrarConexion();
+
+    return usuarioHabilidades;
+
+  }
+
+  public void borrarHabilidadProyecto(UsuarioHabilidades p) throws SQLException {
+    String sql = " delete from usuariohabilidades where id_usuario = ? and id_habilidades = ? ";
+    PreparedStatement ps = this.db.obtenerConexion().prepareStatement(sql);
+    ps.setInt(1, p.getId_usuario());
+    ps.setInt(2, p.getId_habilidad());
+    ps.executeUpdate();
+  }
 
 
 }
