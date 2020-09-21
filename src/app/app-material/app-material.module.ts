@@ -16,7 +16,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
-
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 @NgModule({
@@ -40,7 +40,8 @@ import { MatCardModule } from '@angular/material/card';
     MatChipsModule,
     FormsModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatStepperModule,
   ]
 })
 export class AppMaterialModule { }

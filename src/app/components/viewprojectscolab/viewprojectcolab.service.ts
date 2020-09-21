@@ -12,7 +12,7 @@ export class ViewprojectcolabService {
   
     retornar(dato) {
       console.log(dato)
-      return this.http.get("http://localhost:8080/api/proyectos/colab/" + dato);
+      return this.http.get("http://localhost:8080/api/obtenerProyectosPorColab/" + dato);
       
     }     
     

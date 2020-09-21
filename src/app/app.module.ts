@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SidebarModule } from 'ng-sidebar';
 import { MatCardModule } from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material/app-material.module';
@@ -58,7 +59,8 @@ import { ViewcolabsComponent } from './components/viewcolabs/viewcolabs.componen
     CommonModule,
     NgbModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
 
   ],
   providers: [],

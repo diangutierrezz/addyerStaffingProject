@@ -15,15 +15,22 @@ export class AddusserComponent implements OnInit {
 
   opened = false;
 
+
+
   toggleSidebar(){
     this.opened = !this.opened;
   }
 
 
-  constructor() { }
+  constructor() {
+    
+  }
 
   ngOnInit(): void {
+
+
   }
+
 
   
   rut: string;
