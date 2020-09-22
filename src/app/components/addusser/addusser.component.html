@@ -19,12 +19,90 @@
           <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;"  (click)="toggleSidebar()">Abrir menú </a>
           <span class="example-spacer"></span>
           <a mat-raised-button style="margin-left: 1em;" routerLink="" >Cerrar Sesión</a>
-      </mat-toolbar>        
-  <!--Page Body  -->
+      </mat-toolbar>      
+      
+      <button mat-raised-button (click)="isEditable = !isEditable">
+        {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+      </button>
+
+  
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Rol</mat-label>
+          <mat-select formControlName="rol">
+            <mat-option *ngFor="let rol of rol" [value]="rol"> {{rol}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field  appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" required placeholder="Nombre del Colaborador">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="apellido" required placeholder="Apellido del Colaborador">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>RUT</mat-label>
+          <input matInput formControlName="rut" required placeholder="12.345.678-9">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Correo Electrónico</mat-label>
+          <input type="email" matInput formControlName="email" required placeholder="correo@ejemplo.com" id="email">
+
+    
+          
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label style="margin-top: 2em;">Contraseña</mat-label>
+          <input type="password" matInput formControlName="contrasena"placeholder="">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Cargo</mat-label>
+          <mat-select formControlName="cargo">
+            <mat-option *ngFor="let cargo of cargo" [value]="cargo"> {{cargo}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                 required>
+        </mat-form-field>
 
 
- 
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+
    <!--final sidebar  --> 
 </div>
 </ng-sidebar-container>
-

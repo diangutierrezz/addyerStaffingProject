@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SidebarModule } from 'ng-sidebar';
 import { MatCardModule } from '@angular/material/card';
@@ -26,6 +26,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddSkillComponent } from './components/add-skill/add-skill.component';
 import { RecoverpassComponent } from './components/recoverpass/recoverpass.component';
 import { ViewcolabsComponent } from './components/viewcolabs/viewcolabs.component';
+import { validarRutasAdmin } from "../app/components/inicio/validarRutasAdmin";
+import { validarRutasColab } from './components/inicio/validarRutasColab';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -61,9 +65,13 @@ import { ViewcolabsComponent } from './components/viewcolabs/viewcolabs.componen
     HttpClientModule,
     MatCardModule,
     MatFormFieldModule,
+    MatStepperModule,
+    MatIconModule,
+    ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [validarRutasAdmin, validarRutasColab
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

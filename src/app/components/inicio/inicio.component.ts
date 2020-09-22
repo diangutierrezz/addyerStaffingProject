@@ -15,6 +15,7 @@ export class InicioComponent implements OnInit {
   constructor(private_config:NgbCarouselConfig) { }
 
   ngOnInit(): void {
+    localStorage.clear()
   }
 
 }

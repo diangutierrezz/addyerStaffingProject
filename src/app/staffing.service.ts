@@ -21,4 +21,8 @@ export class StaffingService {
     return this.http.post<Usuario>(this.api + url, usuario);
   }
 
+  AgregarUsuario(usuario: Usuario): Observable<Usuario> {
+    const url = 'agregarUsuario'
+    return this.http.post<Usuario>(this.api + url, usuario);
+  }
 }

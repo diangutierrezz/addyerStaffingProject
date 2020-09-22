@@ -38,7 +38,8 @@ export class LogincolabComponent implements OnInit {
         verificación de logueo */
     else {
       
-      this.service.logincolab({ correo, contraseña } as Usuario).subscribe(userResponse => { localStorage.setItem("usuario",JSON.stringify(userResponse));
+      this.service.logincolab({ correo, contraseña } as Usuario).subscribe(userResponse => 
+        { localStorage.setItem("usuario",JSON.stringify(userResponse));
       this.router.navigate(['homecolab'])
     });
     }   
