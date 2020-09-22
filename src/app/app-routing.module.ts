@@ -14,6 +14,8 @@ import { LogincolabComponent } from "../app/components/logincolab/logincolab.com
 import { ViewcolabsComponent } from "../app/components/viewcolabs/viewcolabs.component";
 import { AddSkillComponent } from "../app/components/add-skill/add-skill.component";
 import { RecoverpassComponent } from "../app/components/recoverpass/recoverpass.component";
+import { AddColabProjectComponent } from "../app/components/add-colab-project/add-colab-project.component"
+import { AddSkillsProjectComponent } from "../app/components/add-skills-project/add-skills-project.component"
 
 
 const routes: Routes = [
@@ -29,10 +31,10 @@ const routes: Routes = [
   { path: "logincolab", component:LogincolabComponent},
   { path: "viewcolabs", component:ViewcolabsComponent},
   { path:"addskill", component:AddSkillComponent},
-  { path:"recoverpass", component:RecoverpassComponent}
-  
+  { path:"recoverpass", component:RecoverpassComponent},
+  { path:"addcolabprojects", component:AddColabProjectComponent},
+  { path:"addskkillsprojects", component:AddSkillsProjectComponent}
 
-  
 ];
 
 @NgModule({
