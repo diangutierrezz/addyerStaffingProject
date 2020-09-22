@@ -11,6 +11,15 @@ export class FilterPipe implements PipeTransform {
       if (post.habilidades.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
         resultPosts.push(post);
       };
+      if (post.cargo.toLowerCase().indexOf(arg.toLowerCase())  > -1) {
+        resultPosts.push(post);
+      };
+      if (post.nombre.toLowerCase().indexOf(arg.toLowerCase())  > -1) {
+        resultPosts.push(post);
+      };
+      if (post.apellido.toLowerCase().indexOf(arg.toLowerCase())  > -1) {
+        resultPosts.push(post);
+      };
     };
     return resultPosts;
   }

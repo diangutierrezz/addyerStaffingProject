@@ -4,6 +4,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { Usuario } from "src/app/models/usuario";
 import { StaffingService } from "src/app/staffing.service";
+import { RutValidator } from 'ng9-rut';
 
 
 @Component({
@@ -24,17 +25,15 @@ export class AddusserComponent implements OnInit {
   }
 
 
-  constructor(private _formBuilder: FormBuilder, private service: StaffingService) {
-    
-  }
+  constructor(private _formBuilder: FormBuilder, public rutValidator: RutValidator, private service: StaffingService) {}
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
       rol: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      rut: ['', Validators.required],
-      email: ['', Validators.required],
+      rut: ['', Validators.required, this.rutValidator],
+      correo: ['', Validators.required],
       contrasena: ['', Validators.required],
       cargo: ['', Validators.required],
     });
@@ -43,6 +42,9 @@ export class AddusserComponent implements OnInit {
     });
   }
 
+  get f(){
+    return this.firstFormGroup.controls;
+  }
 
 
   cargo: string[] = [

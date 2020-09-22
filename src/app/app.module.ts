@@ -5,7 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SidebarModule } from 'ng-sidebar';
 import { MatCardModule } from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { Ng9RutModule } from 'ng9-rut'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material/app-material.module';
@@ -30,7 +31,8 @@ import { validarRutasAdmin } from "../app/components/inicio/validarRutasAdmin";
 import { validarRutasColab } from './components/inicio/validarRutasColab';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
-
+import { AddSkillsProjectComponent } from './components/add-skills-project/add-skills-project.component';
+import { AddColabProjectComponent } from './components/add-colab-project/add-colab-project.component';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { MatIconModule } from '@angular/material/icon';
     AddSkillComponent,
     RecoverpassComponent,
     ViewcolabsComponent,
+    AddSkillsProjectComponent,
+    AddColabProjectComponent,
  
     
   ],
@@ -67,7 +71,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatStepperModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ReactiveFormsModule,
+    Ng9RutModule
 
   ],
   providers: [validarRutasAdmin, validarRutasColab

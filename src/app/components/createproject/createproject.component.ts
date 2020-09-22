@@ -103,7 +103,7 @@ export class CreateprojectComponent implements OnInit {
     {
       "id": 1,
       "nombre": "Mary",
-      "apellido": "Casanova",
+      "apellido": "Palacios",
       "rut": "12.345.678-9",
       "correo": "djkkjdknka",
       "cargo" : "ayudante",
@@ -112,7 +112,7 @@ export class CreateprojectComponent implements OnInit {
     {
       "id": 2,
       "nombre": "laura",
-      "apellido": "Casanova",
+      "apellido": "Perez",
       "rut": "12.345.678-9",
       "correo": "djkkjdknka",
       "cargo" : "ayudante",
@@ -124,7 +124,7 @@ export class CreateprojectComponent implements OnInit {
       "apellido": "Casanova",
       "rut": "12.345.678-9",
       "correo": "djkkjdknka",
-      "cargo" : "ayudante",
+      "cargo" : "coordinador",
       "habilidades" : "php, base de datos"
     },
     {
@@ -133,7 +133,7 @@ export class CreateprojectComponent implements OnInit {
       "apellido": "Casanova",
       "rut": "12.345.678-9",
       "correo": "djkkjdknka",
-      "cargo" : "ayudante",
+      "cargo" : "profesor",
       "habilidades" : "back"
     },
     {
@@ -142,7 +142,7 @@ export class CreateprojectComponent implements OnInit {
       "apellido": "Casanova",
       "rut": "12.345.678-9",
       "correo": "djkkjdknka",
-      "cargo" : "ayudante",
+      "cargo" : "tutor",
       "habilidades" : "angular"
     }
   ];
