@@ -52,27 +52,23 @@
                 <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt="" class="img-fluid rounded-circle">
                   <div class="mt-5">
                     <form class=" text-center" style="padding: 1em;">
-                        <mat-form-field style="width: 100%;" appearance="outline">
-                          <mat-label>Nueva Habilidad</mat-label>
-                          <input matInput  name="correo" type="text"  required placeholder="Habilidad">
-                      </mat-form-field >  
-                      <mat-form-field class="example-chip-list" >
-                        <mat-chip-list #chipList aria-label="Fruit selection">
-                          <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable"
-                                   [removable]="removable" (removed)="remove(fruit)">
-                            {{fruit.name}}
-                            <mat-icon matChipRemove *ngIf="removable"> x </mat-icon>
-                          </mat-chip>
-                          <input placeholder="Nueva Habilidad"
-                                 [matChipInputFor]="chipList"
-                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                                 [matChipInputAddOnBlur]="addOnBlur"
-                                 (matChipInputTokenEnd)="add($event)" required>
-                        </mat-chip-list>
-                      </mat-form-field>          
-                     <br>
-                     <button class="btn btn-warning">Guardar Cambios</button>
-                     <button type="reset" class="btn btn-danger">Cancelar</button>
+          
+                      <form class="text-center" style="padding: 1em;" >
+                                          
+                              <select class="form-control" style="width: 80%;  margin-left: auto; 
+                              margin-right: auto;"name="miselect" placeholder="Seleccione una Habilidad" [(ngModel)]="habilidad" required>
+                                <option [value]="h" *ngFor="let h of habilidades">{{h}}</option>
+                              </select>
+                              <br>       
+                            <button class="btn btn" style="background-color: #cf7500; color: #f4f4f4;"  (click)="crearUsuarioHabilidad(habilidad.value)">Agregar</button>
+                            <div style="width: 70%;  margin-left: auto;
+                            margin-right: auto;" class="alert alert-success" role="alert">
+                              <p>{{mensaje}}</p>
+                            </div>
+                            <hr>
+                             
+                      </form>
+
                   </form>
                   </div>
               </div>
@@ -94,13 +90,40 @@
             <ng-container matColumnDef="boton">
               <mat-header-cell *matHeaderCellDef > <b>ELIMINAR</b> </mat-header-cell>
                <mat-cell *matCellDef="let colab" > 
-                 <button mat-mini-fab color="warn"> 
-                 <mat-icon>delete</mat-icon> </button> </mat-cell>
+                 <a mat-mini-fab color="warn"> 
+                 <mat-icon>delete</mat-icon> </a> </mat-cell>
                  </ng-container>
                 <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
                 <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
             </mat-table>
           </div>
+    </mat-tab>
+    <mat-tab label="Modificar Contraseña"> 
+      <div class="container">
+        <div class="card text-center mat-elevation-z4 mt-5 cajita">
+          <div class="card-header p-4">
+            <h3>Modificar Contraseña</h3>
+          </div>
+          <div class="card-body">
+            <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt="" class="img-fluid rounded-circle">
+              <div class="mt-5">
+                <form class=" text-center" style="padding: 1em;">
+                  <mat-form-field style="width: 100%;" appearance="outline">
+                    <mat-label>Nueva Contraseña</mat-label>
+                    <input matInput [(ngModel)]= "contrasena" name="contrasena" type="password" matInput required placeholder="Contraseña">
+                </mat-form-field >          
+                 <br>
+                 <button class="btn btn-warning" (click)="editar(contrasena)" >Guardar Cambios</button>
+                 <button type="reset" class="btn btn-danger">Cancelar</button>
+              </form>
+              </div>
+          </div>
+          <div class="card-footer text-muted">
+            Mesa de Ayuda 22700345 
+            <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+          </div>
+        </div>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>

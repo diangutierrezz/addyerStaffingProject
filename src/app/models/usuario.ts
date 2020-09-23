@@ -5,7 +5,7 @@ export interface Usuario {
  apellido: String,
  rut: String,
  correo: String,
- contraseña: String,
+ contrasena: String,
  cargo: String,
 
 }

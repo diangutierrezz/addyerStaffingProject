@@ -19,7 +19,9 @@
           <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;"  (click)="toggleSidebar()">Abrir menú </a>
           <span class="example-spacer"></span>
           <a mat-raised-button style="margin-left: 1em;" routerLink="" >Cerrar Sesión</a>
-      </mat-toolbar>     
+      </mat-toolbar>  
+      
+      
       <div class="container">
   <mat-horizontal-stepper linear #stepper>
     <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
@@ -27,12 +29,12 @@
       <form class="text-center" style="padding: 1em;" [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Crear Usuario</ng-template>
         <div class="p-4"><h3>Agregar datos personales</h3></div>
-
         <div class="form-group">
+
         <mat-form-field appearance="outline">
           <mat-label for="rol">Rol</mat-label>
-          <mat-select matInput id="rol" formControlName="rol" #rol>
-            <mat-option *ngFor="let rol of rol" [value]="rol"> {{rol}}
+          <mat-select matInput  formControlName="rol" #rol >
+            <mat-option *ngFor="let rolv of rolv" [value]="rolv"> {{rolv}} 
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -44,7 +46,7 @@
         <div class="form-group">
         <mat-form-field  appearance="outline">
           <mat-label for="nombre">Nombre</mat-label>
-          <input matInput id="nombre" formControlName="nombre" required placeholder="Nombre del Colaborador" #nombre >
+          <input matInput id="nombre" formControlName="nombre" required placeholder="Nombre del Colaborador" #nombre>
         </mat-form-field>
         <div *ngIf="f.nombre.touched && f.nombre.invalid " class="alert alert-danger">
           <div *ngIf="f.nombre.errors.required">Nombre requerido</div>
@@ -54,7 +56,7 @@
     <div class="form-group">
         <mat-form-field appearance="outline">
           <mat-label  for="apellido">Apellido</mat-label>
-          <input matInput id="apellido" formControlName="apellido" required placeholder="Apellido del Colaborador" #apellido>
+          <input matInput id="apellido" formControlName="apellido" required placeholder="Apellido del Colaborador" #apellido >
         </mat-form-field>
         <div *ngIf="f.apellido.touched && f.apellido.invalid" class="alert alert-danger">
           <div *ngIf="f.apellido.errors.required">Apellido requerido</div>
@@ -75,7 +77,7 @@
     <div class="form-group">
         <mat-form-field appearance="outline">
           <mat-label for="correo">Correo Electrónico</mat-label>
-          <input type="email" matInput id="correo" formControlName="correo" required placeholder="correo@ejemplo.com" id="email" #correo>
+          <input type="email" matInput id="correo" formControlName="correo" required placeholder="correo@ejemplo.com" #correo>
         </mat-form-field>
         <div *ngIf="f.correo.touched && f.correo.invalid" class="alert alert-danger">
           <div *ngIf="f.correo.errors.required">Correo Electrónico requerido</div>
@@ -85,7 +87,7 @@
       <div class="form-group">
         <mat-form-field appearance="outline">
           <mat-label for="contrasena" style="margin-top: 2em;">Contraseña</mat-label>
-          <input type="password" minlength="5" matInput id="contrasena" formControlName="contrasena" #contrasena>
+          <input type="password" minlength="5" matInput id="contrasena" formControlName="contrasena" #contrasena >
         </mat-form-field>
         <div *ngIf="f.contrasena.touched && f.contrasena.invalid" class="alert alert-danger">
           <div *ngIf="f.contrasena.errors.required">Contraseña requerido</div>
@@ -96,8 +98,8 @@
       <div class="form-group">
         <mat-form-field appearance="outline">
           <mat-label for="cargo">Cargo</mat-label>
-          <mat-select matInput id="cargo" formControlName="cargo" #cargo>
-            <mat-option *ngFor="let cargo of cargo" [value]="cargo"> {{cargo}}
+          <mat-select matInput id="cargo" formControlName="cargo" #cargo >
+            <mat-option *ngFor="let cargov of cargov" [value]="cargov"> {{cargov}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -107,7 +109,7 @@
       </div>
         <div>
           <button  class="btn btn-warning" matStepperNext (click)="crearUsuario(rol.value,nombre.value,apellido.value,rut.value,correo.value,contrasena.value,cargo.value)">Siguiente</button>
-          <button ></button>
+        
         </div>
       </form>
     </mat-step>
@@ -120,11 +122,11 @@
                        
           <mat-label>Seleccione una habilidad</mat-label>                            
               <select class="form-control" style="width: 50%;  margin-left: auto; 
-              margin-right: auto;"name="miselect" placeholder="Seleccione una Habilidad" [(ngModel)]="seleccionado" required>
-                <option [value]="habilidades" *ngFor="let habilidades of habilidades">{{habilidades}}</option>
+              margin-right: auto;"name="miselect" placeholder="Seleccione una Habilidad" [(ngModel)]="habilidad" required>
+                <option [value]="h" *ngFor="let h of habilidades">{{h}}</option>
               </select>
               <br>       
-            <button class="btn btn" style="background-color: #cf7500; color: #f4f4f4;" (click)="mostrar()">Agregar</button>
+            <button class="btn btn" style="background-color: #cf7500; color: #f4f4f4;"  (click)="crearUsuarioHabilidad(rut.value,habilidad.value)">Agregar</button>
             <div style="width: 45%;  margin-left: auto;
             margin-right: auto;" class="alert alert-success" role="alert">
               <p>{{mensaje}}</p>

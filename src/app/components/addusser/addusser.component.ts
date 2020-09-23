@@ -5,6 +5,8 @@ import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { Usuario } from "src/app/models/usuario";
 import { StaffingService } from "src/app/staffing.service";
 import { RutValidator } from 'ng9-rut';
+import { RouterLink } from '@angular/router';
+import { AddSkillService } from "../addusser/add-skill.service";
 
 
 @Component({
@@ -25,14 +27,14 @@ export class AddusserComponent implements OnInit {
   }
 
 
-  constructor(private _formBuilder: FormBuilder, public rutValidator: RutValidator, private service: StaffingService) {}
+  constructor(private _formBuilder: FormBuilder, public rutValidator: RutValidator, private service: StaffingService, private addSkillService: AddSkillService) {}
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
       rol: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      rut: ['', Validators.required, this.rutValidator],
+      rut: ['', Validators.required],
       correo: ['', Validators.required],
       contrasena: ['', Validators.required],
       cargo: ['', Validators.required],
@@ -47,7 +49,7 @@ export class AddusserComponent implements OnInit {
   }
 
 
-  cargo: string[] = [
+  cargov: string[] = [
     "Profesor",
     "Mentor",
     "Ayudante",
@@ -55,7 +57,7 @@ export class AddusserComponent implements OnInit {
     "Coordinador",
   ]
 
-  rol: string[] = [
+  rolv: string[] = [
     "Colaborador",
     "Administrador"
   ]
@@ -79,17 +81,12 @@ export class AddusserComponent implements OnInit {
   }
 
 
-
   cerrarsesion(){
     localStorage.removeItem("usuario");
   }
 
-  seleccionado;
   mensaje;
 
-  mostrar(){
-    this.mensaje ='Se agrego la habilidad ' + this.seleccionado + ' correctamente.'
-  }
 
   habilidades: string[] = [
     "Programación estructurada (PE) ",
@@ -122,24 +119,22 @@ export class AddusserComponent implements OnInit {
 "Responsabilidad",
   ]
 
-  crearUsuario(rol: String, nombre: String, apellido: String, rut: String, correo: String, contraseña: String, cargo: String) {
-
-    /* ningun campo vacío */
-    if (!correo.trim()) {
-      alert("Campo correo vacio");
-    }
-    else if (!contraseña.trim()) {
-      alert("Campo contraseña vacio");
-    }
-
-    /* 
-        verificación de logueo */
-    else {
+  usuario: Usuario [] = [];
+  crearUsuario(rol: String, nombre: String, apellido: String, rut: String, correo: String, contrasena: String, cargo: String) {
       
-      this.service.AgregarUsuario({ rol,nombre,apellido,rut,correo, contraseña,cargo } as Usuario).subscribe(userResponse => 
-        { localStorage.setItem("usuario",JSON.stringify(userResponse));
-        alert('RegistroOK')  
+      this.service.AgregarUsuario({ rol,nombre,apellido,rut,correo, contrasena,cargo } as Usuario).subscribe(usuario => {
+        this.usuario.push(usuario) 
     });
-    }   
+      
   }
+
+
+Habilidades = [];
+
+  habilidad;
+  crearUsuarioHabilidad(rut: string){
+    this.addSkillService.crearUsuarioHabilidades(rut, this.habilidad).subscribe(habilidad =>  {  
+  });
+  this.mensaje = 'Se agrego la habilidad ' + this.habilidad + ' Correctamente'
+}
 }

@@ -24,13 +24,13 @@ export class LogincolabComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  logincolab(correo: String, contraseña: String) {
+  logincolab(correo: String, contrasena: String) {
 
     /* ningun campo vacío */
     if (!correo.trim()) {
       alert("Campo correo vacio");
     }
-    else if (!contraseña.trim()) {
+    else if (!contrasena.trim()) {
       alert("Campo contraseña vacio");
     }
 
@@ -38,7 +38,7 @@ export class LogincolabComponent implements OnInit {
         verificación de logueo */
     else {
       
-      this.service.logincolab({ correo, contraseña } as Usuario).subscribe(userResponse => 
+      this.service.logincolab({ correo, contrasena } as Usuario).subscribe(userResponse => 
         { localStorage.setItem("usuario",JSON.stringify(userResponse));
       this.router.navigate(['homecolab'])
     });

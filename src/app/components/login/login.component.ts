@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginAdmin(correo: String, contraseña: String) {
+  loginAdmin(correo: String, contrasena: String) {
 
     /* ningun campo vacío */
     if (!correo.trim()) {
       alert("Campo correo vacio");
     }
-    else if (!contraseña.trim()) {
+    else if (!contrasena.trim()) {
       alert("Campo contraseña vacio");
     }
 
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         verificación de logueo */
     else {
       let usuarioDatos = JSON.parse(localStorage.getItem("usuario"));
-      this.service.loginAdmin({ correo, contraseña } as Usuario).subscribe(userResponse => { localStorage.setItem("usuario",JSON.stringify(userResponse));
+      this.service.loginAdmin({ correo, contrasena } as Usuario).subscribe(userResponse => { localStorage.setItem("usuario",JSON.stringify(userResponse));
        this.router.navigate(['homeadmin']) }, error => { alert("Los datos no coinciden o no tiene permisos")
      })
     }

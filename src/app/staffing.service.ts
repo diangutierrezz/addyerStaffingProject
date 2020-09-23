@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Usuario  } from "src/app/models/usuario";
 
@@ -9,6 +9,10 @@ import { Usuario  } from "src/app/models/usuario";
 export class StaffingService {
 
   constructor(private http: HttpClient) { }
+  
+  httpOptions={
+    headers:new HttpHeaders({'Content-Type':'application/json'}) 
+  }
 
   api = "http://localhost:8080/api/";
 
@@ -23,6 +27,6 @@ export class StaffingService {
 
   AgregarUsuario(usuario: Usuario): Observable<Usuario> {
     const url = 'agregarUsuario'
-    return this.http.post<Usuario>(this.api + url, usuario);
+    return this.http.post<Usuario>(this.api + url, usuario, this.httpOptions);
   }
 }

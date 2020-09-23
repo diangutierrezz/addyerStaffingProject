@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatTabsModule,
     MatCardModule,
     MatStepperModule,
+    MatDatepickerModule
   ]
 })
 export class AppMaterialModule { }
