@@ -1,0 +1,89 @@
+<ng-sidebar-container>
+    <!--Sidebar  -->
+    <ng-sidebar [opened]="opened">
+        <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
+        <p style="padding-left: 1.2em; margin-top: 1em;">Sesión Colaborador</p>
+        <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menú </a>
+        <ul class="menu">
+            <li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
+            <li><a style="color: #000000;" routerLink="/profileadmin" (click)="toggleSidebar()">Perfil</a></li>
+            <li><a style="color: #000000;" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a></li>
+            <li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
+            <li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Agregar Colaboradores</a></li>
+            <li><a style="color: #000000;" routerLink="/viewcolabs" (click)="toggleSidebar()">Ver Colaboradores</a></li>
+        </ul>
+    </ng-sidebar>
+    <div ng-sidebar-content>
+    <!--Page Header  -->
+    <mat-toolbar style="background-color: #000000; ">
+        <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;" (click)="toggleSidebar()">Abrir menú</a>
+        <span class="example-spacer"></span>
+        <a mat-raised-button style="margin-left: 1em;" routerLink="">Cerrar Sesión</a>
+    </mat-toolbar>
+    <!--Page Body  -->
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" style="width: 70%; margin: 2em auto;">
+      <mat-tab label="Ver Datos del Perfil">  <div class="container">
+        <div class="card text-center mat-elevation-z4 mt-5 cajita">
+          <div class="card-header p-4">
+            <h4>Datos del Perfil</h4>
+          </div>
+          <div class="card-body">
+            <img src="https://thumbs.dreamstime.com/b/var%C3%B3n-y-hembra-person-profile-avatar-del-vector-icono-de-la-gente-102655370.jpg" width="150" alt="" class="img-fluid rounded-circle">
+              <div class="mt-1" *ngFor="let usuario of usuarios">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>Nombres:</b> {{usuario.nombre}}</li>
+                  <li class="list-group-item"><b>Apellidos:</b> {{usuario.apellido}}</li>
+                  <li class="list-group-item"><b>Rut:</b> {{usuario.rut}}</li>
+                  <li class="list-group-item"><b>Correo Electrónico:<br></b>{{usuario.correo}}</li>
+                  <li class="list-group-item"><b>Cargo:</b>{{usuario.cargo}}</li>
+                </ul>
+              </div>
+          </div>
+          <div class="card-footer text-muted">
+            Mesa de Ayuda 22700345 
+            <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+          </div>
+        </div>
+      </div> 
+    </mat-tab>
+
+  <mat-tab label="Cambiar Contraseña"> 
+    <div class="container">
+      <div class="card text-center mat-elevation-z4 mt-5 cajita">
+        <div class="card-header p-4">
+          <h4>Modificar Contraseña</h4>
+        </div>
+        <div class="card-body">
+          <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt="" class="img-fluid rounded-circle">
+            <div class="mt-5">
+              <form class=" text-center" style="padding: 1em;" [formGroup]="firstFormGroup">
+                <div class="form-group"> 
+                <mat-form-field style="width: 100%;" appearance="outline">
+                  <mat-label for="contrasena">Nueva Contraseña</mat-label>
+                  <input matInput [(ngModel)]= "contrasena" name="contrasena" type="password" matInput required placeholder="Nueva Contraseña"
+                  id="contrasena" formControlName="contrasena" minlength="5" maxlength="10" >
+              </mat-form-field > 
+              <div *ngIf="f.contrasena.touched && f.contrasena.invalid" class="alert alert-danger" style="width: 100%;  margin-left: auto;
+        margin-right: auto;">
+          <div *ngIf="f.contrasena.errors.required">Contraseña requerida</div>
+          <div *ngIf="f.contrasena.errors.minlength">La contraseña debe tener al menos cinco caracteres</div>
+      </div>  
+            </div>       
+               <br>
+               <button class="btn btn-warning" (click)="CambioClave(contrasena)" >Guardar Cambios</button>
+               <button type="reset" class="btn btn-danger">Cancelar</button>
+            </form>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+          Mesa de Ayuda 22700345 
+          <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+        </div>
+      </div>
+    </div>
+
+
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  </ng-sidebar-container>

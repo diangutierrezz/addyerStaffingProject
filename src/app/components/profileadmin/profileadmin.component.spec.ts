@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddColabProjectComponent } from './add-colab-project.component';
+import { ProfileadminComponent } from './profileadmin.component';
 
-describe('AddColabProjectComponent', () => {
-  let component: AddColabProjectComponent;
-  let fixture: ComponentFixture<AddColabProjectComponent>;
+describe('ProfileadminComponent', () => {
+  let component: ProfileadminComponent;
+  let fixture: ComponentFixture<ProfileadminComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddColabProjectComponent ]
+      declarations: [ ProfileadminComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddColabProjectComponent);
+    fixture = TestBed.createComponent(ProfileadminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

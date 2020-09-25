@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material/chips';
+import { Usuario } from 'src/app/models/usuario';
+import { ViewcolabsService } from '../viewcolabs/viewcolabs.service';
+import { UpdatecolabComponent } from '../updatecolab/updatecolab.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DeletecolabComponent } from "../deletecolab/deletecolab.component";
 
 @Component({
   selector: 'app-viewcolabs',
@@ -9,39 +12,32 @@ import {MatChipInputEvent} from '@angular/material/chips';
 })
 export class ViewcolabsComponent implements OnInit {
 
+  usuario: Usuario [] = [];
+  columnasAMostrar: String[] = ['nombre', 'apellido', 'rut', 'correo', 'cargo', 'botonModificar', 'botonEliminar'];
   opened = false;
+
+  constructor(private viewcolabsService: ViewcolabsService,  public dialog: MatDialog,) { }
+
+  ngOnInit(): void {
+    this.viewcolabsService.obtenerUsuarios()
+    .subscribe(usuario => this.usuario=usuario);
+  }
+
+  cerrarsesion(){
+    localStorage.removeItem("usuario");
+  }
 
   toggleSidebar(){
     this.opened = !this.opened;
   }
 
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  
-  rut: string;
-  nombres: string;
-  apellidos: string;
-  fechaNacimiento: string;
-  correo: string;
-  contra: string;
-  telefono: number;
-
-  nombre: string = '';
-  apellido: string = '';
-  contrasena: string ='';
-  mensaje;
-  name: string;
-
   cargo: string[] = [
-    "Profesor",
-    "Mentor",
     "Ayudante",
-    "Profesor habilidades blandas",
     "Coordinador",
+    "Facilitador",
+    "Mentor",
+    "Profesor",
+    "Tutor",
   ]
 
   rol: string[] = [
@@ -49,56 +45,42 @@ export class ViewcolabsComponent implements OnInit {
     "Administrador"
   ]
 
-  habilidades =[
-    {habilidad: 'java'},
-    {habilidad: 'java'},
-    {habilidad: 'java'},
-    {habilidad: 'java'},
-    {habilidad: 'java'},
-    {habilidad: 'java'},
-  ]
+  openDialog() {
+    const dialogRef = this.dialog.open(UpdatecolabComponent);
 
-  columnasAuseer = ['habilidad'];
-
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruits = [
-    {name: 'Trabajo en Equipo'},
-    {name: 'Autogestión'},
-    {name: 'Empatía'},
-  ];
-
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    // Add our fruit
-    if ((value || '').trim()) {
-      this.fruits.push({name: value.trim()});
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
-  colab = [
-    {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
-    {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
-    {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
-    {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
-    {nombre:'Diandra', apellido: 'Palacios', rut: '12.345.678-9', fecha:'09-05-1993', telefono:'56 9 12345678', correo:'diandra@forge.cl', cargo: 'Community Manager', habilidades: 'Redes sociales'},
-    
-  ]
-
-  columnasAMostrar: String[] = ['nombre', 'apellido', 'rut', 'fecha', 'telefono', 'correo', 'cargo', 'habilidades'];
-
-  cerrarsesion(){
-    localStorage.removeItem("usuario");
+  openDelete(){
+    const dialogRef = this.dialog.open(DeletecolabComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
+
+  index: number = null;
+guardarIndex(i: number){
+this.index = i;
+console.log(this.index)
+console.log(this.usuario[this.index].id)
+}
+
+borrarUsuario(){
+  this.viewcolabsService.borrarUsuario(this.usuario[this.index].id).subscribe ();
+  this.usuario = this.usuario.filter(
+    (c) => c.rut != this.usuario[this.index].rut
+  );
+this.index = null;
+}
+
+modificar(ro:string,nombre:string,apellido:string,carg:string){
+  this.viewcolabsService.modificarUsuario(this.usuario[this.index].id, ro,nombre,apellido,carg).subscribe(_=>alert('Usuario actualizado'));
+  this.index = null
+}
+
 
 }
+
+

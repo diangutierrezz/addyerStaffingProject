@@ -5,11 +5,12 @@
         <p style="padding-left: 1.5em; margin-top: 1em;">Sesión Administrador</p>
         <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menú </a>
         <ul class="menu">
-            <li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
-            <li><a style="color: #000000;" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a></li>
-            <li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
-            <li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Agregar Colaboradores</a></li>
-            <li><a style="color: #000000;" routerLink="/viewcolabs" (click)="toggleSidebar()">Ver Colaboradores</a></li>
+			<li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
+			<li><a style="color: #000000;" routerLink="/profileadmin" (click)="toggleSidebar()">Perfil</a></li>
+			<li><a style="color: #000000;" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a></li>
+			<li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
+			<li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Agregar Colaboradores</a></li>
+			<li><a style="color: #000000;" routerLink="/viewcolabs" (click)="toggleSidebar()">Ver Colaboradores</a></li>
         </ul>
     </ng-sidebar>
     <div ng-sidebar-content>
@@ -39,127 +40,12 @@
   
 <div class="container ">
   <h1 class="text-black text-center pb-2">Proyectos</h1>
-  <div class="row">
+
   	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-  		<div class="card">
+  		<div class="card"  *ngFor="let proyecto of proyectos">
   		<i class="fa fa-archive"></i>
-  		<h3>Proyecto Alpha</h3>
-  		<p><b>Descripción:</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		  tempor incididunt ut labore et dolore magna aliqua.</p>
-		  <div class="panel-group" id="accordion">
-			<div class="panel panel-default">
-			   <div class="panel-heading">
-				  <h6 class="panel-title">
-					 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><div style="text-align:center;">Ver más</div></a>
-				  </h6>
-			   </div>
-			   <div id="collapse1" class="panel-collapse collapse in">
-				  <div class="panel-body">
-					<b>Habilidades requeridas:</b>
-					<ul>
-					 <li>Trabajo en Equipo</li>
-					 <li>Tolerancia a la Frustración</li>
-					 <li>Autogestión</li>
-					 <li>Y otra cosa que termine en on</li>
-					</ul>
-					<b>Colaboradores:</b>
-				<ul>
-					<li>Evelyn</li>
-					<li>Diandra</li>
-					<li>Diana</li>
-					<li>Rodrigo</li>
-					<li>Yana</li>
-					<li>Annerys</li>
-				</ul>
-				<p><b>Finaliza el:</b> 01-10-2020</p>
-				  </div>
-				</div>
-			  </div>
-		</div>
-  	</div>
-  	</div>
-  	  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-  		<div class="card">
-  		<i class="fa fa-archive"></i>
-  		<h3>Proyecto Beta</h3>
-  		<p><b>Descripción:</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		  tempor incididunt ut labore et dolore magna aliqua.</p>
-		  <div class="panel-group" id="accordion">
-			<div class="panel panel-default">
-			   <div class="panel-heading">
-				  <h6 class="panel-title">
-					 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><div style="text-align:center;">Ver más</div></a>
-				  </h6>
-			   </div>
-			   <div id="collapse2" class="panel-collapse collapse in">
-				  <div class="panel-body">
-					<b>Habilidades requeridas:</b>
-					<ul>
-					 <li>Trabajo en Equipo</li>
-					 <li>Tolerancia a la Frustración</li>
-					 <li>Autogestión</li>
-					 <li>Y otra cosa que termine en on</li>
-					</ul>
-					<b>Colaboradores:</b>
-				<ul>
-					<li>Evelyn</li>
-					<li>Diandra</li>
-					<li>Diana</li>
-					<li>Rodrigo</li>
-					<li>Yana</li>
-					<li>Annerys</li>
-				</ul>
-				<p><b>Finaliza el:</b> 01-10-2020</p>
-				  </div>
-				</div>
-			  </div>
-		</div>
-  	</div>
-  	</div>
-  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-  		<div class="card">
-  		<i class="fa fa-archive"></i>
-  		<h3>Proyecto Gamma</h3>
-  		<p><b>Descripción:</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		  tempor incididunt ut labore et dolore magna aliqua.</p>
-		  <div class="panel-group" id="accordion">
-			<div class="panel panel-default">
-			   <div class="panel-heading">
-				  <h6 class="panel-title">
-					 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><div style="text-align:center;">Ver más</div></a>
-				  </h6>
-			   </div>
-			   <div id="collapse3" class="panel-collapse collapse in">
-				  <div class="panel-body">
-					<b>Habilidades requeridas:</b>
-					<ul>
-					 <li>Trabajo en Equipo</li>
-					 <li>Tolerancia a la Frustración</li>
-					 <li>Autogestión</li>
-					 <li>Y otra cosa que termine en on</li>
-					</ul>
-					<b>Colaboradores:</b>
-				<ul>
-					<li>Evelyn</li>
-					<li>Diandra</li>
-					<li>Diana</li>
-					<li>Rodrigo</li>
-					<li>Yana</li>
-					<li>Annerys</li>
-				</ul>
-				<p><b>Finaliza el:</b> 01-10-2020</p>
-				  </div>
-				</div>
-			  </div>
-		</div>
-  	</div>
-  	</div>
-  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-  		<div class="card">
-  		<i class="fa fa-archive"></i>
-  		<h3>Proyecto Delta</h3>
-  		<p><b>Descripción:</b>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		  tempor incididunt ut labore et dolore magna aliqua.</p>
+  		<h3>Nombre:{{proyecto.nombreproyecto}}</h3>
+  		<p><b>Descripción:</b>{{proyecto.descripcion}}</p>
 		  <div class="panel-group" id="accordion">
 			<div class="panel panel-default">
 			   <div class="panel-heading">
@@ -185,7 +71,8 @@
 					<li>Yana</li>
 					<li>Annerys</li>
 				</ul>
-				<p><b>Finaliza el:</b> 01-10-2020</p>
+				<p><b>Inicia el:</b> {{proyecto.fechainicio}}</p>
+				<p><b>Finaliza el:</b>{{proyecto.fechafinal}}</p>
 				  </div>
 				</div>
 			  </div>
@@ -195,9 +82,26 @@
 
   </div>     
   
+ 
+  <div class="contenedor" *ngFor="let proyecto of proyectos">
+	<div *ngIf="proyectos!=null" >
+		<mat-card class="tarjeta">
+			<mat-card-header>	
+				<mat-card-title>
+					<p> Nombre:{{proyecto.nombreproyecto}}</p>
+				</mat-card-title>
+			</mat-card-header>
+					
+			<mat-card-content>
+					 
+				<p> Descripción {{proyecto.descripcion}}</p>
+				<p>Fecha de inicio:{{proyecto.fechainicio}}</p>
+				<p>Fecha de final:{{proyecto.fechafinal}}</p>	
+			</mat-card-content> 
+		</mat-card>
+	</div>
+  </div> 
   
-  
-</div>
  </body>
 </html>
 </div>

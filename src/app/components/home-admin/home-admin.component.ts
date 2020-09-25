@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-admin.component.css']
 })
 export class HomeAdminComponent implements OnInit {
-  
+
   opened = false;
 
-  toggleSidebar(){
+  toggleSidebar() {
     this.opened = !this.opened;
   }
 
@@ -21,7 +21,7 @@ export class HomeAdminComponent implements OnInit {
     console.log(this.dato)
   }
 
-  cerrarsesion(){
+  cerrarsesion() {
     localStorage.removeItem("usuario");
   }
 

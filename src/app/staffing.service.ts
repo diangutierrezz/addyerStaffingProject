@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from 'rxjs';
 import { Usuario  } from "src/app/models/usuario";
+import { UsuarioHabilidad } from '../app/models/UsuarioHabilidad';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,15 @@ export class StaffingService {
   AgregarUsuario(usuario: Usuario): Observable<Usuario> {
     const url = 'agregarUsuario'
     return this.http.post<Usuario>(this.api + url, usuario, this.httpOptions);
+  }
+
+  obtenerUsuariosxHabilidad(): Observable<UsuarioHabilidad[]>{
+    const url = 'ObtenerUsuariosHabilidad'
+    return this.http.get<UsuarioHabilidad[]>(this.api + url);
+  }
+  
+  recuperarContrasena(correo: string) {
+    const url ='recuperarClave/'
+    return this.http.get(this.api + url + correo, this.httpOptions);
   }
 }

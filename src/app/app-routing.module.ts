@@ -12,12 +12,11 @@ import {  ViewprojectscolabComponent } from "../app/components/viewprojectscolab
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { LogincolabComponent } from "../app/components/logincolab/logincolab.component";
 import { ViewcolabsComponent } from "../app/components/viewcolabs/viewcolabs.component";
-import { AddSkillComponent } from "../app/components/add-skill/add-skill.component";
 import { RecoverpassComponent } from "../app/components/recoverpass/recoverpass.component";
+import { ProfileadminComponent } from "../app/components/profileadmin/profileadmin.component";
 import { validarRutasAdmin  } from "../app/components/inicio/validarRutasAdmin";
 import { validarRutasColab } from "../app/components/inicio/validarRutasColab";
-import { AddColabProjectComponent } from "../app/components/add-colab-project/add-colab-project.component"
-import { AddSkillsProjectComponent } from "../app/components/add-skills-project/add-skills-project.component"
+
 
 
 const routes: Routes = [
@@ -32,13 +31,10 @@ const routes: Routes = [
   { path: "createproject", component:CreateprojectComponent, canActivate: [validarRutasColab]},
   { path: "logincolab", component:LogincolabComponent},
   { path: "viewcolabs", component:ViewcolabsComponent, canActivate: [validarRutasColab]},
-  { path:"addskill", component:AddSkillComponent, canActivate: [validarRutasColab]},
   { path:"recoverpass", component:RecoverpassComponent},
-  { path: "viewcolabs", component:ViewcolabsComponent},
-  { path:"addskill", component:AddSkillComponent},
-  { path:"recoverpass", component:RecoverpassComponent},
-  { path:"addcolabprojects", component:AddColabProjectComponent},
-  { path:"addskkillsprojects", component:AddSkillsProjectComponent}
+  { path: "viewcolabs", component:ViewcolabsComponent, canActivate: [validarRutasColab]},
+  { path: "profileadmin", component:ProfileadminComponent}
+
 
 ];
 

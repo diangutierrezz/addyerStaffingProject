@@ -1,130 +1,150 @@
 <ng-sidebar-container>
   <!--Sidebar  -->
   <ng-sidebar [opened]="opened">
-      <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
-      <p style="padding-left: 1.2em; margin-top: 1em;">Sesión Colaborador</p>
-      <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menú </a>
-      <ul class="menu">
-          <li><a style="color: #000000;" routerLink="/homecolab" (click)="toggleSidebar()">Inicio</a></li>
-          <li><a style="color: #000000;" routerLink="/profilecolab" (click)="toggleSidebar()">Perfil Colaborador</a></li>
-          <li><a style="color: #000000;" routerLink="/viewprojectscolab" (click)="toggleSidebar()">Proyectos Asignados</a></li>
-      </ul>
+    <img
+      src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F"
+      width="200" height="200" class="img-fluid rounded-circle">
+    <p style="padding-left: 1.2em; margin-top: 1em;">Sesión Colaborador</p>
+    <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;"
+      (click)='toggleSidebar()'>Cerrar menú </a>
+    <ul class="menu">
+      <li><a style="color: #000000;" routerLink="/homecolab" (click)="toggleSidebar()">Inicio</a></li>
+      <li><a style="color: #000000;" routerLink="/profilecolab" (click)="toggleSidebar()">Perfil Colaborador</a></li>
+      <li><a style="color: #000000;" routerLink="/viewprojectscolab" (click)="toggleSidebar()">Proyectos Asignados</a>
+      </li>
+    </ul>
   </ng-sidebar>
   <div ng-sidebar-content>
-  <!--Page Header  -->
-  <mat-toolbar style="background-color: #000000; ">
+    <!-- Toolbar  -->
+    <mat-toolbar style="background-color: #000000; ">
       <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;" (click)="toggleSidebar()">Abrir menú</a>
       <span class="example-spacer"></span>
       <a mat-raised-button style="margin-left: 1em;" routerLink="">Cerrar Sesión</a>
-  </mat-toolbar>
-  <!--Page Body  -->
-  <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" style="width: 70%; margin: 2em auto;">
-    <mat-tab label="Ver Datos del Perfil"> <div class="container">
-      <div class="card text-center mat-elevation-z4 mt-5 cajita">
-        <div class="card-header p-4">
-          <h3>Datos del Perfil</h3>
-        </div>
-        <div class="card-body">
-          <img src="https://thumbs.dreamstime.com/b/var%C3%B3n-y-hembra-person-profile-avatar-del-vector-icono-de-la-gente-102655370.jpg" width="150" alt="" class="img-fluid rounded-circle">
-            <div class="mt-1">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><b>Nombres:</b> María Fernanda</li>
-                <li class="list-group-item"><b>Apellidos:</b> Pérez López</li>
-                <li class="list-group-item"><b>Rut:</b> 12.345.678-9</li>
-                <li class="list-group-item"><b>Correo Electrónico:</b> mariap12@forge.cl</li>
-                <li class="list-group-item"><b>Cargo:</b> Profesor(a) habilidades blandas</li>
-              </ul>
+    </mat-toolbar>
+    <!--Page Body Tab  -->
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs" style="width: 70%; margin: 2em auto;">
+      <!-- Tab 1  -->
+      <mat-tab label="Ver Datos del Perfil">
+        <div class="container">
+          <div class="card text-center mat-elevation-z4 mt-5 cajita">
+            <div class="card-header p-4">
+              <h3>Datos del Perfil</h3>
             </div>
-        </div>
-        <div class="card-footer text-muted">
-          Mesa de Ayuda 22700345 
-          <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
-        </div>
-      </div>
-    </div></mat-tab>
-    <mat-tab label="Agregar Habilidad"> 
-          <div class="container">
-            <div class="card text-center mat-elevation-z4 mt-5 cajita">
-              <div class="card-header p-4">
-                <h3>Agregar Nueva Habilidad</h3>
+            <div class="card-body">
+              <img
+                src="https://thumbs.dreamstime.com/b/var%C3%B3n-y-hembra-person-profile-avatar-del-vector-icono-de-la-gente-102655370.jpg"
+                width="150" alt="" class="img-fluid rounded-circle">
+                <div class="mt-1" *ngFor="let usuario of usuarios">
+                  <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>Nombres:</b> {{usuario.nombre}}</li>
+                  <li class="list-group-item"><b>Apellidos:</b> {{usuario.apellido}}</li>
+                  <li class="list-group-item"><b>Rut:</b> {{usuario.rut}}</li>
+                  <li class="list-group-item"><b>Correo Electrónico:<br></b>{{usuario.correo}}</li>
+                  <li class="list-group-item"><b>Cargo:</b>{{usuario.cargo}}</li>
+                </ul>
               </div>
-              <div class="card-body">
-                <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt="" class="img-fluid rounded-circle">
-                  <div class="mt-5">
-                    <form class=" text-center" style="padding: 1em;">
-          
-                      <form class="text-center" style="padding: 1em;" >
-                                          
-                              <select class="form-control" style="width: 80%;  margin-left: auto; 
-                              margin-right: auto;"name="miselect" placeholder="Seleccione una Habilidad" [(ngModel)]="habilidad" required>
-                                <option [value]="h" *ngFor="let h of habilidades">{{h}}</option>
-                              </select>
-                              <br>       
-                            <button class="btn btn" style="background-color: #cf7500; color: #f4f4f4;"  (click)="crearUsuarioHabilidad(habilidad.value)">Agregar</button>
-                            <div style="width: 70%;  margin-left: auto;
+            </div>
+            <div class="card-footer text-muted">
+              Mesa de Ayuda 22700345
+              <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <!-- Tab 2  -->
+      <mat-tab label="Ver y agregar Habilidades">
+        <div class="container">
+          <div class="card text-center mat-elevation-z4 mt-5 cajita">
+            <div class="card-header p-4">
+              <h3>Agregar Nueva Habilidad</h3>
+            </div>
+            <div class="card-body">
+              <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt=""
+                class="img-fluid rounded-circle">
+              <div class="mt-5">
+                <form class=" text-center" style="padding: 1em;">
+
+                  <form class="text-center" style="padding: 1em;">
+
+                    <select class="form-control" style="width: 80%;  margin-left: auto; 
+                              margin-right: auto;" name="miselect" placeholder="Seleccione una Habilidad"
+                      [(ngModel)]="habilidad" required>
+                      <option [value]="h" *ngFor="let h of habilidades">{{h}}</option>
+                    </select>
+                    <br>
+                    <button class="btn btn" style="background-color: #cf7500; color: #f4f4f4;"
+                      (click)="agregarUsuarioHabilidad()">Agregar</button>
+                    <div style="width: 70%;  margin-left: auto;
                             margin-right: auto;" class="alert alert-success" role="alert">
-                              <p>{{mensaje}}</p>
-                            </div>
-                            <hr>
-                             
-                      </form>
+                      <p>{{mensaje}}</p>
+                    </div>
+                    <hr>
 
                   </form>
-                  </div>
-              </div>
-              <div class="card-footer text-muted">
-                Mesa de Ayuda 22700345 
-                <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+
+                </form>
               </div>
             </div>
+            <div class="card-footer text-muted">
+              Mesa de Ayuda 22700345
+              <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+            </div>
           </div>
-          <hr>
-          <h3 style="text-align: center; margin-top:2em">Habilidades Agregadas</h3>
-            <br>
-          <div style="width: 50%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
-            <mat-table [dataSource]="colab">
-              <ng-container matColumnDef="habilidades">
-                <mat-header-cell *matHeaderCellDef> <b>HABILIDADES</b> </mat-header-cell>
-                <mat-cell *matCellDef="let colab">{{colab.habilidades}}</mat-cell>
+        </div>
+        <!-- Tabla Habilidades Usuario -->
+        <hr>
+        <h3 style="text-align: center; margin-top:2em">Habilidades Agregadas</h3>
+        <br>
+        <div style="width: 50%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
+          <mat-table [dataSource]="colab">
+            <ng-container matColumnDef="habilidades">
+              <mat-header-cell *matHeaderCellDef> <b>HABILIDADES</b> </mat-header-cell>
+              <mat-cell *matCellDef="let colab">{{colab.habilidades}}</mat-cell>
             </ng-container>
             <ng-container matColumnDef="boton">
-              <mat-header-cell *matHeaderCellDef > <b>ELIMINAR</b> </mat-header-cell>
-               <mat-cell *matCellDef="let colab" > 
-                 <a mat-mini-fab color="warn"> 
-                 <mat-icon>delete</mat-icon> </a> </mat-cell>
-                 </ng-container>
-                <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
-                <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
-            </mat-table>
-          </div>
-    </mat-tab>
-    <mat-tab label="Modificar Contraseña"> 
-      <div class="container">
-        <div class="card text-center mat-elevation-z4 mt-5 cajita">
-          <div class="card-header p-4">
-            <h3>Modificar Contraseña</h3>
-          </div>
-          <div class="card-body">
-            <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt="" class="img-fluid rounded-circle">
+              <mat-header-cell *matHeaderCellDef> <b>ELIMINAR</b> </mat-header-cell>
+              <mat-cell *matCellDef="let colab">
+                <a mat-mini-fab color="warn">
+                  <mat-icon>delete</mat-icon>
+                </a> </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
+            <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
+          </mat-table>
+        </div>
+      </mat-tab>
+      <!-- Tab 3  -->
+      <mat-tab label="Modificar Contraseña">
+        <div class="container">
+          <div class="card text-center mat-elevation-z4 mt-5 cajita">
+            <div class="card-header p-4">
+              <h3>Modificar Contraseña</h3>
+            </div>
+            <div class="card-body">
+              <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt=""
+                class="img-fluid rounded-circle">
               <div class="mt-5">
                 <form class=" text-center" style="padding: 1em;">
                   <mat-form-field style="width: 100%;" appearance="outline">
                     <mat-label>Nueva Contraseña</mat-label>
-                    <input matInput [(ngModel)]= "contrasena" name="contrasena" type="password" matInput required placeholder="Contraseña">
-                </mat-form-field >          
-                 <br>
-                 <button class="btn btn-warning" (click)="editar(contrasena)" >Guardar Cambios</button>
-                 <button type="reset" class="btn btn-danger">Cancelar</button>
-              </form>
+                    <input matInput [(ngModel)]="contrasena" name="contrasena" type="password" matInput required
+                      placeholder="Contraseña">
+                  </mat-form-field>
+                  <br>
+                  <button class="btn btn-warning" (click)="CambioClave(contrasena)">Guardar Cambios</button>
+                  <button type="reset" class="btn btn-danger">Cancelar</button>
+                </form>
               </div>
-          </div>
-          <div class="card-footer text-muted">
-            Mesa de Ayuda 22700345 
-            <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+            </div>
+            <div class="card-footer text-muted">
+              Mesa de Ayuda 22700345
+              <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>
+            </div>
           </div>
         </div>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+      </mat-tab>
+    </mat-tab-group>
+    <!-- Final Tab -->
+  </div>
 </ng-sidebar-container>
+<!-- Final Sidebar -->

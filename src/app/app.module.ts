@@ -24,15 +24,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipe } from './pipes/filter.pipe'
 import { LogincolabComponent } from './components/logincolab/logincolab.component'
 import { HttpClientModule } from '@angular/common/http';
-import { AddSkillComponent } from './components/add-skill/add-skill.component';
+
 import { RecoverpassComponent } from './components/recoverpass/recoverpass.component';
 import { ViewcolabsComponent } from './components/viewcolabs/viewcolabs.component';
 import { validarRutasAdmin } from "../app/components/inicio/validarRutasAdmin";
 import { validarRutasColab } from './components/inicio/validarRutasColab';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
-import { AddSkillsProjectComponent } from './components/add-skills-project/add-skills-project.component';
-import { AddColabProjectComponent } from './components/add-colab-project/add-colab-project.component';
+import { UpdatecolabComponent } from '../app/components/updatecolab/updatecolab.component';
+import { DeletecolabComponent } from './components/deletecolab/deletecolab.component';
+import { ProfileadminComponent } from './components/profileadmin/profileadmin.component';
+
 
 
 @NgModule({
@@ -49,11 +51,12 @@ import { AddColabProjectComponent } from './components/add-colab-project/add-col
     CreateprojectComponent,
     FilterPipe,
     LogincolabComponent,
-    AddSkillComponent,
     RecoverpassComponent,
     ViewcolabsComponent,
-    AddSkillsProjectComponent,
-    AddColabProjectComponent,
+    UpdatecolabComponent,
+    DeletecolabComponent,
+    ProfileadminComponent,
+
  
     
   ],

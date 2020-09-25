@@ -7,18 +7,18 @@ export class FilterPipe implements PipeTransform {
   transform(value: any, arg: any): any {
     if (arg === '' || arg.length < 2) return value;
     const resultPosts = [];
-    for (const post of value) {
-      if (post.habilidades.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
-        resultPosts.push(post);
+    for (const usuarioHabilidad of value) {
+      if (usuarioHabilidad.habilidad.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+        resultPosts.push(usuarioHabilidad);
       };
-      if (post.cargo.toLowerCase().indexOf(arg.toLowerCase())  > -1) {
-        resultPosts.push(post);
+      if (usuarioHabilidad.cargo.toLowerCase().indexOf(arg.toLowerCase())  > -1) {
+        resultPosts.push(usuarioHabilidad);
       };
-      if (post.nombre.toLowerCase().indexOf(arg.toLowerCase())  > -1) {
-        resultPosts.push(post);
+      if (usuarioHabilidad.nombre.toLowerCase().indexOf(arg.toLowerCase())  > -1) {
+        resultPosts.push(usuarioHabilidad);
       };
-      if (post.apellido.toLowerCase().indexOf(arg.toLowerCase())  > -1) {
-        resultPosts.push(post);
+      if (usuarioHabilidad.apellido.toLowerCase().indexOf(arg.toLowerCase())  > -1) {
+        resultPosts.push(usuarioHabilidad);
       };
     };
     return resultPosts;

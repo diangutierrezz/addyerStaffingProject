@@ -5,11 +5,12 @@
         <p style="padding-left: 1.2em; margin-top: 1em;">Sesión Administrador</p>
         <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menú </a>
         <ul class="menu">
-            <li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
-            <li><a style="color: #000000;" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a></li>
-            <li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
-            <li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Agregar Colaboradores</a></li>
-            <li><a style="color: #000000;" routerLink="/viewcolabs" (click)="toggleSidebar()">Ver Colaboradores</a></li>
+          <li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
+          <li><a style="color: #000000;" routerLink="/profileadmin" (click)="toggleSidebar()">Perfil</a></li>
+          <li><a style="color: #000000;" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a></li>
+          <li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
+          <li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Agregar Colaboradores</a></li>
+          <li><a style="color: #000000;" routerLink="/viewcolabs" (click)="toggleSidebar()">Ver Colaboradores</a></li>
             
         </ul>
     </ng-sidebar>
@@ -21,53 +22,154 @@
             <a mat-raised-button style="margin-left: 1em;" routerLink="" >Cerrar Sesión</a>
         </mat-toolbar>        
     <!--Page Body  -->
-    
+    <!-- Tabla -->
     <h2 style="text-align: center; margin-top:2em">Colaboradores</h2>
     <br>
   <div style="width: 90%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
-      <mat-table [dataSource]="colab">
+      <mat-table [dataSource]="usuario">
           <ng-container matColumnDef="nombre">
               <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>NOMBRE</b> </mat-header-cell>
-              <mat-cell *matCellDef="let colab">{{colab.nombre}}</mat-cell>
+              <mat-cell *matCellDef="let usuario">{{usuario.nombre}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="apellido">
               <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>APELLIDO</b>  </mat-header-cell>
-              <mat-cell *matCellDef="let colab">{{colab.apellido}}</mat-cell>
+              <mat-cell *matCellDef="let usuario">{{usuario.apellido}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="rut">
               <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>RUT</b>  </mat-header-cell>
-              <mat-cell *matCellDef="let colab">{{colab.rut}}</mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="fecha">
-              <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>FECHA DE NACIMIENTO</b>  </mat-header-cell>
-              <mat-cell *matCellDef="let colab">{{colab.fecha}}</mat-cell>
+              <mat-cell *matCellDef="let usuario">{{usuario.rut}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="telefono">
             <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>CARGO</b>  </mat-header-cell>
-            <mat-cell *matCellDef="let colab">{{colab.cargo}}</mat-cell>
+            <mat-cell *matCellDef="let usuario">{{usuario.cargo}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="correo">
               <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>CORREO ELECTRÒNICO </b>  </mat-header-cell>
-              <mat-cell *matCellDef="let colab">{{colab.correo}}</mat-cell>
+              <mat-cell *matCellDef="let usuario">{{usuario.correo}}</mat-cell>
           </ng-container>
           <ng-container matColumnDef="cargo">
             <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>CARGO</b>  </mat-header-cell>
-            <mat-cell *matCellDef="let colab">{{colab.cargo}}</mat-cell>
+            <mat-cell *matCellDef="let usuario">{{usuario.cargo}}</mat-cell>
         </ng-container>
-        <ng-container matColumnDef="habilidades">
+        <ng-container matColumnDef="botonModificar">
+            <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>MODIFICAR</b> </mat-header-cell>
+             <mat-cell *matCellDef="let usuario; index as i" > 
+               <button mat-mini-fab data-target="#ACTUALIZAR" data-toggle="modal" (click)="guardarIndex(i)" style="background-color: #cf7500; color: #f4f4f4;"> 
+               <mat-icon>create</mat-icon> </button> </mat-cell>
+               </ng-container>
+        <ng-container matColumnDef="botonEliminar">
+            <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>ELIMINAR</b> </mat-header-cell>
+             <mat-cell *matCellDef="let usuario; index as i" > 
+               <button mat-mini-fab color="warn" data-target="#BORRAR" data-toggle="modal" (click)="guardarIndex(i)" > 
+               <mat-icon>delete</mat-icon> </button> </mat-cell>
+               </ng-container>
+        
+       <!-- <ng-container matColumnDef="habilidades">
           <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>HABILIDADES</b> </mat-header-cell>
-          <mat-cell *matCellDef="let colab">{{colab.habilidades}}</mat-cell>
-      </ng-container>
+          <mat-cell *matCellDef="let usuario">{{usuario.habilidades}}</mat-cell>
+      </ng-container> -->
           <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
           <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
       </mat-table>
-  </div>
+    </div>
+    <!-- Tabla -->
     
-  
-      
-  
      <!--final sidebar  --> 
   </div>
   </ng-sidebar-container>
-  
-  
+
+    <!-- Modal Actualizar -->
+    <div class="text-right mt-4">
+      <div class="modal fade" id="BORRAR">
+        <div class="modal-dialog text-center">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div
+                class="modal-title"
+                style="padding: 1em 1em 0em 1em; width: 100%"
+              >
+                <h6 style="text-align: center">
+                  Esta acción eliminará un usuario de forma permanente.
+                </h6>
+                <p>¿Seguro que desea eliminarlo?</p>
+               
+              </div> 
+              <div>
+                <div style="padding: 1em 1em 1em 1em; width: 100% mt-4">
+                  <button
+                    class="btn BtnDefault"
+                    style="background-color: #d8473e; color: aliceblue; width: 89px"
+                    type="reset"
+                    data-dismiss="modal"
+                    (click)="borrarUsuario()"
+                  >
+                    Borrar
+                  </button>
+                </div>
+                <div>
+                  <button
+                    class="btn BtnDefault"
+                    style="background-color: #f7ae42; color: aliceblue"
+                    type="reset"
+                    data-dismiss="modal"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- Modal --> 
+  <!-- Modal -->
+  <div class=" mt-4">
+    <div class="modal fade" id="ACTUALIZAR">
+      <div class="modal-dialog">
+        <div class="modal-content " >
+          <div class="modal-header">
+            <div
+              class="modal-title"
+            >
+          
+            </div>
+            <form style="width: 80%;  margin-left: auto;
+            margin-right: auto;" >
+              <div class="p-4"><h5>Modificar Datos</h5></div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Rol</label>
+                <select class="form-control" id="rol" #ro>
+                  <option *ngFor="let rol of rol" [value]="rol"> {{rol}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label >Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Nuevo nombre" #nombre>
+              </div>
+              <div class="form-group">
+                <label>Apellido</label>
+                <input type="text" class="form-control" id="apellido" placeholder="Nuevo apellido" #apellido> 
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Cargo</label>
+                <select class="form-control" id="cargo" #carg>
+                  <option *ngFor="let cargo of cargo" [value]="cargo">{{cargo}}</option>
+                </select>
+              </div>
+              <div><button
+                class="btn BtnDefault"
+                style="background-color: #d8473e; color: aliceblue; width: 89px"
+                type="reset"
+                data-dismiss="modal"
+                (click)="modificar(ro.value, nombre.value, apellido.value, carg.value)"
+              >
+                Mostrar
+              </button></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal --> 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddSkillComponent } from './add-skill.component';
+import { DeletecolabComponent } from './deletecolab.component';
 
-describe('AddSkillComponent', () => {
-  let component: AddSkillComponent;
-  let fixture: ComponentFixture<AddSkillComponent>;
+describe('DeletecolabComponent', () => {
+  let component: DeletecolabComponent;
+  let fixture: ComponentFixture<DeletecolabComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddSkillComponent ]
+      declarations: [ DeletecolabComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddSkillComponent);
+    fixture = TestBed.createComponent(DeletecolabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

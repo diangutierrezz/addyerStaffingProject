@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 
 @Component({
   selector: 'app-viewprojectsadmin',
@@ -13,9 +14,11 @@ export class ViewprojectsadminComponent implements OnInit {
     this.opened = !this.opened;
   }
 
-  constructor() { }
+  proyectos=null;
+  constructor(private service: ViewprojectsService) { }
 
   ngOnInit(): void {
+    this.service.retornar().subscribe( result =>  {this.proyectos = result}); 
   }
 
   cerrarsesion(){

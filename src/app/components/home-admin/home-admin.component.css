@@ -7,7 +7,6 @@ ng-sidebar-container{
 }
 
 
-
 ::ng-deep .ng-sidebar{
   background-color: #f0a500;
   width: 300px;
@@ -30,9 +29,7 @@ ng-sidebar-container{
 
 }
 
-.barra{
-  background-color: #f0a500 ;
-}
+
 
 .carousel{
   margin-top: 0;
@@ -66,4 +63,52 @@ ng-sidebar-container{
 
 h1,h2,h3{
   font-family: verdana
+}
+
+body{
+  padding: 0;
+  margin: 0;
+overflow-x: hidden;
+
+}
+.fa{
+  font-size: 80px;
+  padding: 25px 15px 0px 10px;
+}
+section{
+  margin: 50px auto;
+}
+h3{
+  padding: 20px 0 0 10px;
+  margin: 0;
+}
+.box{
+  transition: .3s;
+  border-radius: 20px;
+  margin: 10px;
+  background: #ddd;
+  padding: 10px;
+  
+
+}
+.box:hover{
+  background:  #5dade2 ;
+  border-radius: 20px;
+  transition: .5s;
+  color: #fff;
+  cursor: pointer;
+
+}
+p{
+  padding: 10px;
+}
+@media(max-width: 992px){
+  .fa{
+      font-size: 70px;
+  }
+}
+@media(max-width: 768px){
+  .box{
+      text-align: center;
+  }
 }

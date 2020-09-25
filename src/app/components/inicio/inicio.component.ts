@@ -9,10 +9,10 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 export class InicioComponent implements OnInit {
 
   images = [180, 2, 4].map((n) => `https://picsum.photos/id/${n}/600/200`);
-  
 
 
-  constructor(private_config:NgbCarouselConfig) { }
+
+  constructor(private_config: NgbCarouselConfig) { }
 
   ngOnInit(): void {
     localStorage.clear()
