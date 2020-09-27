@@ -1,5 +1,5 @@
 export interface UsuarioHabilidad {
-    id: number,
+    id_usuario: number,
     nombre: String,
     apellido: String,
     rut: String,

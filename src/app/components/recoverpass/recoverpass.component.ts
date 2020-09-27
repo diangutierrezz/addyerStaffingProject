@@ -24,8 +24,14 @@ export class RecoverpassComponent implements OnInit {
 
   recuperar(correo: string){
     this.service.recuperarContrasena(correo)
-      .subscribe(correo => alert('Se ha enviado la contraseña a su correo'));
+      .subscribe(correo =>
+        { if(correo[0] == "usuario Existe"){
+          alert('Se ha enviado la contraseña a su correo')
+        } if (correo[0] == "Usuario no existe" )
+          alert('Correo no existe en la Base de datos')});
       
   }
+
+
 
 }

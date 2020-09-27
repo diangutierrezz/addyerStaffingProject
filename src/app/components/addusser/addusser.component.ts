@@ -7,7 +7,8 @@ import { StaffingService } from "src/app/staffing.service";
 import { RutValidator } from 'ng9-rut';
 import { RouterLink } from '@angular/router';
 import { AddSkillService } from "../addusser/add-skill.service";
-
+import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
+import { Habilidades } from "src/app/models/habilidades";
 
 @Component({
   selector: 'app-addusser',
@@ -22,13 +23,21 @@ export class AddusserComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   isEditable = false;
+  mostrarAlerta = false;
+  habilidades: Habilidades [] = [];
+  habilidadElegida;
+columnasAuseer = ['habilidad'];
+  mensaje;
+  usuario: Usuario[] = [];
 
   toggleSidebar() {
     this.opened = !this.opened;
   }
 
 
-  constructor(private _formBuilder: FormBuilder, public rutValidator: RutValidator, private service: StaffingService, private addSkillService: AddSkillService) { }
+  constructor(private _formBuilder: FormBuilder, public rutValidator: RutValidator,
+     private service: StaffingService, private addSkillService: AddSkillService,
+     private viewproyectsservice: ViewprojectsService) { }
 
 
   ngOnInit(): void {
@@ -49,6 +58,9 @@ export class AddusserComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
 
     });
+
+    this.viewproyectsservice.obtenerHabilidades()
+    .subscribe(habilidades => this.habilidades=habilidades);
 
   }
 
@@ -79,42 +91,8 @@ export class AddusserComponent implements OnInit {
   }
 
 
-  // Habilidades
-  habilidades: string[] = [
-    "Programación estructurada (PE) ",
-    "Programación modular.",
-    "Programación orientada a objetos (POO)",
-    "Programación concurrente.",
-    "Programación funcional.",
-    "Programación lógica.",
-    "Buenas Practivas",
-    "Desarrollo web",
-    "Administracion Base de datos",
-    "Manejo de Frameworks",
-    "Psicologia",
-    "Pedagogia",
-    "Trabajo en Equipo",
-    "Manejo de la Frustracion",
-    "Autoconocimiento",
-    "Autoevaluacion",
-    "Autoestima",
-    "Herramientas para la Insercion Laboral",
-    "Comunicacion",
-    "Estrategias para la Planificacion",
-    "Resilencia",
-    "Adaptacion a los cambios",
-    "Orientacion al servicio",
-    "Resolucion de problemas",
-    "Asertividad",
-    "Autodominio y Capacidad de articulacion",
-    "Etica para Trabajo",
-    "Responsabilidad",
-  ]
 
-  columnasAuseer = ['habilidad'];
-  habilidad;
-  mensaje;
-  usuario: Usuario[] = [];
+  
 
   // Servicio Para Crear Usuario
   crearUsuario(rol: String, nombre: String, apellido: String, rut: String, correo: String, contrasena: String, cargo: String) {
@@ -126,8 +104,16 @@ export class AddusserComponent implements OnInit {
 
   // Servicio para Asociar Habilidad al usuario Creado.
   crearUsuarioHabilidad(rut: string) {
-    this.addSkillService.crearUsuarioHabilidades(rut, this.habilidad).subscribe(habilidad => {
-    });
-    this.mensaje = 'Se agrego la habilidad ' + this.habilidad + ' Correctamente'
+    console.log(rut)
+    console.log(this.habilidadElegida)
+    this.addSkillService.crearUsuarioHabilidades(rut,this.habilidadElegida).subscribe(habilidad => {
+      this.mostrarAlerta=true;
+      this.mensaje = 'Se agrego la habilidad ' + this.habilidadElegida + ' Correctamente'
+    },  err => {alert("Exploto")} 
+    );
+    
+    setTimeout(() => {
+      this.mostrarAlerta=false;
+    }, 3000);
   }
 }

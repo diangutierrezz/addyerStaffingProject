@@ -149,16 +149,19 @@
             <form class=" text-center" style="padding: 1em;">
 
               <mat-label><h5>Seleccione una habilidad</h5></mat-label>
-              <select class="form-control mt-4" style="width: 80%;  margin-left: auto; 
-              margin-right: auto; " name="miselect" placeholder="Seleccione una Habilidad" [(ngModel)]="habilidad"
-                required>
-                <option [value]="h" *ngFor="let h of habilidades">{{h}}</option>
+
+              <select class="form-control" style="width: 50%;  margin-left: auto; 
+              margin-right: auto;"name="miselect" placeholder="Seleccione una Habilidad" [(ngModel)]="habilidadElegida" required>
+               <option [value]="habilidad.habilidad" *ngFor="let habilidad of habilidades">
+                {{ habilidad.habilidad }}
+              </option>
               </select>
+
               <br>
               <button class="btn btn" style="background-color: #cf7500; color: #f4f4f4;"
                 (click)="crearUsuarioHabilidad(rut.value)"
                 >Agregar</button>
-              <div style="width: 80%;  margin-left: auto;
+              <div *ngIf="mostrarAlerta" style="width: 80%;  margin-left: auto;
             margin-right: auto;" class="alert alert-success mt-4" role="alert">
                 <p class="mt-2">{{mensaje}}</p>
               </div>

@@ -4,6 +4,7 @@ import { ViewcolabsService } from '../viewcolabs/viewcolabs.service';
 import { UpdatecolabComponent } from '../updatecolab/updatecolab.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DeletecolabComponent } from "../deletecolab/deletecolab.component";
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-viewcolabs',
@@ -13,14 +14,13 @@ import { DeletecolabComponent } from "../deletecolab/deletecolab.component";
 export class ViewcolabsComponent implements OnInit {
 
   usuario: Usuario [] = [];
-  columnasAMostrar: String[] = ['nombre', 'apellido', 'rut', 'correo', 'cargo', 'botonModificar', 'botonEliminar'];
+  columnasAMostrar: String[] = ['rol', 'nombre', 'apellido', 'rut', 'correo', 'cargo', 'botonModificar', 'botonEliminar'];
   opened = false;
 
-  constructor(private viewcolabsService: ViewcolabsService,  public dialog: MatDialog,) { }
+  constructor(private viewcolabsService: ViewcolabsService,  public dialog: MatDialog,private router: Router) { }
 
   ngOnInit(): void {
-    this.viewcolabsService.obtenerUsuarios()
-    .subscribe(usuario => this.usuario=usuario);
+this.actualizarTabla();
   }
 
   cerrarsesion(){
@@ -45,20 +45,11 @@ export class ViewcolabsComponent implements OnInit {
     "Administrador"
   ]
 
-  openDialog() {
-    const dialogRef = this.dialog.open(UpdatecolabComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  actualizarTabla(){
+    this.viewcolabsService.obtenerUsuarios()
+    .subscribe(usuario => this.usuario=usuario);
   }
 
-  openDelete(){
-    const dialogRef = this.dialog.open(DeletecolabComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
 
   index: number = null;
 guardarIndex(i: number){
@@ -78,6 +69,7 @@ this.index = null;
 modificar(ro:string,nombre:string,apellido:string,carg:string){
   this.viewcolabsService.modificarUsuario(this.usuario[this.index].id, ro,nombre,apellido,carg).subscribe(_=>alert('Usuario actualizado'));
   this.index = null
+  window.location.reload();
 }
 
 

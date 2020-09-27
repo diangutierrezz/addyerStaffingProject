@@ -6,6 +6,8 @@ import { Usuario } from 'src/app/models/Usuario'
 import { from, Observable } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Habilidades } from "src/app/models/habilidades";
+import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 
 @Component({
   selector: 'app-profilecolab',
@@ -14,16 +16,20 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class ProfilecolabComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) document, private profilecolabService: ProfilecolabService, private _formBuilder: FormBuilder) { }
+  constructor(@Inject(DOCUMENT) document, private profilecolabService: ProfilecolabService,
+   private _formBuilder: FormBuilder, private viewproyectsservice: ViewprojectsService) { }
   // Variables
   contrasena: String = "";
-  dato: string = "";
+  dato;
   usuario: Usuario[] = [];
   @Input() usuarioo: Usuario
   mensaje;
   habilidad;
   firstFormGroup: FormGroup;
   usuarios = null;
+  mostrarAlerta = false;
+  hab :Habilidades[] =[];
+  habilidades: Habilidades [] = [];
 
   //Sidebar
   opened = false;
@@ -38,6 +44,12 @@ export class ProfilecolabComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       contrasena: [null,[ Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
     });
+
+    this.profilecolabService.obtenerColabHabilidades(this.dato)
+      .subscribe(result => this.hab = result);
+
+      this.viewproyectsservice.obtenerHabilidades()
+      .subscribe(habilidades => this.habilidades=habilidades);
   }
 
   habilidadcolab: [
@@ -52,46 +64,22 @@ export class ProfilecolabComponent implements OnInit {
 
   ]
 
-  columnasAMostrar: String[] = ['habilidades', 'boton'];
+  columnasH: String[] = ['habilidades', 'boton'];
 
-  habilidades: string[] = [
-    "Programación estructurada (PE) ",
-    "Programación modular.",
-    "Programación orientada a objetos (POO)",
-    "Programación concurrente.",
-    "Programación funcional.",
-    "Programación lógica.",
-    "Buenas Practivas",
-    "Desarrollo web",
-    "Administracion Base de datos",
-    "Manejo de Frameworks",
-    "Psicologia",
-    "Pedagogia",
-    "Trabajo en Equipo",
-    "Manejo de la Frustracion",
-    "Autoconocimiento",
-    "Autoevaluacion",
-    "Autoestima",
-    "Herramientas para la Insercion Laboral",
-    "Comunicacion",
-    "Estrategias para la Planificacion",
-    "Resilencia",
-    "Adaptacion a los cambios",
-    "Orientacion al servicio",
-    "Resolucion de problemas",
-    "Asertividad",
-    "Autodominio y Capacidad de articulacion",
-    "Etica para Trabajo",
-    "Responsabilidad",
-  ]
 
 
   //Servicio Agregar Habilidad
   agregarUsuarioHabilidad() {
+    
     this.profilecolabService.agregarHabilidades(this.habilidad).subscribe(habilidad => {
+      this.mostrarAlerta=true;
       this.mensaje = 'Se agrego la habilidad ' + this.habilidad + ' Correctamente'
-    });
-    console.log(this.habilidad)
+    },  err => {alert("Exploto")} 
+    );
+    
+    setTimeout(() => {
+      this.mostrarAlerta=false;
+    }, 3000);
   }
 
   //Servicio Modificar Clave
@@ -102,5 +90,16 @@ export class ProfilecolabComponent implements OnInit {
     });
   }
 
+  borrar(id: number){
+    this.profilecolabService.eliminarUsuarioHabilidad(this.dato, id)
+      .subscribe(); alert('Se elimino la habilidad correctamente');
+      window.location.reload();
+  }
+
+  index: number = null;
+guardarIndex(i: number){
+this.index = i;
+
+}
 
 }

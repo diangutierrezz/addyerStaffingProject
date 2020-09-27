@@ -74,7 +74,7 @@
                     <br>
                     <button class="btn btn" style="background-color: #cf7500; color: #f4f4f4;"
                       (click)="agregarUsuarioHabilidad()">Agregar</button>
-                    <div style="width: 70%;  margin-left: auto;
+                    <div *ngIf="mostrarAlerta" style="width: 70%;  margin-left: auto;
                             margin-right: auto;" class="alert alert-success" role="alert">
                       <p>{{mensaje}}</p>
                     </div>
@@ -95,23 +95,70 @@
         <hr>
         <h3 style="text-align: center; margin-top:2em">Habilidades Agregadas</h3>
         <br>
+
         <div style="width: 50%; margin: 1em auto;" class="mat-elevation-z2 cajita2">
-          <mat-table [dataSource]="colab">
+          <mat-table [dataSource]="hab">
             <ng-container matColumnDef="habilidades">
-              <mat-header-cell *matHeaderCellDef> <b>HABILIDADES</b> </mat-header-cell>
-              <mat-cell *matCellDef="let colab">{{colab.habilidades}}</mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="boton">
-              <mat-header-cell *matHeaderCellDef> <b>ELIMINAR</b> </mat-header-cell>
-              <mat-cell *matCellDef="let colab">
-                <a mat-mini-fab color="warn">
-                  <mat-icon>delete</mat-icon>
-                </a> </mat-cell>
-            </ng-container>
-            <mat-header-row *matHeaderRowDef="columnasAMostrar"></mat-header-row>
-            <mat-row *matRowDef="let myRowData; columns: columnasAMostrar"></mat-row>
+            <mat-header-cell *matHeaderCellDef> <b>HABILIDADES</b> </mat-header-cell>
+            <mat-cell *matCellDef="let hab">{{hab.habilidad}}</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="boton">
+            <mat-header-cell *matHeaderCellDef style="justify-content: center"> <b>ELIMINAR</b> </mat-header-cell>
+             <mat-cell *matCellDef="let usuario; index as i" > 
+               <button mat-mini-fab color="warn" data-target="#BORRAR" data-toggle="modal" (click)="guardarIndex(i)" > 
+               <mat-icon>delete</mat-icon> </button> </mat-cell>
+               </ng-container>
+            <mat-header-row *matHeaderRowDef="columnasH"></mat-header-row>
+            <mat-row *matRowDef="let myRowData; columns: columnasH"></mat-row>
           </mat-table>
+          </div>
+          <!-- MODAL -->
+<div class="text-right mt-4">
+  <div class="modal fade" id="BORRAR">
+    <div class="modal-dialog text-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div
+            class="modal-title"
+            style="padding: 1em 1em 0em 1em; width: 100%"
+          >
+            <h6 style="text-align: center">
+              Esta acción eliminará esta habilidad de forma permanente.
+            </h6>
+            <p>¿Seguro que desea eliminarla?</p>
+           
+          </div> 
+          <div >
+            <div style="padding: 1em 1em 1em 1em; width: 100% mt-4" *ngFor="let hab of hab">
+              <button 
+                class="btn BtnDefault"
+                style="background-color: #d8473e; color: aliceblue; width: 89px"
+                type="reset"
+                data-dismiss="modal"
+                (click)="borrar(hab.id_habilidad)"
+              >
+                Borrar
+              </button>
+            </div>
+            <div>
+              <button
+                class="btn BtnDefault"
+                style="background-color: #f7ae42; color: aliceblue"
+                type="reset"
+                data-dismiss="modal"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL -->
+
+
       </mat-tab>
       <!-- Tab 3  -->
       <mat-tab label="Modificar Contraseña">
@@ -148,3 +195,4 @@
   </div>
 </ng-sidebar-container>
 <!-- Final Sidebar -->
+

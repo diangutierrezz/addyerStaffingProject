@@ -1,109 +1,286 @@
 <ng-sidebar-container>
-    <!--Sidebar  -->
-    <ng-sidebar [opened]="opened">
-        <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
-        <p style="padding-left: 1.5em; margin-top: 1em;">Sesión Administrador</p>
-        <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menú </a>
-        <ul class="menu">
-			<li><a style="color: #000000;" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a></li>
-			<li><a style="color: #000000;" routerLink="/profileadmin" (click)="toggleSidebar()">Perfil</a></li>
-			<li><a style="color: #000000;" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a></li>
-			<li><a style="color: #000000;" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a></li>
-			<li><a style="color: #000000;" routerLink="/addusser" (click)="toggleSidebar()">Agregar Colaboradores</a></li>
-			<li><a style="color: #000000;" routerLink="/viewcolabs" (click)="toggleSidebar()">Ver Colaboradores</a></li>
-        </ul>
-    </ng-sidebar>
-    <div ng-sidebar-content>
+  <!--Sidebar  -->
+  <ng-sidebar [opened]="opened">
+    <img
+      src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F"
+      width="200" height="200" class="img-fluid rounded-circle" />
+    <p style="padding-left: 1.5em; margin-top: 1em">Sesión Administrador</p>
+    <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4" (click)="toggleSidebar()">Cerrar
+      menú
+    </a>
+    <ul class="menu">
+      <li>
+        <a style="color: #000000" routerLink="/homeadmin" (click)="toggleSidebar()">Inicio</a>
+      </li>
+      <li>
+        <a style="color: #000000" routerLink="/profileadmin" (click)="toggleSidebar()">Perfil</a>
+      </li>
+      <li>
+        <a style="color: #000000" routerLink="/viewprojectsadmin" (click)="toggleSidebar()">Ver Proyectos</a>
+      </li>
+      <li>
+        <a style="color: #000000" routerLink="/createproject" (click)="toggleSidebar()">Crear Proyectos</a>
+      </li>
+      <li>
+        <a style="color: #000000" routerLink="/addusser" (click)="toggleSidebar()">Agregar Colaboradores</a>
+      </li>
+      <li>
+        <a style="color: #000000" routerLink="/viewcolabs" (click)="toggleSidebar()">Ver Colaboradores</a>
+      </li>
+    </ul>
+  </ng-sidebar>
+  <div ng-sidebar-content>
     <!--Page Header  -->
-    <mat-toolbar style="background-color: #000000; ">
-        <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;" (click)="toggleSidebar()">Abrir menú </a>
-        <span class="example-spacer"></span>
-        <a mat-raised-button style="margin-left: 1em;" routerLink="" (click)="cerrarsesion()">Cerrar Sesión</a>
+    <mat-toolbar style="background-color: #000000">
+      <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4" (click)="toggleSidebar()">Abrir menú
+      </a>
+      <span class="example-spacer"></span>
+      <a mat-raised-button style="margin-left: 1em" routerLink="" (click)="cerrarsesion()">Cerrar Sesión</a>
     </mat-toolbar>
-    <!--Page Body  -->  
-    
+    <!--Page Body  -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Proyectos</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <style type="text/css">
- 	@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700&display=swap');
+    <!DOCTYPE html>
+    <html lang="en">
 
- </style>
-</head>
-<body>
-  
-<div class="container ">
-  <h1 class="text-black text-center pb-2">Proyectos</h1>
+    <head>
+      <title>Proyectos</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+      <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <style type="text/css">
+        @import url("https://fonts.googleapis.com/css?family=Muli:300,400,600,700&display=swap");
+      </style>
+    </head>
 
-  	<div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
-  		<div class="card"  *ngFor="let proyecto of proyectos">
-  		<i class="fa fa-archive"></i>
-  		<h3>Nombre:{{proyecto.nombreproyecto}}</h3>
-  		<p><b>Descripción:</b>{{proyecto.descripcion}}</p>
-		  <div class="panel-group" id="accordion">
-			<div class="panel panel-default">
-			   <div class="panel-heading">
-				  <h6 class="panel-title">
-					 <a data-toggle="collapse" data-parent="#accordion" href="#collapse4"><div style="text-align:center;">Ver más</div></a>
-				  </h6>
-			   </div>
-			   <div id="collapse4" class="panel-collapse collapse in">
-				  <div class="panel-body">
-					<b>Habilidades requeridas:</b>
-					<ul>
-					 <li>Trabajo en Equipo</li>
-					 <li>Tolerancia a la Frustración</li>
-					 <li>Autogestión</li>
-					 <li>Y otra cosa que termine en on</li>
-					</ul>
-					<b>Colaboradores:</b>
-				<ul>
-					<li>Evelyn</li>
-					<li>Diandra</li>
-					<li>Diana</li>
-					<li>Rodrigo</li>
-					<li>Yana</li>
-					<li>Annerys</li>
-				</ul>
-				<p><b>Inicia el:</b> {{proyecto.fechainicio}}</p>
-				<p><b>Finaliza el:</b>{{proyecto.fechafinal}}</p>
-				  </div>
-				</div>
-			  </div>
-		</div>
-  	</div>
-  	</div>
+    <body>
+      <div class="container">
+        <h1 class="text-black text-center pb-2">Proyectos</h1>
 
-  </div>     
-  
- 
-  <div class="contenedor" *ngFor="let proyecto of proyectos">
-	<div *ngIf="proyectos!=null" >
-		<mat-card class="tarjeta">
-			<mat-card-header>	
-				<mat-card-title>
-					<p> Nombre:{{proyecto.nombreproyecto}}</p>
-				</mat-card-title>
-			</mat-card-header>
-					
-			<mat-card-content>
-					 
-				<p> Descripción {{proyecto.descripcion}}</p>
-				<p>Fecha de inicio:{{proyecto.fechainicio}}</p>
-				<p>Fecha de final:{{proyecto.fechafinal}}</p>	
-			</mat-card-content> 
-		</mat-card>
-	</div>
-  </div> 
-  
- </body>
-</html>
-</div>
+        <div class="mx-auto">
+          <div class="card" *ngFor="let proyecto of proyectos">
+            <i class="fa fa-archive"></i>
+
+            <h3>Nombre: {{ proyecto.nombreproyecto }}</h3>
+
+            <div class="panel-group" id="accordion">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h6 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="{{ '#collapse-' + proyecto.id }}">
+                      <div style="text-align: center">Ver más</div>
+                    </a>
+                  </h6>
+                </div>
+                <div id="{{ 'collapse-' + proyecto.id }}" class="panel-collapse collapse in">
+                  <div class="panel-body">
+                    <p><b>Descripción: </b>{{ proyecto.descripcion }}</p>
+                    <p><b>Inicia el: </b> {{ proyecto.fechainicio }}</p>
+                    <p><b>Finaliza el: </b>{{ proyecto.fechafinal }}</p>
+                    <p>
+                      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1"
+                        (click)="habilidadesProyecto(proyecto.id)" role="button" aria-expanded="false"
+                        aria-controls="multiCollapseExample1">Ver las Habilidades de este proyecto</a>
+
+                      <button class="btn btn-primary" type="button" data-toggle="collapse"
+                        data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"
+                        (click)="mostrarColab(proyecto.id)">
+                        Ver colaboradores de este proyecto
+                      </button>
+                    </p>
+                    <div class="row">
+                      <div class="col">
+                        <div class="collapse multi-collapse" id="multiCollapseExample1">
+                          <div class="card card-body">
+                            <b class="text-center">Habilidades requeridas:</b>
+
+                            <div style="width: 100%; margin: 1em auto" class="cajita2">
+                              <mat-table [dataSource]="hab">
+                                <ng-container matColumnDef="habilidad">
+                                  <mat-header-cell *matHeaderCellDef>
+                                    <th><b>Habilidades</b></th>
+                                  </mat-header-cell>
+                                  <mat-cell *matCellDef="let hab">{{ hab.habilidad}}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="botondeEliminar">
+                                  <mat-header-cell *matHeaderCellDef>
+                                    <th><b>Eliminar</b></th>
+                                  </mat-header-cell>
+                                  <mat-cell *matCellDef="let hab">
+                                    <button mat-mini-fab color="warn">
+                                      <mat-icon (click)=" borrarHabilidadProyecto( proyecto.id, hab.id)">delete
+                                      </mat-icon>
+                                    </button>
+                                  </mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="columnasH"></mat-header-row>
+                                <mat-row *matRowDef="let myRowData; columns: columnasH "></mat-row>
+                              </mat-table>
+                            </div>
+                            <button data-target="#AGREGARHABILIDAD" data-toggle="modal"
+                              (click)="obtenerHabilidades(proyecto.id)">
+                              AGREGAR
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="collapse multi-collapse" id="multiCollapseExample2">
+                          <div class="card card-body">
+                            <b class="text-center">Colaboradores:</b>
+                            <div style="width: 100%; margin: 1em auto" class="cajita2">
+                              <mat-table [dataSource]="colabProyecto">
+                                <ng-container matColumnDef="nombre">
+                                  <mat-header-cell *matHeaderCellDef>
+                                    <b>Nombre</b>
+                                  </mat-header-cell>
+                                  <mat-cell *matCellDef="let colabProyecto">{{
+                                      colabProyecto.nombre
+                                    }}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="apellido">
+                                  <mat-header-cell *matHeaderCellDef>
+                                    <b>Apellido</b>
+                                  </mat-header-cell>
+                                  <mat-cell *matCellDef="let colabProyecto">{{
+                                      colabProyecto.apellido
+                                    }}</mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="cargo">
+                                  <mat-header-cell *matHeaderCellDef>
+                                    <b>Cargo</b>
+                                  </mat-header-cell>
+                                  <mat-cell *matCellDef="let colabProyecto">{{
+                                      colabProyecto.cargo
+                                    }}</mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="botonEliminar">
+                                  <mat-header-cell *matHeaderCellDef>
+                                    <b>Eliminar</b>
+                                  </mat-header-cell>
+                                  <mat-cell *matCellDef="let colabProyecto">
+                                    <button mat-mini-fab color="warn" (click)="
+                                          borrarUsuarioProyecto(
+                                            proyecto.id,
+                                            colabProyecto.id_usuario
+                                          )
+                                        ">
+                                      <mat-icon>delete</mat-icon>
+                                    </button>
+                                  </mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
+                                <mat-row *matRowDef="
+                                      let myRowData;
+                                      columns: columnas
+                                    "></mat-row>
+                              </mat-table>
+                            </div>
+                            <button data-target="#AGREGARUSUARIO" data-toggle="modal"
+                              (click)="AgregarUsuario(proyecto.id)">
+                              AGREGAR
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+
+    </html>
+  </div>
 </ng-sidebar-container>
 
+<div class="modal fade" id="AGREGARUSUARIO">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <!-- cabecera del diálogo -->
+      <div class="modal-header">
+        <h4 class="modal-title">Agregar Usuarios a este Proyecto</h4>
+      </div>
+
+      <!-- cuerpo del diálogo -->
+      <div class="modal-body">
+        <div style="width: 90%; margin: 1em auto" class="mat-elevation-z2 cajita2">
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <input type="text" class="form-control" name="filterPost"
+                  placeholder="Buscar Colaboradores por nombre, habilidades o cargo" [(ngModel)]="filterPost" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>CORREO</th>
+                    <th>CARGO</th>
+                    <th>HABILIDADES</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor=" let usuarioHabilidad of usuarioHabilidad| filter: filterPost; index as i ">
+                    <td>{{ usuarioHabilidad.id_usuario }}</td>
+                    <td>{{ usuarioHabilidad.nombre }}</td>
+                    <td>{{ usuarioHabilidad.apellido }}</td>
+                    <td>{{ usuarioHabilidad.cargo }}</td>
+                    <td>{{ usuarioHabilidad.habilidad }}</td>
+                    <td><button (click)="guardarIndex(i)" [disabled]="estadoBoton[i]">AGREGAR</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-warning d-block mx-auto mt-4" style="border-bottom-style: solid; width: 30%"
+          >
+          Finalizar
+        </button>
+      </div>
+    </div>
+
+    <!-- pie del diálogo -->
+  </div>
+</div>
+
+<div class="modal fade" id="AGREGARHABILIDAD">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <!-- cabecera del diálogo -->
+      <div class="modal-header">
+        <h4 class="modal-title">Agregar nueva habilidad al Proyecto</h4>
+      </div>
+
+      <!-- cuerpo del diálogo -->
+      <div class="modal-body">
+        <select class="form-control" style="width: 50%; margin-left: auto; margin-right: auto" name="miselect"
+          placeholder="Seleccione una Habilidad" [(ngModel)]="habilidadSeleccionada" required>
+          <option [value]="habilidad.habilidad" *ngFor="let habilidad of habilidades">
+            {{ habilidad.habilidad }}
+          </option>
+        </select>
+      </div>
+
+      <!-- pie del diálogo -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="agregarProyectoHabilidades()">
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
