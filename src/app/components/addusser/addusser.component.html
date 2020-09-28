@@ -28,7 +28,7 @@
 
     <div class="container">
       <!-- Inicio Stepper -->
-      <mat-horizontal-stepper linear #stepper>
+      <mat-horizontal-stepper #stepper>
         <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
           <!-- Inicio Formulario  -->
           <div style=" margin-left: auto; margin-right: auto;" class="cajita">
@@ -126,8 +126,8 @@
             </div>
             </div>
               <div>
-                <button  class="btn btn-warning" style="margin-bottom: 2em;" matStepperNext 
-                (click)="crearUsuario(rol.value,nombre.value,apellido.value,rut.value,correo.value,contrasena.value,cargo.value)"
+                <button  class="btn btn-warning" style="margin-bottom: 2em;" 
+                (click)="crearUsuario(rol.value,nombre.value,apellido.value,rut.value,correo.value,contrasena.value,cargo.value,stepper)"
                 >Siguiente</button>
               </div>
               <hr>

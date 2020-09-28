@@ -20,7 +20,6 @@ export class ProfilecolabService {
   constructor(private http: HttpClient) { }
 
   //Servicio Cambio Clave
-
   modificarContraseña(usuario: Usuario) {
     const url = '/modificarClave/'
     return this.http.put<Usuario>(this.api + url + this.dato, usuario)
@@ -45,15 +44,15 @@ export class ProfilecolabService {
 
   //
   eliminarUsuarioHabilidad(id_usuario: number, id_habilidad: number){
-    const url = 'borrarUsuarioHabilidad'
+    const url = 'http://localhost:8080/api/borrarUsuarioHabilidad'
     let apiURL = `${url}/${id_usuario}/${id_habilidad}`;
-    return this.http.delete(this.api+apiURL, this.httpOptions);
+    return this.http.delete(apiURL, this.httpOptions);
   }
 
   //
-  obtenerColabHabilidades(id: number): Observable<Habilidades[]>{
-    const url = 'http://localhost:8080/api/habilidadesPorColab'
-    let apiURL = `${url}/${id}`;
-    return this.http.get<Habilidades[]>(apiURL);
+  obtenerColabHabilidades(){
+    return this.http.get('http://localhost:8080/api/habilidadesPorColab/' + this.dato);
   }
+
+
 }

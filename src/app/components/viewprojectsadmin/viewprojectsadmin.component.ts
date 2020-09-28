@@ -3,6 +3,7 @@ import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 import { UsuarioHabilidad } from "src/app/models/UsuarioHabilidad";
 import { StaffingService } from "src/app/staffing.service";
 import { Habilidades } from "src/app/models/habilidades";
+import { Proyecto } from "src/app/models/Proyecto";
 
 @Component({
   selector: 'app-viewprojectsadmin',
@@ -21,6 +22,7 @@ export class ViewprojectsadminComponent implements OnInit {
   proyectos=null;
     indexproyecto: number = null;
     estadoBoton: boolean[] = [];
+    idProyecto;
 
   toggleSidebar(){
     this.opened = !this.opened;
@@ -107,6 +109,20 @@ this.index=null;
     console.log(idproyecto);
     console.log(id_habilidad)
     this.service.borrarHabilidadProyecto(idproyecto,id_habilidad).subscribe()
+  }
+
+    cambios: Proyecto = {nombreproyecto: "",descripcion: "", fechainicio: "", fechafinal: ""}
+
+  modificarProyecto(){
+   this.service.modificarP(this.idProyecto, this.cambios).subscribe();
+   console.log(this.idProyecto)
+   console.log(this.cambios)
+
+  }
+
+  guardarIdproyecto(numProyecto){
+    this.idProyecto = numProyecto
+    console.log(this.idProyecto)
   }
 
 }

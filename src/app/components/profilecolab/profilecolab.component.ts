@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, ɵConsole } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ProfilecolabService } from 'src/app/components/profilecolab/profilecolab.service'
@@ -24,11 +24,11 @@ export class ProfilecolabComponent implements OnInit {
   usuario: Usuario[] = [];
   @Input() usuarioo: Usuario
   mensaje;
-  habilidad;
+  habilidadSeleccionada;
   firstFormGroup: FormGroup;
   usuarios = null;
   mostrarAlerta = false;
-  hab :Habilidades[] =[];
+  habilidadesColaborador = null;
   habilidades: Habilidades [] = [];
 
   //Sidebar
@@ -40,23 +40,30 @@ export class ProfilecolabComponent implements OnInit {
   ngOnInit(): void {
     this.dato = JSON.parse(localStorage.getItem("usuario")).id;
     console.log(this.dato);
-    this.profilecolabService.retornar(this.dato).subscribe( result =>  {this.usuarios = result});
-    this.firstFormGroup = this._formBuilder.group({
+
+    //datos colaborador
+    this.profilecolabService.retornar(this.dato).subscribe( 
+      result =>  {this.usuarios = result,
+        // Habilidades Colaborador
+     this.profilecolabService.obtenerColabHabilidades().subscribe(
+       result => this.habilidadesColaborador = result,
+       )
+     }
+     
+     );
+    
+    // Todas las habilidades
+    this.viewproyectsservice.obtenerHabilidades().subscribe(result => this.habilidades = result)
+    console.log(this.habilidades, "Select")
+    
+      this.firstFormGroup = this._formBuilder.group({
       contrasena: [null,[ Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
     });
+    
+    
 
-    this.profilecolabService.obtenerColabHabilidades(this.dato)
-      .subscribe(result => this.hab = result);
-
-      this.viewproyectsservice.obtenerHabilidades()
-      .subscribe(habilidades => this.habilidades=habilidades);
   }
 
-  habilidadcolab: [
-    { habilidades: 'Trabajo en equipo' }
-  ]
-
-  columnasAVer: String[] = ['habilidad', 'boton'];
 
   colab = [
     { habilidades: 'Trabajo en equipo' },
@@ -70,17 +77,17 @@ export class ProfilecolabComponent implements OnInit {
 
   //Servicio Agregar Habilidad
   agregarUsuarioHabilidad() {
-    
-    this.profilecolabService.agregarHabilidades(this.habilidad).subscribe(habilidad => {
-      this.mostrarAlerta=true;
-      this.mensaje = 'Se agrego la habilidad ' + this.habilidad + ' Correctamente'
-    },  err => {alert("Exploto")} 
+    console.log(this.habilidadSeleccionada)
+    this.profilecolabService.agregarHabilidades(this.habilidadSeleccionada).subscribe
+    (habilidad => {this.mostrarAlerta=true; this.mensaje = 'Se agrego la habilidad ' + this.habilidadSeleccionada + ' Correctamente'
+    },  err => {alert(this.habilidadSeleccionada)} 
     );
     
     setTimeout(() => {
       this.mostrarAlerta=false;
     }, 3000);
   }
+
 
   //Servicio Modificar Clave
   CambioClave(contrasena: String) {
@@ -90,16 +97,25 @@ export class ProfilecolabComponent implements OnInit {
     });
   }
 
-  borrar(id: number){
-    this.profilecolabService.eliminarUsuarioHabilidad(this.dato, id)
-      .subscribe(); alert('Se elimino la habilidad correctamente');
-      window.location.reload();
-  }
+ borrarHabilidadUsuario(){
+ this.profilecolabService.eliminarUsuarioHabilidad(this.dato, this.habilidadesColaborador[this.index].id)
+.subscribe(); 
+console.log(this.habilidadesColaborador[this.index].id)
+//alert('Se elimino la habilidad correctamente');
+ // window.location.reload();
+}
 
+  // Guardar Id Habilidad para borrar
   index: number = null;
 guardarIndex(i: number){
 this.index = i;
+console.log(this.index);
+console.log(this.habilidadesColaborador[this.index].id)
 
+}
+
+prueba(){
+  console.log('holatu')
 }
 
 }

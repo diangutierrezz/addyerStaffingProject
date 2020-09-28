@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
@@ -9,6 +9,8 @@ import { RouterLink } from '@angular/router';
 import { AddSkillService } from "../addusser/add-skill.service";
 import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 import { Habilidades } from "src/app/models/habilidades";
+import { MatStepper } from '@angular/material/stepper';
+
 
 @Component({
   selector: 'app-addusser',
@@ -16,7 +18,7 @@ import { Habilidades } from "src/app/models/habilidades";
   styleUrls: ['./addusser.component.css']
 })
 export class AddusserComponent implements OnInit {
-
+  
 
   //Funciones Sidebar
   opened = false;
@@ -26,7 +28,7 @@ export class AddusserComponent implements OnInit {
   mostrarAlerta = false;
   habilidades: Habilidades [] = [];
   habilidadElegida;
-columnasAuseer = ['habilidad'];
+  columnasAuseer = ['habilidad'];
   mensaje;
   usuario: Usuario[] = [];
 
@@ -95,9 +97,17 @@ columnasAuseer = ['habilidad'];
   
 
   // Servicio Para Crear Usuario
-  crearUsuario(rol: String, nombre: String, apellido: String, rut: String, correo: String, contrasena: String, cargo: String) {
+  crearUsuario(rol: String, nombre: String, apellido: String, rut: String, correo: String, contrasena: String, cargo: String, stepper: MatStepper) {
     this.service.AgregarUsuario({ rol, nombre, apellido, rut, correo, contrasena, cargo } as Usuario).subscribe(usuario => {
-      this.usuario.push(usuario)
+      if(usuario[0] == "Usuario Existe"){
+        alert("Usuario ya existe en la base de datos")
+       } if (usuario[0] == "Usuario Creado"){
+         console.log("funciono")
+        stepper.selected.completed = true;
+        stepper.next();
+         alert("Usuario Creado Correctamente")
+         
+       }
     });
 
   }
@@ -109,7 +119,7 @@ columnasAuseer = ['habilidad'];
     this.addSkillService.crearUsuarioHabilidades(rut,this.habilidadElegida).subscribe(habilidad => {
       this.mostrarAlerta=true;
       this.mensaje = 'Se agrego la habilidad ' + this.habilidadElegida + ' Correctamente'
-    },  err => {alert("Exploto")} 
+    },  err => {alert("Error al agregar la habilidad")} 
     );
     
     setTimeout(() => {

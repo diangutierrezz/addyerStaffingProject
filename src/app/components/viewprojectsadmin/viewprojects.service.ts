@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { from, Observable } from 'rxjs';
 import { ColabProyecto } from "src/app/models/ColabProyecto";
 import { Habilidades } from "src/app/models/habilidades";
+import { Proyecto } from "src/app/models/Proyecto";
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +39,6 @@ export class ViewprojectsService {
       const url = 'http://localhost:8080/api/agregarUsuarioProyecto';
       let apiURL = `${url}/${id_usuario}/${id_proyecto}/`
       return this.http.post(apiURL,this.httpOptions)
-
     }
 
     EliminarUsuarioProyecto(id_proyecto: number, id_usuario:number){
@@ -63,5 +63,11 @@ export class ViewprojectsService {
       const url = 'http://localhost:8080/api/borrarProyectoHabilidades'
       let apiURL = `${url}/${id_proyecto}/${id_habilidad}/`
       return this.http.delete(apiURL,this.httpOptions)
+    }
+
+    modificarP(id:number, cambios: Proyecto): Observable<Proyecto> {
+      const url = 'http://localhost:8080/api/modificarProyecto'
+      let apiURL = `${url}/${id}/`;
+      return this.http.put<Proyecto>(apiURL, cambios, this.httpOptions);
     }
 }
