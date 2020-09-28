@@ -34,6 +34,7 @@ export class CreateprojectComponent implements OnInit {
    nombreproyecto;
    fechainicio;
 
+
     constructor(  public service: CreateprojectService, private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -98,7 +99,9 @@ export class CreateprojectComponent implements OnInit {
     console.log(this.index, "posicion tabla")
     console.log(this.usuarioxHabilidad[this.index].id_usuario, "Id usuario")
     this.service.crearUsuarioProyecto(this.usuarioxHabilidad[this.index].id_usuario,this.nombreproyecto, fechainicio).subscribe();
+    this.estadoBoton[i]=true;
     this.index=null;  
+    alert("Se Agregó el colaborador correctamente")
       }
       
     }

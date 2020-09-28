@@ -23,7 +23,7 @@ export class ViewprojectsadminComponent implements OnInit {
     indexproyecto: number = null;
     estadoBoton: boolean[] = [];
     idProyecto;
-    isPushed: boolean = false;
+  
   toggleSidebar(){
     this.opened = !this.opened;
   }
@@ -31,12 +31,7 @@ export class ViewprojectsadminComponent implements OnInit {
   filterPost = '';
   usuarioHabilidad: UsuarioHabilidad [] = [];
 
-  pushMe() {
-    this.isPushed = true;
-}
-unPushMe() {
-    this.isPushed = false;
-}
+
 
  
   constructor(private service: ViewprojectsService, private StaffingService:StaffingService) { }

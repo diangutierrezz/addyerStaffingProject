@@ -210,8 +210,8 @@
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <!-- cabecera del diálogo -->
-      <div class="modal-header">
-        <h4 class="modal-title">Agregar Usuarios a este Proyecto</h4>
+      <div class="text-center">
+        <h4 class="modal-title mt-4"> <b>Agregar Usuarios a este Proyecto</b> </h4>
       </div>
 
       <!-- cuerpo del diálogo -->
@@ -245,14 +245,14 @@
                     <td>{{ usuarioHabilidad.apellido }}</td>
                     <td>{{ usuarioHabilidad.cargo }}</td>
                     <td>{{ usuarioHabilidad.habilidad }}</td>
-                    <td><button (click)="guardarIndex(i)" [disabled]="estadoBoton[i]">AGREGAR</button></td>
+                    <td><button class="btn btn-warning" (click)="guardarIndex(i)" [disabled]="estadoBoton[i]">AGREGAR</button></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-        <button class="btn btn-warning d-block mx-auto mt-4" style="border-bottom-style: solid; width: 30%">
+        <button aria-label="Close" class="btn btn-warning d-block mx-auto mt-4" style="border-bottom-style: solid; width: 30%">
           Finalizar
         </button>
       </div>

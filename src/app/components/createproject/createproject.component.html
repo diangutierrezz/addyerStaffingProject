@@ -165,7 +165,8 @@
                           <td>{{usuariox.apellido}}</td>                          
                           <td>{{usuariox.cargo}}</td>
                           <td>{{usuariox.habilidad}}</td>
-                          <td><button mat-raised-button style="background-color: #cf7500; color: #f4f4f4; border-bottom-style: solid; width: 30%;" (click)="guardarIndex(i, fechai.value)">Agregar</button></td>
+                          <td><button mat-raised-button style="background-color: #cf7500; color: #f4f4f4; border-bottom-style: solid;"
+                             (click)="guardarIndex(i, fechai.value)" [disabled]="estadoBoton[i]">Agregar</button></td>
                         </tr>
                       </tbody>
                     </table>
