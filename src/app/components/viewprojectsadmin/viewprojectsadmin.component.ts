@@ -23,13 +23,20 @@ export class ViewprojectsadminComponent implements OnInit {
     indexproyecto: number = null;
     estadoBoton: boolean[] = [];
     idProyecto;
-
+    isPushed: boolean = false;
   toggleSidebar(){
     this.opened = !this.opened;
   }
 
   filterPost = '';
   usuarioHabilidad: UsuarioHabilidad [] = [];
+
+  pushMe() {
+    this.isPushed = true;
+}
+unPushMe() {
+    this.isPushed = false;
+}
 
  
   constructor(private service: ViewprojectsService, private StaffingService:StaffingService) { }
@@ -75,6 +82,7 @@ this.index=null;
   borrarUsuarioProyecto(id:number, id_usuario:number){
       this.service.EliminarUsuarioProyecto(id,id_usuario).subscribe ()
       alert("Se Elimino el usuario de este proyecto")
+      window.location.reload();
   }
 
 
@@ -100,7 +108,7 @@ this.index=null;
   agregarProyectoHabilidades(){
     console.log(this.habilidadSeleccionada)
     this.service.agregarHabilidadProyecto(this.indexproyecto,this.habilidadSeleccionada).subscribe()
-    alert(this.habilidadSeleccionada)
+    alert("Habilidad Agregada Correctamente")
     this.indexproyecto=null;
 
   }
@@ -109,6 +117,7 @@ this.index=null;
     console.log(idproyecto);
     console.log(id_habilidad)
     this.service.borrarHabilidadProyecto(idproyecto,id_habilidad).subscribe()
+    window.location.reload();
   }
 
     cambios: Proyecto = {nombreproyecto: "",descripcion: "", fechainicio: "", fechafinal: ""}
@@ -117,6 +126,7 @@ this.index=null;
    this.service.modificarP(this.idProyecto, this.cambios).subscribe();
    console.log(this.idProyecto)
    console.log(this.cambios)
+   window.location.reload();
 
   }
 

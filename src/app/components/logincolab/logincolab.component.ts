@@ -51,10 +51,18 @@ export class LogincolabComponent implements OnInit {
         verificación de logueo */
     else {
       
-      this.service.logincolab({ correo, contrasena } as Usuario).subscribe(userResponse => { localStorage.setItem("usuario",JSON.stringify(userResponse));
-      this.router.navigate(['homecolab'])
-    });
-    }   
+      let usuarioDatos = JSON.parse(localStorage.getItem("usuario"));
+        this.service.logincolab({ correo, contrasena } as Usuario).subscribe(
+        userResponse => {
+          if (userResponse [0] == "Usuario no existe"){
+            alert ("Usuario no se encuentra registrado en la base de datos")
+          } else {
+              localStorage.setItem("usuario",JSON.stringify( userResponse [0] ));
+              this.router.navigate(['homecolab']) 
+            }},
+        error => { alert("Los datos no coinciden o no tiene permisos")
+       })
+      }
   }
   
   openDialog() {

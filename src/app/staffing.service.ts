@@ -17,13 +17,13 @@ export class StaffingService {
 
   api = "http://localhost:8080/api/";
 
-  logincolab(usuario: Usuario): Observable<Usuario> {
+  logincolab(usuario: Usuario): Observable<any> {
     const url = 'logincolab'
-    return this.http.post<Usuario>(this.api + url, usuario);
+    return this.http.post<any>(this.api + url, usuario);
   }
-  loginAdmin(usuario: Usuario): Observable<Usuario> {
+  loginAdmin(usuario: Usuario): Observable<any> {
     const url = 'loginAdmin'
-    return this.http.post<Usuario>(this.api + url, usuario);
+    return this.http.post<any>(this.api + url, usuario);
   }
 
   AgregarUsuario(usuario: Usuario): Observable<Usuario> {

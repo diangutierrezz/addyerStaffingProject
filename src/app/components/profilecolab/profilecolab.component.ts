@@ -86,6 +86,7 @@ export class ProfilecolabComponent implements OnInit {
     setTimeout(() => {
       this.mostrarAlerta=false;
     }, 3000);
+    window.location.reload();
   }
 
 
@@ -95,14 +96,15 @@ export class ProfilecolabComponent implements OnInit {
       this.usuario.toString()
       alert("La contraseña se modifico correctamente")
     });
+    contrasena = null;
   }
 
  borrarHabilidadUsuario(){
  this.profilecolabService.eliminarUsuarioHabilidad(this.dato, this.habilidadesColaborador[this.index].id)
 .subscribe(); 
 console.log(this.habilidadesColaborador[this.index].id)
-//alert('Se elimino la habilidad correctamente');
- // window.location.reload();
+alert('Se elimino la habilidad correctamente');
+ window.location.reload();
 }
 
   // Guardar Id Habilidad para borrar
