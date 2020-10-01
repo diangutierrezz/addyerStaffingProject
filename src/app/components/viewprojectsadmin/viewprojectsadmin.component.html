@@ -61,12 +61,14 @@
         <div class="mx-auto">
           <div class="card" *ngFor="let proyecto of proyectos">
             <button mat-mini-fab color="#cf7500">
-              <mat-icon data-target="#MODIFICARPROYECTO" data-toggle="modal" (click)="guardarIdproyecto(proyecto.id)">create</mat-icon></button>
+              <mat-icon data-target="#MODIFICARPROYECTO" data-toggle="modal" (click)="guardarIdproyecto(proyecto.id)">
+                create</mat-icon>
+            </button>
             <i class="fa fa-archive"></i>
-            
+
 
             <h3><b>{{ proyecto.nombreproyecto }}</b></h3>
-          
+
             <div class="panel-group" id="accordion">
               <div class="panel panel-default">
                 <div class="panel-heading">
@@ -78,20 +80,21 @@
                 </div>
                 <div id="{{ 'collapse-' + proyecto.id }}" class="panel-collapse collapse in">
                   <div class="panel-body">
-      
-                    <div style="width: 60%; margin: auto; text-align: justify; "><p>{{ proyecto.descripcion }}</p></div>
+
+                    <div style="width: 60%; margin: auto; text-align: justify; ">
+                      <p>{{ proyecto.descripcion }}</p>
+                    </div>
                     <p><b>Inicia el: </b> {{ proyecto.fechainicio }}</p>
                     <p><b>Finaliza el: </b>{{ proyecto.fechafinal }}</p>
                     <p>
                       <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1"
                         (click)="habilidadesProyecto(proyecto.id)" role="button" aria-expanded="false"
-                        class="btn btn-warning " style="margin-right: 70px" 
-                        aria-controls="multiCollapseExample1">Ver las Habilidades de este proyecto</a>
+                        class="btn btn-warning " style="margin-right: 70px" aria-controls="multiCollapseExample1">Ver
+                        las Habilidades de este proyecto</a>
 
                       <button class="btn btn-primary" type="button" data-toggle="collapse"
                         data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2"
-                        class="btn btn-warning" style="margin-left: 70px"
-                        (click)="mostrarColab(proyecto.id)">
+                        class="btn btn-warning" style="margin-left: 70px" (click)="mostrarColab(proyecto.id)">
                         Ver colaboradores de este proyecto
                       </button>
                     </p>
@@ -245,14 +248,16 @@
                     <td>{{ usuarioHabilidad.apellido }}</td>
                     <td>{{ usuarioHabilidad.cargo }}</td>
                     <td>{{ usuarioHabilidad.habilidad }}</td>
-                    <td><button class="btn btn-warning" (click)="guardarIndex(i)" [disabled]="estadoBoton[i]">AGREGAR</button></td>
+                    <td><button class="btn btn-warning" (click)="guardarIndex(i)"
+                        [disabled]="estadoBoton[i]">AGREGAR</button></td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-        <button aria-label="Close" class="btn btn-warning d-block mx-auto mt-4" style="border-bottom-style: solid; width: 30%">
+        <button aria-label="Close" class="btn btn-warning d-block mx-auto mt-4"
+          style="border-bottom-style: solid; width: 30%" (click)="finalizar()">
           Finalizar
         </button>
       </div>
@@ -262,70 +267,77 @@
   </div>
 </div>
 <div>
-<div class="modal fade" id="AGREGARHABILIDAD">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <!-- cabecera del diálogo -->
-      <div class="modal-header">
-        <h4 class="modal-title">Agregar nueva habilidad al Proyecto</h4>
-      </div>
+  <div class="modal fade" id="AGREGARHABILIDAD">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <!-- cabecera del diálogo -->
+        <div class="modal-header">
+          <h4 class="modal-title">Agregar nueva habilidad al Proyecto</h4>
+        </div>
 
-      <!-- cuerpo del diálogo -->
+        <!-- cuerpo del diálogo -->
 
-      <div class="modal-body">
-        <select class="form-control" style="width: 50%; margin-left: auto; margin-right: auto" name="miselect"
-          placeholder="Seleccione una Habilidad" [(ngModel)]="habilidadSeleccionada" required>
-          <option [value]="habilidad.habilidad" *ngFor="let habilidad of habilidades">
-            {{ habilidad.habilidad }}
-          </option>
-        </select>
-      </div>
+        <div class="modal-body">
+          <select class="form-control" style="width: 50%; margin-left: auto; margin-right: auto" name="miselect"
+            placeholder="Seleccione una Habilidad" [(ngModel)]="habilidadSeleccionada" required>
+            <option [value]="habilidad.habilidad" *ngFor="let habilidad of habilidades">
+              {{ habilidad.habilidad }}
+            </option>
+          </select>
+        </div>
 
-      <!-- pie del diálogo -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="agregarProyectoHabilidades()">
-          Agregar
-        </button>
+        <!-- pie del diálogo -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="agregarProyectoHabilidades()">
+            Agregar
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-</div>
 <!-- MODAL ModificarProyecto -->
 
 
-<div class="modal fade" id="MODIFICARPROYECTO" >
+<div class="modal fade" id="MODIFICARPROYECTO">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content cajita ">
       <!-- cabecera del diálogo -->
-      <div class="mt-4" >
-        <div style="text-align: center;"><h5> <b>Modificar Proyecto</b> </h5></div>
+      <div class="mt-4">
+        <div style="text-align: center;">
+          <h5> <b>Modificar Proyecto</b> </h5>
+        </div>
       </div>
       <hr>
       <!-- cuerpo del diálogo -->
       <div class="container">
-      <form  >
-        <div class="form-group">
-          <label class="mt-2" >Nombre del Proyecto</label>
-          <input  type="text" name="nombreproyecto" class="form-control" id="exampleFormControlInput1" placeholder="Nuevo nombre" [(ngModel)]="cambios.nombreproyecto">
-        </div>
-        <div class="form-group">
-          <label for="descripcion">Descripción del Proyecto</label>
-          <textarea class="form-control" name="descripcion" id="descripcion" rows="3" [(ngModel)]="cambios.descripcion"></textarea>
-        </div>
-        <div class="form-group">
-          <label >Fecha de Inicio</label>
-          <input type="text" class="form-control" name="fechainicio" id="inicio" placeholder="MM-DD-AAAA" [(ngModel)]="cambios.fechainicio">
-        </div>
-        <div class="form-group">
-          <label >Fecha de Término</label>
-          <input type="text" class="form-control" name="fechafinal" id="final" placeholder="MM-DD-AAAA" [(ngModel)]="cambios.fechafinal">
-        </div>
-      </form>
-</div>
+        <form>
+          <div class="form-group">
+            <label class="mt-2">Nombre del Proyecto</label>
+            <input type="text" name="nombreproyecto" class="form-control" id="exampleFormControlInput1"
+              placeholder="Nuevo nombre" [(ngModel)]="cambios.nombreproyecto">
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción del Proyecto</label>
+            <textarea class="form-control" name="descripcion" id="descripcion" rows="3"
+              [(ngModel)]="cambios.descripcion"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Fecha de Inicio</label>
+            <input type="text" class="form-control" name="fechainicio" id="inicio" placeholder="MM-DD-AAAA"
+              [(ngModel)]="cambios.fechainicio">
+          </div>
+          <div class="form-group">
+            <label>Fecha de Término</label>
+            <input type="text" class="form-control" name="fechafinal" id="final" placeholder="MM-DD-AAAA"
+              [(ngModel)]="cambios.fechafinal">
+          </div>
+        </form>
+      </div>
       <!-- pie del diálogo -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" style="margin: auto;" data-dismiss="modal" (click)="modificarProyecto()">
+        <button type="button" class="btn btn-warning" style="margin: auto;" data-dismiss="modal"
+          (click)="modificarProyecto()">
           Modificar
         </button>
       </div>

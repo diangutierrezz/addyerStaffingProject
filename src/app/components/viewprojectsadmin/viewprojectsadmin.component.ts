@@ -72,6 +72,7 @@ this.index=null;
   agregarUsuarioProyecto(id_usuario:number, id_proyecto:number){
     this.service.agregarUsuarioProyecto(id_usuario,id_proyecto).subscribe()
     alert('Se Agrego el usuario al proyecto Correctamente')
+    window.location.reload();
   }
 
   borrarUsuarioProyecto(id:number, id_usuario:number){
@@ -91,6 +92,7 @@ this.index=null;
        }
       }
       );
+  
   }
 
   obtenerHabilidades(id:number){
@@ -105,6 +107,7 @@ this.index=null;
     this.service.agregarHabilidadProyecto(this.indexproyecto,this.habilidadSeleccionada).subscribe()
     alert("Habilidad Agregada Correctamente")
     this.indexproyecto=null;
+    window.location.reload();
 
   }
 
@@ -128,6 +131,10 @@ this.index=null;
   guardarIdproyecto(numProyecto){
     this.idProyecto = numProyecto
     console.log(this.idProyecto)
+  }
+
+  finalizar(){
+    window.location.reload();
   }
 
 }

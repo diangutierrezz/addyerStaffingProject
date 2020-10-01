@@ -60,9 +60,12 @@
                 <div class="form-group"> 
                 <mat-form-field style="width: 100%;" appearance="outline">
                   <mat-label for="contrasena">Nueva Contraseña</mat-label>
-                  <input matInput [(ngModel)]= "contrasena" name="contrasena" type="password" matInput required placeholder="Nueva Contraseña"
+                  <input matInput [(ngModel)]= "contrasena" name="contrasena" [type]="show ? 'text' : 'password'" matInput required placeholder="Nueva Contraseña"
                   id="contrasena" formControlName="contrasena" minlength="5" maxlength="10" >
               </mat-form-field > 
+              <button class="btn btn-warning" style="margin-bottom: 5%;
+                  margin-left: 5%;     width: 45%;" (click)="password()">Ver contraseña</button>
+
               <div *ngIf="f.contrasena.touched && f.contrasena.invalid" class="alert alert-danger" style="width: 100%;  margin-left: auto;
         margin-right: auto;">
           <div *ngIf="f.contrasena.errors.required">Contraseña requerida</div>

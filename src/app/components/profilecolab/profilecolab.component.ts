@@ -17,7 +17,9 @@ import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 export class ProfilecolabComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) document, private profilecolabService: ProfilecolabService,
-   private _formBuilder: FormBuilder, private viewproyectsservice: ViewprojectsService) { }
+   private _formBuilder: FormBuilder, private viewproyectsservice: ViewprojectsService) { 
+    this.show = false;
+   }
   // Variables
   contrasena: String = "";
   dato;
@@ -30,6 +32,11 @@ export class ProfilecolabComponent implements OnInit {
   mostrarAlerta = false;
   habilidadesColaborador = null;
   habilidades: Habilidades [] = [];
+
+  show: boolean;
+  password() {
+    this.show = !this.show;
+}
 
   //Sidebar
   opened = false;
@@ -119,5 +126,7 @@ console.log(this.habilidadesColaborador[this.index].id)
 prueba(){
   console.log('holatu')
 }
+
+
 
 }

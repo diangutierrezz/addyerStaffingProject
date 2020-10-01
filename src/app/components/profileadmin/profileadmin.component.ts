@@ -18,8 +18,11 @@ export class ProfileadminComponent implements OnInit {
   usuarios=null;
   opened = false;
   firstFormGroup: FormGroup;
+  show: boolean;
 
-  constructor(@Inject(DOCUMENT)document, private service:ProfileadminService, private _formBuilder: FormBuilder) { }
+  constructor(@Inject(DOCUMENT)document, private service:ProfileadminService, private _formBuilder: FormBuilder) {
+    this.show = false;
+   }
 
   usuario: Usuario [] = [];
 
@@ -33,6 +36,10 @@ export class ProfileadminComponent implements OnInit {
       contrasena: [null,[ Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
     });
   }
+
+  password() {
+    this.show = !this.show;
+}
 
   toggleSidebar(){
     this.opened = !this.opened;

@@ -132,11 +132,13 @@
                 <form class=" text-center" style="padding: 1em;">
                   <mat-form-field style="width: 100%;" appearance="outline">
                     <mat-label>Nueva Contraseña</mat-label>
-                    <input matInput [(ngModel)]="contrasena" name="contrasena" type="password" matInput required
+                    <input ID="txtPassword" matInput [(ngModel)]="contrasena" name="contrasena" [type]="show ? 'text' : 'password'" matInput required
                       placeholder="Contraseña">
-                  </mat-form-field>
+                  </mat-form-field> <button class="btn btn-warning" style="margin-bottom: 5%;
+                  margin-left: 5%;" (click)="password()">Ver contraseña</button>
+                  
                   <br>
-                  <button class="btn btn-warning" (click)="CambioClave(contrasena)">Guardar Cambios</button>
+                  <button class="btn btn-warning" (click)="CambioClave(contrasena)" style="    margin-right: 10%;">Guardar Cambios</button>
                   <button type="reset" class="btn btn-danger">Cancelar</button>
                 </form>
               </div>
