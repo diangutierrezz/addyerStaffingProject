@@ -2,7 +2,7 @@
   <!--Sidebar  -->
   <ng-sidebar [opened]="opened">
     <img
-      src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F"
+      src="https://scontent.fscl27-1.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=R7_AAlM-FfwAX9Hm9Iv&_nc_ht=scontent.fscl27-1.fna&oh=28e4b91c260bef52a32a2e3205b24665&oe=5F9EAA1F"
       width="200" height="200" class="img-fluid rounded-circle" />
     <p style="padding-left: 1.5em; margin-top: 1em">Sesión Administrador</p>
     <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4" (click)="toggleSidebar()">Cerrar
@@ -117,9 +117,9 @@
                                   <mat-header-cell *matHeaderCellDef>
                                     <th><b>Eliminar</b></th>
                                   </mat-header-cell>
-                                  <mat-cell *matCellDef="let hab">
+                                  <mat-cell *matCellDef="let hab; index as i ">
                                     <button mat-mini-fab color="warn">
-                                      <mat-icon (click)=" borrarHabilidadProyecto( proyecto.id, hab.id)">delete
+                                      <mat-icon (click)=" borrarHabilidadProyecto(i, proyecto.id, hab.id)">delete
                                       </mat-icon>
                                     </button>
                                   </mat-cell>
@@ -170,9 +170,9 @@
                                   <mat-header-cell *matHeaderCellDef>
                                     <b>Eliminar</b>
                                   </mat-header-cell>
-                                  <mat-cell *matCellDef="let colabProyecto">
+                                  <mat-cell *matCellDef="let colabProyecto; index as P">
                                     <button mat-mini-fab color="warn" (click)="
-                                          borrarUsuarioProyecto(
+                                          borrarUsuarioProyecto(P,
                                             proyecto.id,
                                             colabProyecto.id_usuario
                                           )
@@ -248,7 +248,7 @@
                     <td>{{ usuarioHabilidad.apellido }}</td>
                     <td>{{ usuarioHabilidad.cargo }}</td>
                     <td>{{ usuarioHabilidad.habilidad }}</td>
-                    <td><button class="btn btn-warning" (click)="guardarIndex(i)"
+                    <td><button class="btn btn-warning" (click)="guardarNuevoUsuarioProyecto(i)"
                         [disabled]="estadoBoton[i]">AGREGAR</button></td>
                   </tr>
                 </tbody>
@@ -256,8 +256,8 @@
             </div>
           </div>
         </div>
-        <button aria-label="Close" class="btn btn-warning d-block mx-auto mt-4"
-          style="border-bottom-style: solid; width: 30%" (click)="finalizar()">
+        <button data-dismiss="modal" class="btn btn-warning d-block mx-auto mt-4"
+          style="border-bottom-style: solid; width: 30%"  (click)="finalizar()">
           Finalizar
         </button>
       </div>

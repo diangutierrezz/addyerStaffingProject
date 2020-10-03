@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { ViewcolabsService } from '../viewcolabs/viewcolabs.service';
 import { UpdatecolabComponent } from '../updatecolab/updatecolab.component';
@@ -6,16 +6,18 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DeletecolabComponent } from "../deletecolab/deletecolab.component";
 import { Router, RouterLink } from '@angular/router';
 
+
 @Component({
   selector: 'app-viewcolabs',
   templateUrl: './viewcolabs.component.html',
-  styleUrls: ['./viewcolabs.component.css']
+  styleUrls: ['./viewcolabs.component.css'],
 })
 export class ViewcolabsComponent implements OnInit {
 
   usuario: Usuario [] = [];
   columnasAMostrar: String[] = ['rol', 'nombre', 'apellido', 'rut', 'correo', 'cargo', 'botonModificar', 'botonEliminar'];
   opened = false;
+  @Input() data: string[];
 
   constructor(private viewcolabsService: ViewcolabsService,  public dialog: MatDialog,private router: Router) { }
 
@@ -27,6 +29,7 @@ this.actualizarTabla();
     localStorage.removeItem("usuario");
   }
 
+  
   toggleSidebar(){
     this.opened = !this.opened;
   }

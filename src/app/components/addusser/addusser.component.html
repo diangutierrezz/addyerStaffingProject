@@ -27,8 +27,9 @@
 
 
     <div class="container">
-      <!-- Inicio Stepper -->
+         <!--STEPPER-->
       <mat-horizontal-stepper #stepper>
+         <!--PRIMERA VENTANA-->
         <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
           <!-- Inicio Formulario  -->
           <div style=" margin-left: auto; margin-right: auto;" class="cajita">
@@ -125,6 +126,7 @@
                 <div *ngIf="f.cargo.errors.required">Cargo requerido</div>
             </div>
             </div>
+            <!-- Enviar Formulario  -->
               <div>
                 <button  class="btn btn-warning" style="margin-bottom: 2em;" 
                 (click)="crearUsuario(rol.value,nombre.value,apellido.value,rut.value,correo.value,contrasena.value,cargo.value,stepper)"

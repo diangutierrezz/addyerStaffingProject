@@ -1,7 +1,9 @@
 <ng-sidebar-container>
   <!--Sidebar  -->
   <ng-sidebar [opened]="opened">
-      <img src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F" width="200" height="200" class="img-fluid rounded-circle" >
+    <img
+    src="https://scontent.fscl27-1.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=R7_AAlM-FfwAX9Hm9Iv&_nc_ht=scontent.fscl27-1.fna&oh=28e4b91c260bef52a32a2e3205b24665&oe=5F9EAA1F"
+    width="200" height="200" class="img-fluid rounded-circle" />
       <p style="padding-left: 1.2em; margin-top: 1em;">Sesión Administrador</p>
       <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;" (click)='toggleSidebar()'>Cerrar menú </a>
       <ul class="menu">
@@ -23,12 +25,14 @@
 
     <!--STEPPER-->
     <div class="container">
-    <mat-horizontal-stepper linear #stepper>
+    <mat-horizontal-stepper  #stepper>
       <!--PRIMERA VENTANA-->
       
       <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+        <!-- Inicio Formulario  -->
         <div style=" margin-left: auto; margin-right: auto;" class="cajita2">
           <form class="text-center" style="padding: 1em;" [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Crear Nuevo Proyecto</ng-template>
             <div class="p-4"><h3>Crear Proyecto</h3></div> 
             <hr>
 
@@ -81,8 +85,11 @@
               <div *ngIf="f.final.errors.required">Fecha de Término requerida</div>
           </div>
           </div>
+          <!-- Enviar Formulario  -->
             <div>
-              <button  class="btn btn-warning" style="margin-bottom: 2em;" matStepperNext (click)="crearProyecto(nombrepr.value, descripcion.value, fechai.value, fechafinal.value)" >Siguiente</button>
+              <button  class="btn btn-warning" style="margin-bottom: 2em;"
+               (click)="crearProyecto(nombrepr.value, descripcion.value, fechai.value, fechafinal.value, stepper)" 
+               >Siguiente</button>
             </div>
             <hr>
             <div class="text-muted">

@@ -24,7 +24,7 @@ export class ViewprojectsService {
       
     }     
 
-    ObtenerUsuarioHabilidades(id:number){
+    ObtenerProyectoHabilidades(id:number){
       return this.http.get<Habilidades[]>("http://localhost:8080/api/habilidadesPorProyecto/" + id)
 
     }

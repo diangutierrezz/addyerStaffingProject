@@ -39,7 +39,7 @@ export class LogincolabComponent implements OnInit {
 
   logincolab(correo: String, contrasena: String) {
 
-    /* ningun campo vacío */
+    // ningun campo vacío 
     if (!correo.trim()) {
       alert("Campo correo vacio");
     }
@@ -47,8 +47,7 @@ export class LogincolabComponent implements OnInit {
       alert("Campo contraseña vacio");
     }
 
-    /* 
-        verificación de logueo */
+    //validar login
     else {
       
       let usuarioDatos = JSON.parse(localStorage.getItem("usuario"));
