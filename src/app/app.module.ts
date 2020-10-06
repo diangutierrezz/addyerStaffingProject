@@ -37,6 +37,7 @@ import { ProfileadminComponent } from './components/profileadmin/profileadmin.co
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,8 +57,8 @@ import { ProfileadminComponent } from './components/profileadmin/profileadmin.co
     UpdatecolabComponent,
     DeletecolabComponent,
     ProfileadminComponent,
-
- 
+    
+   
     
   ],
   imports: [

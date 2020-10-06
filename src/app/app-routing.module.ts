@@ -8,7 +8,7 @@ import { InicioComponent  } from "../app/components/inicio/inicio.component";
 import { LoginComponent  } from "../app/components/login/login.component";
 import { ProfilecolabComponent  } from "../app/components/profilecolab/profilecolab.component";
 import { ViewprojectsadminComponent  } from "../app/components/viewprojectsadmin/viewprojectsadmin.component";
-import {  ViewprojectscolabComponent } from "../app/components/viewprojectscolab/viewprojectscolab.component";
+import { ViewprojectscolabComponent } from "../app/components/viewprojectscolab/viewprojectscolab.component";
 import { CreateprojectComponent } from "../app/components/createproject/createproject.component";
 import { LogincolabComponent } from "../app/components/logincolab/logincolab.component";
 import { ViewcolabsComponent } from "../app/components/viewcolabs/viewcolabs.component";
@@ -33,7 +33,8 @@ const routes: Routes = [
   { path: "viewcolabs", component:ViewcolabsComponent, canActivate: [validarRutasColab]},
   { path:"recoverpass", component:RecoverpassComponent},
   { path: "viewcolabs", component:ViewcolabsComponent, canActivate: [validarRutasColab]},
-  { path: "profileadmin", component:ProfileadminComponent}
+  { path: "profileadmin", component:ProfileadminComponent},
+ 
 
 
 ];

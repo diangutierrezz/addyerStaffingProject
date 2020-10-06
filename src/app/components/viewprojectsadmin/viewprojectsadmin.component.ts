@@ -12,14 +12,14 @@ import { Proyecto } from "src/app/models/Proyecto";
 })
 export class ViewprojectsadminComponent implements OnInit {
 
-  opened = false;
-  colabProyecto=null;
-  hab: Habilidades[] = [];
-  columnasH: String[] = ['habilidad', 'botondeEliminar'];
-  columnas: String[] = ['nombre','apellido', 'cargo','botonEliminar'];
-  habilidades: Habilidades [] = [];
-  habilidadSeleccionada;
-  proyectos=null;
+    opened = false;
+    colabProyecto=null;
+    hab: Habilidades[] = [];
+    columnasH: String[] = ['habilidad', 'botondeEliminar'];
+    columnas: String[] = ['nombre','apellido', 'cargo','botonEliminar'];
+    habilidades: Habilidades [] = [];
+    habilidadSeleccionada;
+    proyectos=null;
     indexproyecto: number = null;
     estadoBoton: boolean[] = [];
     idProyecto;
@@ -46,15 +46,15 @@ export class ViewprojectsadminComponent implements OnInit {
   }
 
   index: number = null;
-guardarIndex(i: number){
-this.index = i;
-console.log(this.index, "posicion tabla")
-console.log(this.indexproyecto, "Numero de proyecto")
-console.log(this.usuarioHabilidad[this.index].id_usuario, "Id usuario")
-this.service.agregarUsuarioProyecto(this.usuarioHabilidad[this.index].id_usuario,this.indexproyecto).subscribe();
-this.estadoBoton[i]=true;
-this.index=null;
-}
+  guardarIndex(i: number){
+    this.index = i;
+    console.log(this.index, "posicion tabla")
+    console.log(this.indexproyecto, "Numero de proyecto")
+    console.log(this.usuarioHabilidad[this.index].id_usuario, "Id usuario")
+    this.service.agregarUsuarioProyecto(this.usuarioHabilidad[this.index].id_usuario,this.indexproyecto).subscribe();
+    this.estadoBoton[i]=true;
+    this.index=null;
+  }
 
 
   habilidadesProyecto(id: number){

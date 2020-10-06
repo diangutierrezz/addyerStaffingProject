@@ -5,6 +5,7 @@ import { UpdatecolabComponent } from '../updatecolab/updatecolab.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DeletecolabComponent } from "../deletecolab/deletecolab.component";
 import { Router, RouterLink } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-viewcolabs',
@@ -56,6 +57,7 @@ guardarIndex(i: number){
 this.index = i;
 console.log(this.index)
 console.log(this.usuario[this.index].id)
+console.log(this.usuario[this.index])
 }
 
 borrarUsuario(){

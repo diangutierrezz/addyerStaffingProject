@@ -52,7 +52,7 @@ export class ProfileadminComponent implements OnInit {
   CambioClave(contrasena: String) {
     this.service.modificarContraseña({ contrasena } as Usuario).subscribe(usuario => {
       this.usuario.toString()
-      alert("La contraseña se modifico correctamente")
+      alert("La contraseña se modificó correctamente")
     });
   }
 

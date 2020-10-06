@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioxHabilidad } from "src/app/models/UsuarioxHabilidad";
-import { StaffingService } from "src/app/staffing.service";
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { Proyecto } from "src/app/models/proyecto";
 import { Habilidades } from "src/app/models/habilidades";
 import { CreateprojectService } from "./createproject.service";
-import { from } from 'rxjs';
-
 
 
 @Component({
@@ -23,16 +20,16 @@ export class CreateprojectComponent implements OnInit {
     habilidadElegida;
     mensaje;
     opened = false;
-   firstFormGroup: FormGroup; 
-   secondFormGroup: FormGroup;
-   thirdFormGroup: FormGroup;
-   isEditable = false;
-   mostrarAlerta = false;
-  disable = null;
-   filterPost = '';
-   index: number = null;
-   nombreproyecto;
-   fechainicio;
+    firstFormGroup: FormGroup; 
+    secondFormGroup: FormGroup;
+    thirdFormGroup: FormGroup;
+    isEditable = false;
+    mostrarAlerta = false;
+    disable = null;
+    filterPost = '';
+    index: number = null;
+    nombreproyecto;
+    fechainicio;
 
 
     constructor(  public service: CreateprojectService, private _formBuilder: FormBuilder) { }
@@ -77,7 +74,7 @@ export class CreateprojectComponent implements OnInit {
       alert('Proyecto creado con éxito')
     }); 
   }
-
+ 
   crearProyectoHabilidad(nombreproyecto: string, fechainicio:string){
     fechainicio = fechainicio.replace(RegExp('/', 'g'), "-")
     console.log(nombreproyecto)

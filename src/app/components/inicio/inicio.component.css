@@ -151,3 +151,6 @@ body{
     display:none;
     }
     }
+    video{
+        width: 100%;
+    }
