@@ -12,129 +12,149 @@ import { Proyecto } from "src/app/models/Proyecto";
 })
 export class ViewprojectsadminComponent implements OnInit {
 
-    opened = false;
-    colabProyecto=null;
-    hab: Habilidades[] = [];
-    columnasH: String[] = ['habilidad', 'botondeEliminar'];
-    columnas: String[] = ['nombre','apellido', 'cargo','botonEliminar'];
-    habilidades: Habilidades [] = [];
-    habilidadSeleccionada;
-    proyectos=null;
-    indexproyecto: number = null;
-    estadoBoton: boolean[] = [];
-    idProyecto;
-  
-  toggleSidebar(){
+  //Variables
+  opened = false;
+  colabProyecto = null;
+  hab: Habilidades[] = [];
+  columnasH: String[] = ['habilidad', 'botondeEliminar'];
+  columnas: String[] = ['nombre', 'apellido', 'cargo', 'botonEliminar'];
+  habilidades: Habilidades[] = [];
+  habilidadSeleccionada;
+  proyectos = null;
+  indexproyecto: number = null;
+  estadoBoton: boolean[] = [];
+  idProyecto;
+  filterPost = '';
+  usuarioHabilidad: UsuarioHabilidad[] = [];
+  index: number = null;
+
+
+  constructor(
+    private service: ViewprojectsService, 
+    private StaffingService: StaffingService
+  ) { }
+
+
+  ngOnInit(): void {
+    //Cargar todos los proyectos
+    this.service.retornar().subscribe(result => { this.proyectos = result });
+  }
+
+  //Método para abrir el sidebar
+  toggleSidebar() {
     this.opened = !this.opened;
   }
 
-  filterPost = '';
-  usuarioHabilidad: UsuarioHabilidad [] = [];
-
-
-
- 
-  constructor(private service: ViewprojectsService, private StaffingService:StaffingService) { }
-
-  ngOnInit(): void {
-    this.service.retornar().subscribe( result =>  {this.proyectos = result}); 
-
-  }
-
-  cerrarsesion(){
+  //Método Cerrar Sesión 
+  cerrarsesion() {
     localStorage.removeItem("usuario");
   }
 
-  index: number = null;
-  guardarIndex(i: number){
-    this.index = i;
-    console.log(this.index, "posicion tabla")
-    console.log(this.indexproyecto, "Numero de proyecto")
-    console.log(this.usuarioHabilidad[this.index].id_usuario, "Id usuario")
-    this.service.agregarUsuarioProyecto(this.usuarioHabilidad[this.index].id_usuario,this.indexproyecto).subscribe();
-    this.estadoBoton[i]=true;
-    this.index=null;
-  }
-
-
-  habilidadesProyecto(id: number){
-    this.service.ObtenerUsuarioHabilidades(id).subscribe (result => this.hab = result)
-    console.log(this.hab)
-    console.log(id)
-  }
-
-  mostrarColab(id: number){
+  //Método mostrar los colaboradores por proyecto
+  mostrarColab(id: number) {
     this.service.obtenerColabProyectos(id)
-    .subscribe(colabProyecto => this.colabProyecto=colabProyecto);
+      .subscribe(colabProyecto => this.colabProyecto = colabProyecto);
     console.log(this.colabProyecto)
   }
 
-  agregarUsuarioProyecto(id_usuario:number, id_proyecto:number){
-    this.service.agregarUsuarioProyecto(id_usuario,id_proyecto).subscribe()
-    alert('Se Agrego el usuario al proyecto Correctamente')
-    window.location.reload();
-  }
-
-  borrarUsuarioProyecto(id:number, id_usuario:number){
-      this.service.EliminarUsuarioProyecto(id,id_usuario).subscribe ()
-      alert("Se Elimino el usuario de este proyecto")
-      window.location.reload();
-  }
-
-
-  AgregarUsuario(id: number){
+  //Método mostrar los colaboradores en la tabla
+  AgregarUsuario(id: number) {
     this.indexproyecto = id;
     console.log(this.indexproyecto)
-    this.StaffingService.obtenerUsuariosxHabilidad().subscribe(usuarioHabilidad => {this.usuarioHabilidad=usuarioHabilidad;
-       for (let index = 0; index < usuarioHabilidad.length; index++) {
-        
-         this.estadoBoton.push(false)
-       }
+    this.StaffingService.obtenerUsuariosxHabilidad().subscribe(usuarioHabilidad => {
+      this.usuarioHabilidad = usuarioHabilidad;
+      this.estadoBoton = [];
+      for (let index = 0; index < usuarioHabilidad.length; index++) {
+        this.estadoBoton.push(false)
       }
-      );
-  
+    });
   }
 
-  obtenerHabilidades(id:number){
+ //Método agregar nuevo colaborador al proyecto
+  guardarNuevoUsuarioProyecto(i: number) {
+    this.index = i;
+    console.log(this.indexproyecto, "Numero de proyecto")
+    console.log(this.usuarioHabilidad[this.index].id_usuario, "Id usuario")
+    this.service.agregarUsuarioProyecto(this.usuarioHabilidad[this.index].id_usuario, this.indexproyecto).subscribe();
+    this.estadoBoton[i] = true;
+    this.mostrarColab(this.indexproyecto);
+
+  }
+
+
+  finalizar() {
+
+  }
+
+  //Método borrar colaborador de un proyecto
+  borrarUsuarioProyecto(P, id: number, id_usuario: number) {
+    this.indexproyecto = id;
+    console.log(id, "proyecto")
+    console.log(id_usuario, "idusuario")
+    this.service.EliminarUsuarioProyecto(this.indexproyecto, id_usuario).subscribe()
+    this.colabProyecto = this.colabProyecto.filter(
+      (c) => c.id_usuario != this.colabProyecto[P].id_usuario
+    );
+  }
+
+  //Método cargar todas las Habilidades 
+  habilidadesProyecto(id: number) {
+    this.service.ObtenerProyectoHabilidades(id).subscribe(result => this.hab = result)
+    console.log(this.hab)
+    console.log(id, "proyecto ID")
+  }
+
+ //Método borrar Habilidades Proyecto
+  borrarHabilidadProyecto(i, idproyecto: number, id_habilidad: number) {
+    this.indexproyecto = idproyecto;
+    console.log(idproyecto, "id proyecto");
+    console.log(id_habilidad, "id habilidad")
+    console.log(i, "posicion tabla")
+    this.service.borrarHabilidadProyecto(this.indexproyecto, id_habilidad).subscribe()
+    this.hab = this.hab.filter(
+      (c) => c.habilidad != this.hab[i].habilidad
+    );
+    this.indexproyecto = null;
+  }
+
+//Método obtener las habilidades de cada proyecto
+  obtenerHabilidades(id: number) {
     this.indexproyecto = id;
     this.service.obtenerHabilidades()
-    .subscribe(habilidades => this.habilidades=habilidades);
+      .subscribe(habilidades => this.habilidades = habilidades);
+
   }
 
-  
-  agregarProyectoHabilidades(){
+ //Método agregar Habilidades Proyecto
+  agregarProyectoHabilidades() {
     console.log(this.habilidadSeleccionada)
-    this.service.agregarHabilidadProyecto(this.indexproyecto,this.habilidadSeleccionada).subscribe()
+    this.service.agregarHabilidadProyecto(this.indexproyecto, this.habilidadSeleccionada).subscribe()
     alert("Habilidad Agregada Correctamente")
-    this.indexproyecto=null;
-    window.location.reload();
+
+    this.habilidadesProyecto(this.indexproyecto);
+    this.indexproyecto = null;
 
   }
 
-  borrarHabilidadProyecto(idproyecto:number,id_habilidad: number){
-    console.log(idproyecto);
-    console.log(id_habilidad)
-    this.service.borrarHabilidadProyecto(idproyecto,id_habilidad).subscribe()
-    window.location.reload();
-  }
-
-    cambios: Proyecto = {nombreproyecto: "",descripcion: "", fechainicio: "", fechafinal: ""}
-
-  modificarProyecto(){
-   this.service.modificarP(this.idProyecto, this.cambios).subscribe();
-   console.log(this.idProyecto)
-   console.log(this.cambios)
-   window.location.reload();
+  // Metodo Modificar Proyecto
+  infoproyecto;
+  obtenerProyectoPorId(id: number) {
+    console.log(id, "ID DEL PROYECTO")
+    this.service.ObtenerProyectoPorId(id).subscribe(result => this.infoproyecto = result)
+    console.log(this.infoproyecto)
 
   }
+  newProyecto = { nombreproyecto: "", descripcion: "", fechainicio: "", fechafinal: "" }
 
-  guardarIdproyecto(numProyecto){
-    this.idProyecto = numProyecto
-    console.log(this.idProyecto)
-  }
 
-  finalizar(){
-    window.location.reload();
+
+  cambios: Proyecto = { nombreproyecto: "", descripcion: "", fechainicio: "", fechafinal: "" }
+
+  modificarProyecto() {
+    //this.service.modificarP(this.idProyecto, this.cambios).subscribe();
+    //console.log(this.idProyecto)
+    //console.log(this.cambios)
+    //window.location.reload();
   }
 
 }

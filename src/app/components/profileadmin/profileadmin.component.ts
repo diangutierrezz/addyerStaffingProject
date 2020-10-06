@@ -1,10 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Usuario } from 'src/app/models/Usuario'
 import { ProfileadminService } from 'src/app/components/profileadmin/profileadmin.service'
-import { from, Observable } from 'rxjs';
-import { DOCUMENT } from '@angular/common'; 
-import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { DOCUMENT } from '@angular/common';
+
 
 @Component({
   selector: 'app-profileadmin',
@@ -14,49 +13,61 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 export class ProfileadminComponent implements OnInit {
 
   dato;
-  contrasena: String ="";
-  usuarios=null;
+  contrasena: String = "";
+  usuarios = null;
   opened = false;
   firstFormGroup: FormGroup;
   show: boolean;
+  usuario: Usuario[] = [];
+  @Input() usuarioo: Usuario
 
-  constructor(@Inject(DOCUMENT)document, private service:ProfileadminService, private _formBuilder: FormBuilder) {
+  constructor(
+    @Inject(DOCUMENT) document, 
+    private service: ProfileadminService, 
+    private _formBuilder: FormBuilder
+  ) {
     this.show = false;
-   }
+  }
 
-  usuario: Usuario [] = [];
-
-  @Input()usuarioo: Usuario 
 
   ngOnInit(): void {
+    //ID del usuario
     this.dato = JSON.parse(localStorage.getItem("usuario")).id;
     console.log(this.dato);
-    this.service.retornar(this.dato).subscribe( result =>  {this.usuarios = result});
+    //Cargar datos en la card
+    this.service.retornar(this.dato).subscribe(result => { this.usuarios = result });
+    //Validaciones del formulario
     this.firstFormGroup = this._formBuilder.group({
-      contrasena: [null,[ Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      contrasena: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
     });
   }
 
-  password() {
+  //Mostrar contraseña
+  togglePassword() {
     this.show = !this.show;
-}
+    
+  }
 
-  toggleSidebar(){
+   //Mostrar abrir sidebar
+  toggleSidebar() {
     this.opened = !this.opened;
+
   }
 
-  get f(){
+  //Método que retorna las validaciones
+  get f() {
     return this.firstFormGroup.controls;
+
   }
 
+  //Método cambio de clave
   CambioClave(contrasena: String) {
     this.service.modificarContraseña({ contrasena } as Usuario).subscribe(usuario => {
       this.usuario.toString()
       alert("La contraseña se modificó correctamente")
+
     });
+
   }
-
-  
-
 
 }

@@ -27,3 +27,8 @@ mat-form-field {
 h1,h2,h3{
   font-family: verdana
 }
+
+.abs-center {
+  display: flex;
+
+}

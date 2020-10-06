@@ -31,8 +31,6 @@ import { validarRutasAdmin } from "../app/components/inicio/validarRutasAdmin";
 import { validarRutasColab } from './components/inicio/validarRutasColab';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatIconModule } from '@angular/material/icon';
-import { UpdatecolabComponent } from '../app/components/updatecolab/updatecolab.component';
-import { DeletecolabComponent } from './components/deletecolab/deletecolab.component';
 import { ProfileadminComponent } from './components/profileadmin/profileadmin.component';
 
 
@@ -54,8 +52,6 @@ import { ProfileadminComponent } from './components/profileadmin/profileadmin.co
     LogincolabComponent,
     RecoverpassComponent,
     ViewcolabsComponent,
-    UpdatecolabComponent,
-    DeletecolabComponent,
     ProfileadminComponent,
     
    
@@ -77,7 +73,7 @@ import { ProfileadminComponent } from './components/profileadmin/profileadmin.co
     MatIconModule,
     ReactiveFormsModule,
     ReactiveFormsModule,
-    Ng9RutModule
+    Ng9RutModule,
 
   ],
   providers: [validarRutasAdmin, validarRutasColab

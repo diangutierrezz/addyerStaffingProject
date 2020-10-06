@@ -9,26 +9,37 @@ import { ViewprojectcolabService } from "src/app/components/viewprojectscolab/vi
 })
 export class ViewprojectscolabComponent implements OnInit {
 
-  proyectos=null;
-
-  constructor(private viewprojectcolabService:ViewprojectcolabService){}
+  //Variables
+  proyectos = null;
   dato;
   opened = false;
 
-  toggleSidebar(){
+  constructor(
+    private viewprojectcolabService: ViewprojectcolabService
+  ) { }
+
+
+
+  ngOnInit(): void {
+
+    //Obtener ID del Usuario
+    this.dato = JSON.parse(localStorage.getItem("usuario")).id;
+    console.log(this.dato)
+
+    //Cargar los proyectos por colaborador
+    this.viewprojectcolabService.retornar(this.dato).subscribe(result => { this.proyectos = result });
+
+  }
+
+  //Método abrir sidebar
+  toggleSidebar() {
     this.opened = !this.opened;
   }
 
-    ngOnInit(): void {
-    this.dato = JSON.parse(localStorage.getItem("usuario")).id;
-    console.log(this.dato)
-    this.viewprojectcolabService.retornar(this.dato).subscribe( result =>  {this.proyectos = result}); 
-      
-    }
-  
 
-  cerrarsesion(){
+  //Método Cerrar Sesión
+  cerrarsesion() {
     localStorage.removeItem("usuario");
   }
-  
+
 }

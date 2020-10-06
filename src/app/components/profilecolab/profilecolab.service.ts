@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Usuario } from 'src/app/models/usuario'
-import { Observable } from 'rxjs';
-import { Habilidades } from "src/app/models/habilidades";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfilecolabService {
 
+  //URL
   private api = 'http://localhost:8080/api';
 
   httpOptions = {
@@ -17,7 +17,10 @@ export class ProfilecolabService {
 
   // ID USUARIO
   dato = JSON.parse(localStorage.getItem("usuario")).id;
-  constructor(private http: HttpClient) { }
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   //Servicio Cambio Clave
   modificarContraseña(usuario: Usuario) {
@@ -28,31 +31,31 @@ export class ProfilecolabService {
   //Servicio Agregar UsuarioHabilidades
   agregarHabilidades(habilidad: string) {
 
-      const url = 'http://localhost:8080/api/agregarUsuarioHabilidades';
-      let apiURL = `${url}/${this.dato}/${habilidad}`;
-      return this.http.post( apiURL, this.httpOptions)
-     
-    
+    const url = 'http://localhost:8080/api/agregarUsuarioHabilidades';
+    let apiURL = `${url}/${this.dato}/${habilidad}`;
+    return this.http.post(apiURL, this.httpOptions)
+
   }
 
-  //Datos del Usuario
+  //Servicio cargar datos del Usuario
   retornar(dato) {
     console.log(dato)
     return this.http.get("http://localhost:8080/api/usuario/" + this.dato);
-    
-  } 
 
-  //
-  eliminarUsuarioHabilidad(id_usuario: number, id_habilidad: number){
+  }
+
+  //Servicio eliminar UsuarioHabilidades
+  eliminarUsuarioHabilidad(id_usuario: number, id_habilidad: number) {
     const url = 'http://localhost:8080/api/borrarUsuarioHabilidad'
     let apiURL = `${url}/${id_usuario}/${id_habilidad}`;
     return this.http.delete(apiURL, this.httpOptions);
+
   }
 
-  //
-  obtenerColabHabilidades(){
+  //Servicio obtener las habilidades del colaborador
+  obtenerColabHabilidades() {
     return this.http.get('http://localhost:8080/api/habilidadesPorColab/' + this.dato);
-  }
 
+  }
 
 }

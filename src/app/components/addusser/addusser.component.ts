@@ -10,7 +10,7 @@ import { AddSkillService } from "../addusser/add-skill.service";
 import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 import { Habilidades } from "src/app/models/habilidades";
 import { MatStepper } from '@angular/material/stepper';
-
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addusser',
@@ -18,7 +18,7 @@ import { MatStepper } from '@angular/material/stepper';
   styleUrls: ['./addusser.component.css']
 })
 export class AddusserComponent implements OnInit {
-  
+
 
   //Funciones Sidebar
   opened = false;
@@ -26,7 +26,7 @@ export class AddusserComponent implements OnInit {
   secondFormGroup: FormGroup;
   isEditable = false;
   mostrarAlerta = false;
-  habilidades: Habilidades [] = [];
+  habilidades: Habilidades[] = [];
   habilidadElegida;
   columnasAuseer = ['habilidad'];
   mensaje;
@@ -38,8 +38,8 @@ export class AddusserComponent implements OnInit {
 
 
   constructor(private _formBuilder: FormBuilder, public rutValidator: RutValidator,
-     private service: StaffingService, private addSkillService: AddSkillService,
-     private viewproyectsservice: ViewprojectsService) { }
+    private service: StaffingService, private addSkillService: AddSkillService,
+    private viewproyectsservice: ViewprojectsService, public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -48,8 +48,8 @@ export class AddusserComponent implements OnInit {
       rol: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      rut: [null, [Validators.required, this.rutValidator,Validators.minLength(8), Validators.maxLength(9)]],
-      contrasena: [null,[ Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+      rut: [null, [Validators.required, this.rutValidator, Validators.minLength(8), Validators.maxLength(9)]],
+      contrasena: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
       cargo: ['', Validators.required],
       correo: new FormControl('', Validators.compose([
         Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
@@ -62,8 +62,9 @@ export class AddusserComponent implements OnInit {
     });
 
     this.viewproyectsservice.obtenerHabilidades()
-    .subscribe(habilidades => this.habilidades=habilidades);
+      .subscribe(habilidades => this.habilidades = habilidades);
 
+      this.openDialog()
   }
 
   //Error en Campo Vacio o Dato Erroneo
@@ -94,20 +95,20 @@ export class AddusserComponent implements OnInit {
 
 
 
-  
+
 
   // Servicio Para Crear Usuario
   crearUsuario(rol: String, nombre: String, apellido: String, rut: String, correo: String, contrasena: String, cargo: String, stepper: MatStepper) {
     this.service.AgregarUsuario({ rol, nombre, apellido, rut, correo, contrasena, cargo } as Usuario).subscribe(usuario => {
-      if(usuario[0] == "Usuario Existe"){
+      if (usuario[0] == "Usuario Existe") {
         alert("Usuario ya existe en la base de datos")
-       } if (usuario[0] == "Usuario Creado"){
-         console.log("funciono")
+      } if (usuario[0] == "Usuario Creado") {
+        console.log("funciono")
         stepper.selected.completed = true;
         stepper.next();
-         alert("Usuario Creado Correctamente")
-         
-       }
+        alert("Usuario Creado Correctamente")
+
+      }
     });
 
   }
@@ -116,14 +117,32 @@ export class AddusserComponent implements OnInit {
   crearUsuarioHabilidad(rut: string) {
     console.log(rut)
     console.log(this.habilidadElegida)
-    this.addSkillService.crearUsuarioHabilidades(rut,this.habilidadElegida).subscribe(habilidad => {
-      this.mostrarAlerta=true;
+    this.addSkillService.crearUsuarioHabilidades(rut, this.habilidadElegida).subscribe(habilidad => {
+      this.mostrarAlerta = true;
       this.mensaje = 'Se agrego la habilidad ' + this.habilidadElegida + ' Correctamente'
-    },  err => {alert("Error al agregar la habilidad")} 
+    }, err => { alert("Error al agregar la habilidad") }
     );
-    
+
     setTimeout(() => {
-      this.mostrarAlerta=false;
+      this.mostrarAlerta = false;
     }, 3000);
+  }
+
+  openDialog() {
+    this.dialog.open(AddusserComponentDialog);
+  }
+}
+
+@Component({
+  selector: 'addusser.component.dialog',
+  templateUrl: 'addusser.component.dialog.html',
+})
+
+export class AddusserComponentDialog {
+
+  constructor(public dialog: MatDialog) { }
+
+  closeDialog() {
+    this.dialog.closeAll();
   }
 }
