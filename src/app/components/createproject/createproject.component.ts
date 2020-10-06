@@ -6,6 +6,7 @@ import { Proyecto } from "src/app/models/proyecto";
 import { Habilidades } from "src/app/models/habilidades";
 import { CreateprojectService } from "./createproject.service";
 import { MatStepper } from '@angular/material/stepper';
+import {MatDialog} from '@angular/material/dialog';
 
 
 
@@ -35,7 +36,7 @@ export class CreateprojectComponent implements OnInit {
   fechainicio;
 
 
-  constructor(public service: CreateprojectService, private _formBuilder: FormBuilder) { }
+  constructor(public service: CreateprojectService, private _formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -53,6 +54,8 @@ export class CreateprojectComponent implements OnInit {
 
     this.service.obtenerUsuariosxHabilidad()
       .subscribe(usuarioHabilidad => this.usuarioxHabilidad = usuarioHabilidad);
+
+      this.openDialog();
   }
 
 
@@ -105,4 +108,21 @@ export class CreateprojectComponent implements OnInit {
     alert("Se Agregó el colaborador correctamente")
   }
 
+  
+  openDialog() {
+    this.dialog.open(CreateprojectComponentDialog);
+  }
+
+}
+@Component({
+  selector: 'createproject.component.dialog',
+  templateUrl: 'createproject.component.dialog.html',
+})
+export class CreateprojectComponentDialog {
+
+  constructor(public dialog: MatDialog) { }
+
+  closeDialog() {
+    this.dialog.closeAll();
+  }
 }

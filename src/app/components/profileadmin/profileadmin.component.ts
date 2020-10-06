@@ -36,10 +36,9 @@ export class ProfileadminComponent implements OnInit {
       contrasena: [null,[ Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
     });
   }
-
-  password() {
+  togglePassword(){
     this.show = !this.show;
-}
+  }
 
   toggleSidebar(){
     this.opened = !this.opened;

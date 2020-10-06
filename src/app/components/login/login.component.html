@@ -23,18 +23,28 @@
               <div *ngIf="f.user.errors.pattern">Ingrese un Correo Electrónico válido</div>
             </div>
           </div>
-          <div class="form-group">
-            <mat-form-field appearance="outline">
-              <mat-label for="pass">Contraseña</mat-label>
-              <input type="password" name="pass" id="pass" formControlName="pass" matInput required
-                placeholder="Contraseña" #contrasena>
+          <div class="form-group  display: flex;">
+            <mat-form-field style="width: 80%;  " appearance="outline">
+              <mat-label>Contraseña</mat-label>
+              <div class="form-row">
+                <div class="col">
+                  <input ID="txtPassword" matInput #contrasena name="contrasena" [type]="show ? 'text' : 'password'"
+                    required>
+                </div>
+                <div class="col">
+                  <mat-icon placeholder="Contraseña" color="gray" (click)="togglePassword()" style="margin-left: 90%; ">
+                    visibility</mat-icon>
+                </div>
+              </div>
             </mat-form-field>
+
             <div *ngIf="f.pass.touched && f.pass.invalid" class="alert alert-danger" style="width: 80%;  margin-left: auto;
         margin-right: auto;">
               <div *ngIf="f.pass.errors.required">Contraseña requerida</div>
               <div *ngIf="f.pass.errors.minlength">La contraseña debe tener al menos cinco caracteres</div>
             </div>
           </div>
+
           <div>
             <mat-checkbox color="primary" required style="width: 100%">
               Recuérdame

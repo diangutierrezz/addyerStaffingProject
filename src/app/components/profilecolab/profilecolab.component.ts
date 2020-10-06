@@ -34,9 +34,9 @@ export class ProfilecolabComponent implements OnInit {
   habilidades: Habilidades [] = [];
 
   show: boolean;
-  password() {
+  togglePassword(){
     this.show = !this.show;
-}
+  }
 
   //Sidebar
   opened = false;
@@ -52,9 +52,7 @@ export class ProfilecolabComponent implements OnInit {
     this.profilecolabService.retornar(this.dato).subscribe( 
       result =>  {this.usuarios = result,
         // Habilidades Colaborador
-     this.profilecolabService.obtenerColabHabilidades().subscribe(
-       result => this.habilidadesColaborador = result,
-       )
+        this.habilidadesDelColaborador()
      }
      
      );
@@ -69,6 +67,12 @@ export class ProfilecolabComponent implements OnInit {
     
     
 
+  }
+
+  habilidadesDelColaborador(){
+    this.profilecolabService.obtenerColabHabilidades().subscribe(
+      result => this.habilidadesColaborador = result,
+      )
   }
 
 
@@ -93,7 +97,7 @@ export class ProfilecolabComponent implements OnInit {
     setTimeout(() => {
       this.mostrarAlerta=false;
     }, 3000);
-    window.location.reload();
+    this.habilidadesDelColaborador();
   }
 
 
@@ -110,8 +114,9 @@ export class ProfilecolabComponent implements OnInit {
  this.profilecolabService.eliminarUsuarioHabilidad(this.dato, this.habilidadesColaborador[this.index].id)
 .subscribe(); 
 console.log(this.habilidadesColaborador[this.index].id)
-alert('Se elimino la habilidad correctamente');
- window.location.reload();
+this.habilidadesColaborador = this.habilidadesColaborador.filter(
+  (c) => c.habilidad != this.habilidadesColaborador[this.index].habilidad
+);
 }
 
   // Guardar Id Habilidad para borrar
@@ -122,11 +127,5 @@ console.log(this.index);
 console.log(this.habilidadesColaborador[this.index].id)
 
 }
-
-prueba(){
-  console.log('holatu')
-}
-
-
 
 }

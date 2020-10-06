@@ -2,8 +2,8 @@
   <!--Sidebar  -->
   <ng-sidebar [opened]="opened">
     <img
-      src="https://scontent.fscl9-2.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=PzaIzx-TE5QAX_g4TFg&_nc_ht=scontent.fscl9-2.fna&oh=da8d7a4429a16209c97169f7feb2990a&oe=5F73289F"
-      width="200" height="200" class="img-fluid rounded-circle">
+    src="https://scontent.fscl27-1.fna.fbcdn.net/v/t1.0-9/12644943_219927595018951_5026710537365350049_n.png?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=R7_AAlM-FfwAX9Hm9Iv&_nc_ht=scontent.fscl27-1.fna&oh=28e4b91c260bef52a32a2e3205b24665&oe=5F9EAA1F"
+    width="200" height="200" class="img-fluid rounded-circle" />
     <p style="padding-left: 1.2em; margin-top: 1em;">Sesión Administrador</p>
     <a mat-raised-button style="margin: 2em; background-color: #000000; color: #f4f4f4;"
       (click)='toggleSidebar()'>Cerrar menú </a>
@@ -90,22 +90,23 @@
   <div class="modal fade" id="BORRAR">
     <div class="modal-dialog text-center">
       <div class="modal-content">
-        <div >
+        <div>
           <div class="modal-title" style="padding: 1em 1em 0em 1em;">
             <h6 style="text-align: center">
               Esta acción eliminará un usuario de forma permanente.
             </h6>
             <p>¿Seguro que desea eliminarlo?</p>
-                
-            
+
+
           </div>
           <div>
-            <div class="mb-4" >
-              <button class="btn BtnDefault" style="background-color: #d8473e; color: aliceblue; width: 89px;  margin-right: 20%;"
-                type="reset" data-dismiss="modal" (click)="borrarUsuario()">
+            <div class="mb-4">
+              <button class="btn BtnDefault"
+                style="background-color: #d8473e; color: aliceblue; width: 89px;  margin-right: 20%;" type="reset"
+                data-dismiss="modal" (click)="borrarUsuario()">
                 Borrar
               </button>
-            
+
               <button class="btn BtnDefault" style="background-color: #f7ae42; color: aliceblue" type="reset"
                 data-dismiss="modal">
                 Cancelar
@@ -139,7 +140,7 @@
             </div>
             <div class="form-group">
               <label>Nombre</label>
-              <input type="text" class="form-control" id="nombre" placeholder="Nuevo nombre" #nombre>
+              <input type="text" class="form-control" id="nombre" placeholder="Nuevo nombre" #nombre >
             </div>
             <div class="form-group">
               <label>Apellido</label>
@@ -151,10 +152,15 @@
                 <option *ngFor="let cargo of cargo" [value]="cargo">{{cargo}}</option>
               </select>
             </div>
-            <div><button class="btn btn-warning" style="margin-left: 20%; margin-top: 7px;" type="reset" data-dismiss="modal"
-                (click)="modificar(ro.value, nombre.value, apellido.value, carg.value)">
+            <div><button class="btn btn-warning" style="margin-left: 20%; margin-top: 7px; width: 60%;" type="reset"
+                data-dismiss="modal" (click)="modificar(ro.value, nombre.value, apellido.value, carg.value)">
                 Guardar Cambios
-              </button></div>
+              </button>
+              <button data-dismiss="modal" class="btn btn-danger d-block mx-auto mt-2"
+              style="border-bottom-style: solid; width: 30%" >
+              Cancelar
+            </button>
+            </div>
           </form>
         </div>
       </div>

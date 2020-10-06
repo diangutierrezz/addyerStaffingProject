@@ -10,7 +10,7 @@ import { AddSkillService } from "../addusser/add-skill.service";
 import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 import { Habilidades } from "src/app/models/habilidades";
 import { MatStepper } from '@angular/material/stepper';
-
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addusser',
@@ -39,7 +39,7 @@ export class AddusserComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder, public rutValidator: RutValidator,
     private service: StaffingService, private addSkillService: AddSkillService,
-    private viewproyectsservice: ViewprojectsService) { }
+    private viewproyectsservice: ViewprojectsService, public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -64,6 +64,7 @@ export class AddusserComponent implements OnInit {
     this.viewproyectsservice.obtenerHabilidades()
       .subscribe(habilidades => this.habilidades = habilidades);
 
+      this.openDialog()
   }
 
   //Error en Campo Vacio o Dato Erroneo
@@ -125,5 +126,23 @@ export class AddusserComponent implements OnInit {
     setTimeout(() => {
       this.mostrarAlerta = false;
     }, 3000);
+  }
+
+  openDialog() {
+    this.dialog.open(AddusserComponentDialog);
+  }
+}
+
+@Component({
+  selector: 'addusser.component.dialog',
+  templateUrl: 'addusser.component.dialog.html',
+})
+
+export class AddusserComponentDialog {
+
+  constructor(public dialog: MatDialog) { }
+
+  closeDialog() {
+    this.dialog.closeAll();
   }
 }

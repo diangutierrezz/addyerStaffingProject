@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Usuario } from "src/app/models/usuario";
 import { StaffingService } from "src/app/staffing.service";
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { RecoverpassComponent } from '../recoverpass/recoverpass.component';
+import {MatIconModule} from '@angular/material/icon';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +17,15 @@ export class LoginComponent implements OnInit {
 
   usuario: Usuario;
   firstFormGroup: FormGroup;
-  constructor(private router: Router, private service: StaffingService, public dialog: MatDialog, private _formBuilder: FormBuilder) {
-  }
+
   
+  show: boolean;
+  constructor(@Inject(DOCUMENT) document,private router: Router, private service: StaffingService, public dialog: MatDialog, private _formBuilder: FormBuilder) {
+    this.show = false;}
+  
+togglePassword(){
+    this.show = !this.show;
+  }
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({

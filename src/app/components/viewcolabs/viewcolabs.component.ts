@@ -1,9 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { ViewcolabsService } from '../viewcolabs/viewcolabs.service';
-import { UpdatecolabComponent } from '../updatecolab/updatecolab.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DeletecolabComponent } from "../deletecolab/deletecolab.component";
 import { Router, RouterLink } from '@angular/router';
 
 
@@ -67,6 +65,10 @@ borrarUsuario(){
     (c) => c.rut != this.usuario[this.index].rut
   );
 this.index = null;
+}
+
+ObtenerProyectoPorId(){
+  
 }
 
 modificar(ro:string,nombre:string,apellido:string,carg:string){

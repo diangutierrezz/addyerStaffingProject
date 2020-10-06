@@ -25,6 +25,7 @@
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.5.0",
+    "ng-editable-table": "^0.3.15",
     "ng-sidebar": "^9.4.2",
     "ng9-rut": "0.0.6",
     "rxjs": "~6.5.5",

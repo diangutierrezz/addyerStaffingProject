@@ -33,7 +33,7 @@
         <div style=" margin-left: auto; margin-right: auto;" class="cajita2">
           <form class="text-center" style="padding: 1em;" [formGroup]="firstFormGroup">
             <ng-template matStepLabel>Crear Nuevo Proyecto</ng-template>
-            <div class="p-4"><h3>Crear Proyecto</h3></div> 
+            <div class="p-4"><h3>Crear Proyecto</h3></div> <mat-icon style="cursor: pointer;" (click)="openDialog()">article</mat-icon>
             <hr>
 
             <div class="form-group">
@@ -172,7 +172,7 @@
                           <td>{{usuariox.apellido}}</td>                          
                           <td>{{usuariox.cargo}}</td>
                           <td>{{usuariox.habilidad}}</td>
-                          <td><button mat-raised-button style="background-color: #cf7500; color: #f4f4f4; border-bottom-style: solid;"
+                          <td><button mat-raised-button 
                              (click)="guardarIndex(i, fechai.value)" [disabled]="estadoBoton[i]">Agregar</button></td>
                         </tr>
                       </tbody>

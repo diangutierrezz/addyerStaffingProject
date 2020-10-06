@@ -70,4 +70,10 @@ export class ViewprojectsService {
       let apiURL = `${url}/${id}/`;
       return this.http.put<Proyecto>(apiURL, cambios, this.httpOptions);
     }
+
+    ObtenerProyectoPorId(id:number){
+      const url = 'http://localhost:8080/api/proyectoPorProyecto'
+      let apiURL = `${url}/${id}/`;
+      return this.http.get(apiURL, this.httpOptions)
+    }
 }
