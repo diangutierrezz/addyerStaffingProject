@@ -25,19 +25,18 @@
           </div>
           <div class="form-group  display: flex;">
             <mat-form-field style="width: 80%;  " appearance="outline">
-              <mat-label>Contraseña</mat-label>
+              <mat-label for="pass">Contraseña</mat-label>
               <div class="form-row">
                 <div class="col">
                   <input ID="txtPassword" matInput #contrasena name="contrasena" [type]="show ? 'text' : 'password'"
-                    required>
+                    required formControlName="pass">
                 </div>
                 <div class="col">
-                  <mat-icon placeholder="Contraseña" color="gray" (click)="togglePassword()" style="margin-left: 90%; ">
+                  <mat-icon placeholder="Contraseña"  color="gray" (click)="togglePassword()" style="margin-left: 90%; ">
                     visibility</mat-icon>
                 </div>
               </div>
             </mat-form-field>
-
             <div *ngIf="f.pass.touched && f.pass.invalid" class="alert alert-danger" style="width: 80%;  margin-left: auto;
         margin-right: auto;">
               <div *ngIf="f.pass.errors.required">Contraseña requerida</div>

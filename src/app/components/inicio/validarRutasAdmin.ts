@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { InicioComponent } from './inicio.component';
 
 @Injectable()
 export class validarRutasAdmin implements CanActivate {
@@ -10,7 +9,7 @@ export class validarRutasAdmin implements CanActivate {
 
   rol;
 
-  //Rutas Administrador
+  //Rutas Administrador, Validar segun el Rol si puede acceder a la pestaña correspondiente.
 
   canActivate() {
 

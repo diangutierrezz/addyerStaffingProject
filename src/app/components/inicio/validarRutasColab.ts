@@ -9,7 +9,7 @@ export class validarRutasColab implements CanActivate {
 
   rol;
 
-  //Rutas Colaborador
+  //Rutas Colaborador, Validar segun el Rol si puede acceder a la pestaña correspondiente.
 
   canActivate() {
 

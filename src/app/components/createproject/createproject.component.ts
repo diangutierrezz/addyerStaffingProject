@@ -6,7 +6,7 @@ import { Proyecto } from "src/app/models/proyecto";
 import { Habilidades } from "src/app/models/habilidades";
 import { CreateprojectService } from "./createproject.service";
 import { MatStepper } from '@angular/material/stepper';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -36,7 +36,10 @@ export class CreateprojectComponent implements OnInit {
   fechainicio;
 
 
-  constructor(public service: CreateprojectService, private _formBuilder: FormBuilder, public dialog: MatDialog) { }
+  constructor( 
+      public service: CreateprojectService,
+      private _formBuilder: FormBuilder,
+      public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -46,27 +49,32 @@ export class CreateprojectComponent implements OnInit {
       inicio: ['', Validators.required],
       final: ['', Validators.required]
     });
+
     //obtener habilidades del select
     this.service.obtenerHabilidades()
       .subscribe(habilidades => this.habilidades = habilidades);
     console.log(this.habilidades)
-    //obtener los colaboradores para la tabla
 
+    //obtener los colaboradores para la tabla
     this.service.obtenerUsuariosxHabilidad()
       .subscribe(usuarioHabilidad => this.usuarioxHabilidad = usuarioHabilidad);
 
-      this.openDialog();
+    //Abrir instrucciones
+    this.openDialog();
   }
 
 
-
+  //Errores
   get f() {
     return this.firstFormGroup.controls;
   }
+
+  //Sidebar
   toggleSidebar() {
     this.opened = !this.opened;
   }
 
+  //Sercivio para Crear Proyecto
   crearProyecto(nombreproyecto: String, descripcion: String, fechainicio: String, fechafinal: String, stepper: MatStepper) {
     fechainicio = fechainicio.replace(RegExp('/', 'g'), "-")
     fechafinal = fechafinal.replace(RegExp('/', 'g'), "-")
@@ -74,14 +82,15 @@ export class CreateprojectComponent implements OnInit {
       .subscribe(proyecto => {
         if (proyecto[0] == "Proyecto existe") {
           alert("El nombre de este proyecto ya esta en uso")
-        } if (proyecto[0] == "Proyecto creado"){
+        } if (proyecto[0] == "Proyecto creado") {
           alert('Proyecto creado correctamente')
-        stepper.selected.completed = true;
-        stepper.next();
+          stepper.selected.completed = true;
+          stepper.next();
         }
       });
   }
 
+  //Servicio para agregar habilidades
   crearProyectoHabilidad(nombreproyecto: string, fechainicio: string) {
     fechainicio = fechainicio.replace(RegExp('/', 'g'), "-")
     console.log(nombreproyecto)
@@ -97,6 +106,8 @@ export class CreateprojectComponent implements OnInit {
       this.mostrarAlerta = false;
     }, 3000);
   }
+
+  //Guardar Indice del usuario en la tabla, agregar Usuario al proyecto
   guardarIndex(i: number, fechainicio: string) {
     fechainicio = fechainicio.replace(RegExp('/', 'g'), "-")
     this.index = i;
@@ -108,7 +119,7 @@ export class CreateprojectComponent implements OnInit {
     alert("Se Agregó el colaborador correctamente")
   }
 
-  
+  //Abrir Instrucciones
   openDialog() {
     this.dialog.open(CreateprojectComponentDialog);
   }
@@ -122,6 +133,7 @@ export class CreateprojectComponentDialog {
 
   constructor(public dialog: MatDialog) { }
 
+  //cerrar instrucciones
   closeDialog() {
     this.dialog.closeAll();
   }

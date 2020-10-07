@@ -65,7 +65,7 @@ export class ViewprojectsService {
       return this.http.delete(apiURL,this.httpOptions)
     }
 
-    modificarP(id:number, cambios: Proyecto): Observable<Proyecto> {
+    modificarP(cambios: Proyecto, id:number): Observable<Proyecto> {
       const url = 'http://localhost:8080/api/modificarProyecto'
       let apiURL = `${url}/${id}/`;
       return this.http.put<Proyecto>(apiURL, cambios, this.httpOptions);

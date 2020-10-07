@@ -17,6 +17,7 @@ export class AddSkillService {
   api = "http://localhost:8080/api/";
   
 
+  //Agregar Habilidades al usuario creado
   crearUsuarioHabilidades(rut: string, habilidad:string){
     const url = 'crearUsuarioHabilidades';
     let apiURL = `${url}/${rut}/${habilidad}`;

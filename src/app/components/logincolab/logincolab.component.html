@@ -22,11 +22,11 @@
       </div>
       <div class="form-group">
         <mat-form-field style="width: 80%;  " appearance="outline">
-          <mat-label>Contraseña</mat-label>
+          <mat-label for="pass">Contraseña</mat-label>
           <div class="form-row">
             <div class="col">
               <input ID="txtPassword" matInput #contrasena name="contrasena" [type]="show ? 'text' : 'password'"
-                required>
+                required formControlName="pass">
             </div>
             <div class="col">
               <mat-icon placeholder="Contraseña" color="gray" (click)="togglePassword()" style="margin-left: 90%; ">

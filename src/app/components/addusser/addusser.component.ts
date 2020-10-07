@@ -1,16 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material/chips';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Usuario } from "src/app/models/usuario";
 import { StaffingService } from "src/app/staffing.service";
 import { RutValidator } from 'ng9-rut';
-import { RouterLink } from '@angular/router';
 import { AddSkillService } from "../addusser/add-skill.service";
 import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 import { Habilidades } from "src/app/models/habilidades";
 import { MatStepper } from '@angular/material/stepper';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addusser',
@@ -37,9 +34,12 @@ export class AddusserComponent implements OnInit {
   }
 
 
-  constructor(private _formBuilder: FormBuilder, public rutValidator: RutValidator,
-    private service: StaffingService, private addSkillService: AddSkillService,
-    private viewproyectsservice: ViewprojectsService, public dialog: MatDialog) { }
+  constructor(private _formBuilder: FormBuilder,
+    public rutValidator: RutValidator,
+    private service: StaffingService,
+    private addSkillService: AddSkillService,
+    private viewproyectsservice: ViewprojectsService,
+    public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -52,7 +52,7 @@ export class AddusserComponent implements OnInit {
       contrasena: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
       cargo: ['', Validators.required],
       correo: new FormControl('', Validators.compose([
-        Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+      Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
       ])),
 
 
@@ -61,10 +61,12 @@ export class AddusserComponent implements OnInit {
 
     });
 
+    // select con todas las Habilidades
     this.viewproyectsservice.obtenerHabilidades()
       .subscribe(habilidades => this.habilidades = habilidades);
 
-      this.openDialog()
+    //Instrucciones para crear usuario
+    this.openDialog()
   }
 
   //Error en Campo Vacio o Dato Erroneo
@@ -80,6 +82,7 @@ export class AddusserComponent implements OnInit {
     "Profesor habilidades blandas",
     "Coordinador",
     "Tutor",
+    "Director"
   ]
 
   // Roles
@@ -88,13 +91,10 @@ export class AddusserComponent implements OnInit {
     "Administrador"
   ]
 
-
+  //Cerrar sesion
   cerrarsesion() {
     localStorage.removeItem("usuario");
   }
-
-
-
 
 
   // Servicio Para Crear Usuario
@@ -128,6 +128,7 @@ export class AddusserComponent implements OnInit {
     }, 3000);
   }
 
+  //Instrucciones
   openDialog() {
     this.dialog.open(AddusserComponentDialog);
   }
@@ -142,6 +143,7 @@ export class AddusserComponentDialog {
 
   constructor(public dialog: MatDialog) { }
 
+  //Cerrar Instrucciones
   closeDialog() {
     this.dialog.closeAll();
   }
