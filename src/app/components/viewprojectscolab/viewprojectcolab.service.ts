@@ -9,7 +9,7 @@ export class ViewprojectcolabService {
 
   constructor(private http: HttpClient) { }  
 
-  
+  //obtener proyectos por colaborador
     retornar(dato) {
       console.log(dato)
       return this.http.get("http://localhost:8080/api/obtenerProyectosPorColab/" + dato);

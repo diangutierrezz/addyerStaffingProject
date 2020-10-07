@@ -69,6 +69,7 @@ export class LogincolabComponent implements OnInit {
       }
   }
   
+  //Abrir campo recuperar clave
   openDialog() {
     const dialogRef = this.dialog.open(RecoverpassComponent);
 

@@ -17,9 +17,9 @@ import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 export class ProfilecolabComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) document, private profilecolabService: ProfilecolabService,
-   private _formBuilder: FormBuilder, private viewproyectsservice: ViewprojectsService) { 
+    private _formBuilder: FormBuilder, private viewproyectsservice: ViewprojectsService) {
     this.show = false;
-   }
+  }
   // Variables
   contrasena: String = "";
   dato;
@@ -31,10 +31,10 @@ export class ProfilecolabComponent implements OnInit {
   usuarios = null;
   mostrarAlerta = false;
   habilidadesColaborador = null;
-  habilidades: Habilidades [] = [];
+  habilidades: Habilidades[] = [];
 
   show: boolean;
-  togglePassword(){
+  togglePassword() {
     this.show = !this.show;
   }
 
@@ -49,30 +49,32 @@ export class ProfilecolabComponent implements OnInit {
     console.log(this.dato);
 
     //datos colaborador
-    this.profilecolabService.retornar(this.dato).subscribe( 
-      result =>  {this.usuarios = result,
+    this.profilecolabService.retornar(this.dato).subscribe(
+      result => {
+        this.usuarios = result,
         // Habilidades Colaborador
         this.habilidadesDelColaborador()
-     }
-     
-     );
-    
+      }
+
+    );
+
     // Todas las habilidades
     this.viewproyectsservice.obtenerHabilidades().subscribe(result => this.habilidades = result)
     console.log(this.habilidades, "Select")
-    
-      this.firstFormGroup = this._formBuilder.group({
-      contrasena: [null,[ Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+
+    this.firstFormGroup = this._formBuilder.group({
+      contrasena: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
     });
-    
-    
+
+
 
   }
 
-  habilidadesDelColaborador(){
+  //obtener las habilidades del colaborador
+  habilidadesDelColaborador() {
     this.profilecolabService.obtenerColabHabilidades().subscribe(
       result => this.habilidadesColaborador = result,
-      )
+    )
   }
 
 
@@ -90,12 +92,13 @@ export class ProfilecolabComponent implements OnInit {
   agregarUsuarioHabilidad() {
     console.log(this.habilidadSeleccionada)
     this.profilecolabService.agregarHabilidades(this.habilidadSeleccionada).subscribe
-    (habilidad => {this.mostrarAlerta=true; this.mensaje = 'Se agrego la habilidad ' + this.habilidadSeleccionada + ' Correctamente'
-    },  err => {alert(this.habilidadSeleccionada)} 
-    );
-    
+      (habilidad => {
+        this.mostrarAlerta = true; this.mensaje = 'Se agrego la habilidad ' + this.habilidadSeleccionada + ' Correctamente'
+      }, err => { alert(this.habilidadSeleccionada) }
+      );
+
     setTimeout(() => {
-      this.mostrarAlerta=false;
+      this.mostrarAlerta = false;
     }, 3000);
     this.habilidadesDelColaborador();
   }
@@ -110,22 +113,23 @@ export class ProfilecolabComponent implements OnInit {
     contrasena = null;
   }
 
- borrarHabilidadUsuario(){
- this.profilecolabService.eliminarUsuarioHabilidad(this.dato, this.habilidadesColaborador[this.index].id)
-.subscribe(); 
-console.log(this.habilidadesColaborador[this.index].id)
-this.habilidadesColaborador = this.habilidadesColaborador.filter(
-  (c) => c.habilidad != this.habilidadesColaborador[this.index].habilidad
-);
-}
+  //Servicio borrar habilidad del usuario
+  borrarHabilidadUsuario() {
+    this.profilecolabService.eliminarUsuarioHabilidad(this.dato, this.habilidadesColaborador[this.index].id)
+      .subscribe();
+    console.log(this.habilidadesColaborador[this.index].id)
+    this.habilidadesColaborador = this.habilidadesColaborador.filter(
+      (c) => c.habilidad != this.habilidadesColaborador[this.index].habilidad
+    );
+  }
 
   // Guardar Id Habilidad para borrar
   index: number = null;
-guardarIndex(i: number){
-this.index = i;
-console.log(this.index);
-console.log(this.habilidadesColaborador[this.index].id)
+  guardarIndex(i: number) {
+    this.index = i;
+    console.log(this.index);
+    console.log(this.habilidadesColaborador[this.index].id)
 
-}
+  }
 
 }

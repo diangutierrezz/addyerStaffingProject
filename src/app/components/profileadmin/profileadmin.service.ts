@@ -17,12 +17,14 @@ export class ProfileadminService {
 
   constructor(private http: HttpClient) { }
 
+  // Retornar la informacion del usuario
   retornar(dato) {
     console.log(dato)
     return this.http.get("http://localhost:8080/api/usuario/" + dato);
     
   } 
   
+  //servicio modificar clave
   modificarContraseña(usuario: Usuario) {
     const url = 'http://localhost:8080/api/modificarClave/'
     return this.http.put<Usuario>(url + this.dato, usuario)

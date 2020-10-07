@@ -17,17 +17,23 @@ export class ViewcolabsComponent implements OnInit {
   opened = false;
   @Input() data: string[];
 
-  constructor(private viewcolabsService: ViewcolabsService,  public dialog: MatDialog,private router: Router) { }
+  constructor(
+    private viewcolabsService: ViewcolabsService,
+      public dialog: MatDialog,
+      private router: Router)
+       { }
 
+      
   ngOnInit(): void {
 this.actualizarTabla();
   }
 
+  //Salir de la sesion
   cerrarsesion(){
     localStorage.removeItem("usuario");
   }
 
-  
+  //abrir sidebar
   toggleSidebar(){
     this.opened = !this.opened;
   }
@@ -46,12 +52,13 @@ this.actualizarTabla();
     "Administrador"
   ]
 
+  //tabla con colaboradores
   actualizarTabla(){
     this.viewcolabsService.obtenerUsuarios()
     .subscribe(usuario => this.usuario=usuario);
   }
 
-
+//guardar usuario segun su posicion en la tabla
   index: number = null;
 guardarIndex(i: number){
 this.index = i;
@@ -59,6 +66,7 @@ console.log(this.index)
 console.log(this.usuario[this.index].id)
 }
 
+//borrar usuario
 borrarUsuario(){
   this.viewcolabsService.borrarUsuario(this.usuario[this.index].id).subscribe ();
   this.usuario = this.usuario.filter(
@@ -67,9 +75,7 @@ borrarUsuario(){
 this.index = null;
 }
 
-ObtenerProyectoPorId(){
-  
-}
+
 
 modificar(ro:string,nombre:string,apellido:string,carg:string){
   this.viewcolabsService.modificarUsuario(this.usuario[this.index].id, ro,nombre,apellido,carg).subscribe(_=>alert('Usuario actualizado'));

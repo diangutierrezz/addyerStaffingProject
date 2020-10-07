@@ -7,7 +7,7 @@
       <img src="https://upsocial.org/sites/default/files/logos/forge.jpg" width="150" alt=""
         class="img-fluid rounded-circle">
 
-
+      <!-- Formulario -->
       <div class="mt-5">
         <form class=" text-center" style="padding: 1em;" [formGroup]="firstFormGroup">
           <br>
@@ -32,7 +32,7 @@
                     required formControlName="pass">
                 </div>
                 <div class="col">
-                  <mat-icon placeholder="Contraseña"  color="gray" (click)="togglePassword()" style="margin-left: 90%; ">
+                  <mat-icon placeholder="Contraseña" color="gray" (click)="togglePassword()" style="margin-left: 90%; ">
                     visibility</mat-icon>
                 </div>
               </div>
@@ -43,17 +43,19 @@
               <div *ngIf="f.pass.errors.minlength">La contraseña debe tener al menos cinco caracteres</div>
             </div>
           </div>
-
+          <!-- Check de recuerdame -->
           <div>
             <mat-checkbox color="primary" required style="width: 100%">
               Recuérdame
             </mat-checkbox>
           </div>
           <button class="btn btn-warning mb-4" (click)="loginAdmin(correo.value, contrasena.value)">Ingresar</button>
+          <!-- Recuperar Clave -->
           <dl><a class="mt-4" (click)="openDialog()">Recuperar Contraseña</a></dl>
         </form>
       </div>
     </div>
+    <!-- Sello Addyer -->
     <div class="card-footer text-muted">
       Mesa de Ayuda 22700345
       <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>

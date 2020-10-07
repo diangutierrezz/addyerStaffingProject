@@ -17,11 +17,12 @@ export class RecoverpassComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  // remover info del usuario
   cerrarsesion(){
     localStorage.removeItem("usuario");
   }
 
+  //servicio para recuperar clave
   recuperar(correo: string){
     this.service.recuperarContrasena(correo)
       .subscribe(correo =>

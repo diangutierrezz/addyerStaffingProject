@@ -1,10 +1,9 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { Usuario } from 'src/app/models/Usuario'
 import { ProfileadminService } from 'src/app/components/profileadmin/profileadmin.service'
-import { from, Observable } from 'rxjs';
+
 import { DOCUMENT } from '@angular/common'; 
-import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-profileadmin',
@@ -12,22 +11,25 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
   styleUrls: ['./profileadmin.component.css']
 })
 export class ProfileadminComponent implements OnInit {
-
+//variables
   dato;
   contrasena: String ="";
   usuarios=null;
   opened = false;
   firstFormGroup: FormGroup;
   show: boolean;
+  usuario: Usuario [] = [];
+  @Input()usuarioo: Usuario 
 
-  constructor(@Inject(DOCUMENT)document, private service:ProfileadminService, private _formBuilder: FormBuilder) {
+  constructor(
+    @Inject(DOCUMENT)document, 
+    private service:ProfileadminService,
+     private _formBuilder: FormBuilder) {
     this.show = false;
    }
 
-  usuario: Usuario [] = [];
 
-  @Input()usuarioo: Usuario 
-
+//validaciones campo clave y guardar ID usuario
   ngOnInit(): void {
     this.dato = JSON.parse(localStorage.getItem("usuario")).id;
     console.log(this.dato);
@@ -36,18 +38,23 @@ export class ProfileadminComponent implements OnInit {
       contrasena: [null,[ Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
     });
   }
+
+  //ver clave
   togglePassword(){
     this.show = !this.show;
   }
 
+  //abrir sidebar
   toggleSidebar(){
     this.opened = !this.opened;
   }
 
+  //Validaciones form (mensajes de error)
   get f(){
     return this.firstFormGroup.controls;
   }
 
+  //Servicio cambio de clave
   CambioClave(contrasena: String) {
     this.service.modificarContraseña({ contrasena } as Usuario).subscribe(usuario => {
       this.usuario.toString()

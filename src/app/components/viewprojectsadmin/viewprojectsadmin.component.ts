@@ -29,6 +29,8 @@ export class ViewprojectsadminComponent implements OnInit {
   show: boolean;
   VM: string = "ver más"
 
+
+  // boton ver mas y ver menos
   mostrarInfo(){
     if(this.show = !this.show){
       this.VM = 'Ver Menos'
@@ -38,31 +40,36 @@ export class ViewprojectsadminComponent implements OnInit {
   }
 
  
-
+//abrir sidebar
   toggleSidebar() {
     this.opened = !this.opened;
   }
 
-  constructor(private service: ViewprojectsService, private StaffingService: StaffingService, 
+  constructor(
+    private service: ViewprojectsService,
+     private StaffingService: StaffingService, 
     @Inject(DOCUMENT) document
-    ) { this.show = false; }
+    ) 
+    { this.show = false; }
 
   ngOnInit(): void {
     this.service.retornar().subscribe(result => { this.proyectos = result });
   }
 
+  //cerrar seesion
   cerrarsesion() {
     localStorage.removeItem("usuario");
   }
 
-  //Agregar y borrar Colaboradores al proyecto
-
+  
+  //obtener colaboradores de cada proyecto
   mostrarColab(id: number) {
     this.service.obtenerColabProyectos(id)
       .subscribe(colabProyecto => this.colabProyecto = colabProyecto);
     console.log(this.colabProyecto)
   }
 
+  //Tabla con listado de usuarios para agregar a un proyecto
   AgregarUsuario(id: number) {
     this.indexproyecto = id;
     console.log(this.indexproyecto)
@@ -75,6 +82,7 @@ export class ViewprojectsadminComponent implements OnInit {
     });
   }
 
+  // Guardar nuevo usuario al proyecto
   index: number = null;
   guardarNuevoUsuarioProyecto(i: number) {
     this.index = i;
@@ -86,11 +94,12 @@ export class ViewprojectsadminComponent implements OnInit {
 
   }
 
-
+//cerrar ventana
   finalizar() {
 
   }
 
+  //Borrar usuario de proyecto
   borrarUsuarioProyecto(P, id: number, id_usuario: number) {
     this.indexproyecto = id;
     console.log(id, "proyecto")
@@ -101,16 +110,14 @@ export class ViewprojectsadminComponent implements OnInit {
     );
   }
 
-  // Agregar y borrar Habilidades Proyecto
-
-
+//Obtener las habilidades de un proyecto
   habilidadesProyecto(id: number) {
     this.service.ObtenerProyectoHabilidades(id).subscribe(result => this.hab = result)
     console.log(this.hab)
     console.log(id, "proyecto ID")
   }
 
-
+//borrar habilidades de un proyecto
   borrarHabilidadProyecto(i, idproyecto: number, id_habilidad: number) {
     this.indexproyecto = idproyecto;
     console.log(idproyecto, "id proyecto");
@@ -125,7 +132,7 @@ export class ViewprojectsadminComponent implements OnInit {
 
 
 
-
+//obtener select de habilidades para agregar una nueva
   obtenerHabilidades(id: number) {
     this.indexproyecto = id;
     this.service.obtenerHabilidades()
@@ -133,7 +140,7 @@ export class ViewprojectsadminComponent implements OnInit {
 
   }
 
-
+//agregar nueva habilidad al proyecto
   agregarProyectoHabilidades() {
     console.log(this.habilidadSeleccionada)
     this.service.agregarHabilidadProyecto(this.indexproyecto, this.habilidadSeleccionada).subscribe()
@@ -144,7 +151,7 @@ export class ViewprojectsadminComponent implements OnInit {
 
   }
 
-  // Modificar Proyecto
+  // obtener info del proyecto para editar
   infoproyecto;
   obtenerProyectoPorId(id: number) {
     console.log(id, "ID DEL PROYECTO")
@@ -155,13 +162,8 @@ export class ViewprojectsadminComponent implements OnInit {
     console.log(this.infoproyecto)
 
   }
-newProyecto = { nombreproyecto: "", descripcion: "", fechainicio: "", fechafinal: "" }
 
-
-  
-  cambios: Proyecto = { nombreproyecto: "", descripcion: "", fechainicio: "", fechafinal: "" }
-
-
+//modificar proyecto
   modificarProyecto(proyecto: Proyecto, idproyecto: number) {
     this.service.modificarP( proyecto, idproyecto).subscribe();
     console.log()

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Usuario } from 'src/app/models/usuario'
-import { Observable } from 'rxjs';
-import { Habilidades } from "src/app/models/habilidades";
+
 
 @Injectable({
   providedIn: 'root'
@@ -42,14 +41,14 @@ export class ProfilecolabService {
     
   } 
 
-  //
+  // eliminar habilidad del usuario
   eliminarUsuarioHabilidad(id_usuario: number, id_habilidad: number){
     const url = 'http://localhost:8080/api/borrarUsuarioHabilidad'
     let apiURL = `${url}/${id_usuario}/${id_habilidad}`;
     return this.http.delete(apiURL, this.httpOptions);
   }
 
-  //
+  // obtener habilidades del usuario
   obtenerColabHabilidades(){
     return this.http.get('http://localhost:8080/api/habilidadesPorColab/' + this.dato);
   }
