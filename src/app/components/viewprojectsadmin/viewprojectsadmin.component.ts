@@ -167,6 +167,9 @@ export class ViewprojectsadminComponent implements OnInit {
     alert('Cambios Guardados')
   }
 
+  finalizar (){
+    
+  }
 
 
 
