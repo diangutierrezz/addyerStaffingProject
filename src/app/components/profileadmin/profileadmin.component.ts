@@ -31,6 +31,7 @@ export class ProfileadminComponent implements OnInit {
   }
 
 
+//validaciones campo clave y guardar ID usuario
   ngOnInit(): void {
     //ID del usuario
     this.dato = JSON.parse(localStorage.getItem("usuario")).id;

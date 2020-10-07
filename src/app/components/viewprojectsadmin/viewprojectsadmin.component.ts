@@ -32,21 +32,34 @@ export class ViewprojectsadminComponent implements OnInit {
   VM: string = "ver más"
 
 
-  constructor(private service: ViewprojectsService, private StaffingService: StaffingService, 
+  // boton ver mas y ver menos
+  mostrarInfo(){
+    if(this.show = !this.show){
+      this.VM = 'Ver Menos'
+    } else
+      this.VM = 'Ver mas'
+    
+  }
+
+ 
+//abrir sidebar
+  toggleSidebar() {
+    this.opened = !this.opened;
+  }
+
+  constructor(
+    private service: ViewprojectsService,
+     private StaffingService: StaffingService, 
     @Inject(DOCUMENT) document
-    ) { this.show = false; }
+    ) 
+    { this.show = false; }
 
   ngOnInit(): void {
     //Cargar todos los proyectos
     this.service.retornar().subscribe(result => { this.proyectos = result });
   }
 
-  //Método para abrir el sidebar
-  toggleSidebar() {
-    this.opened = !this.opened;
-  }
-
-  //Método Cerrar Sesión 
+  //cerrar seesion
   cerrarsesion() {
     localStorage.removeItem("usuario");
   }
@@ -58,7 +71,7 @@ export class ViewprojectsadminComponent implements OnInit {
     console.log(this.colabProyecto)
   }
 
-  //Método mostrar los colaboradores en la tabla
+  //Tabla con listado de usuarios para agregar a un proyecto
   AgregarUsuario(id: number) {
     this.indexproyecto = id;
     console.log(this.indexproyecto)
@@ -71,7 +84,8 @@ export class ViewprojectsadminComponent implements OnInit {
     });
   }
 
- //Método agregar nuevo colaborador al proyecto
+  // Guardar nuevo usuario al proyecto
+
   guardarNuevoUsuarioProyecto(i: number) {
     this.index = i;
     console.log(this.indexproyecto, "Numero de proyecto")
@@ -133,7 +147,7 @@ export class ViewprojectsadminComponent implements OnInit {
 
   }
 
-  // Metodo Modificar Proyecto
+  // obtener info del proyecto para editar
   infoproyecto;
   obtenerProyectoPorId(id: number) {
     console.log(id, "ID DEL PROYECTO")
@@ -144,8 +158,8 @@ export class ViewprojectsadminComponent implements OnInit {
     console.log(this.infoproyecto)
 
   }
- 
-  //Metodo modificar proyecto
+
+//modificar proyecto
   modificarProyecto(proyecto: Proyecto, idproyecto: number) {
     this.service.modificarP( proyecto, idproyecto).subscribe();
     console.log()
@@ -153,14 +167,7 @@ export class ViewprojectsadminComponent implements OnInit {
     alert('Cambios Guardados')
   }
 
-  //Metodo ver mas - ver menos
-  mostrarInfo(){
-    if(this.show = !this.show){
-      this.VM = 'Ver Menos'
-    } else
-      this.VM = 'Ver mas'
-    
-  }
+
 
 
 }

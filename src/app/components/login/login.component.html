@@ -32,7 +32,7 @@
                     required formControlName="pass">
                 </div>
                 <div class="col">
-                  <mat-icon placeholder="Contraseña"  color="gray" (click)="togglePassword()" style="margin-left: 90%; ">
+                  <mat-icon placeholder="Contraseña" color="gray" (click)="togglePassword()" style="margin-left: 90%; ">
                     visibility</mat-icon>
                 </div>
               </div>
@@ -52,10 +52,12 @@
           </div>
           <!--Recuperar contraseña -->
           <button class="btn btn-warning mb-4" (click)="loginAdmin(correo.value, contrasena.value)">Ingresar</button>
+          <!-- Recuperar Clave -->
           <dl><a class="mt-4" (click)="openDialog()">Recuperar Contraseña</a></dl>
         </form>
       </div>
     </div>
+    <!-- Sello Addyer -->
     <div class="card-footer text-muted">
       Mesa de Ayuda 22700345
       <h5 class="card-title text-muted mt-2">Addyer x Forge</h5>

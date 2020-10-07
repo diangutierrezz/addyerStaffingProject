@@ -27,6 +27,7 @@ export class ViewcolabsComponent implements OnInit {
     private router: Router
   ) { }
 
+      
   ngOnInit(): void {
     //Cargar datos en la tabla
     this.actualizarTabla();
