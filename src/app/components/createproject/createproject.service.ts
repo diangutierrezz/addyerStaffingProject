@@ -10,45 +10,46 @@ import { UsuarioxHabilidad } from "src/app/models/UsuarioxHabilidad";
   providedIn: 'root'
 })
 export class CreateprojectService {
-  
 
-  constructor(private http: HttpClient) {}
-  
+  constructor(private http: HttpClient) { }
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    
- 
-  }     
-api = 'http://localhost:8080/api/';
+  }
+
+  //URL
+  api = 'http://localhost:8080/api/';
 
 
-//crea un proyecto (paso 1)
-agregarProyecto(proyecto: Proyecto): Observable<Proyecto>{
-  const url = 'agregarProyecto/'
-  return this.http.post<Proyecto>(this.api + url, proyecto, this.httpOptions);
+  //crea un proyecto (paso 1)
+  agregarProyecto(proyecto: Proyecto): Observable<Proyecto> {
+    const url = 'agregarProyecto/'
+    return this.http.post<Proyecto>(this.api + url, proyecto, this.httpOptions);
 
   }
 
   //agrega las habilidades al proyecto (paso 2)
- crearProyectoHabilidad(nombreproyecto:string, fechainicio:string, habilidad:string){
-  const url = 'crearProyectoHabilidades';
-  let apiURL = `${url}/${nombreproyecto}/${fechainicio}/${habilidad}`;
-  return this.http.post(this.api + apiURL, this.httpOptions)
-  
-}
-//obtiene los colab con habilidades (paso 3.1)
-obtenerUsuariosxHabilidad(): Observable<UsuarioxHabilidad[]>{
-  const url = 'ObtenerUsuariosHabilidad'
-  return this.http.get<UsuarioHabilidad[]>(this.api + url);
-}
-//obtiene las habilidades del select
-obtenerHabilidades(): Observable<Habilidades[]>{
-  const url = 'obtenerHabilidades'
-  return this.http.get<Habilidades[]>(this.api + url);
-}
-crearUsuarioProyecto(id_usuario: number, nombreproyecto: string, fechainicio: string){
-  const url = 'crearUsuarioProyecto'
-  let apiURL = `${url}/${id_usuario}/${nombreproyecto}/${fechainicio}`;
-  return this.http.post(this.api + apiURL, this.httpOptions)
-}
+  crearProyectoHabilidad(nombreproyecto: string, fechainicio: string, habilidad: string) {
+    const url = 'crearProyectoHabilidades';
+    let apiURL = `${url}/${nombreproyecto}/${fechainicio}/${habilidad}`;
+    return this.http.post(this.api + apiURL, this.httpOptions)
+
+  }
+  //obtiene los colab con habilidades (paso 3.1)
+  obtenerUsuariosxHabilidad(): Observable<UsuarioxHabilidad[]> {
+    const url = 'ObtenerUsuariosHabilidad'
+    return this.http.get<UsuarioHabilidad[]>(this.api + url);
+  }
+  //obtiene las habilidades del select
+  obtenerHabilidades(): Observable<Habilidades[]> {
+    const url = 'obtenerHabilidades'
+    return this.http.get<Habilidades[]>(this.api + url);
+  }
+
+  //Agregar los usuarios al proyecto(paso 3)
+  crearUsuarioProyecto(id_usuario: number, nombreproyecto: string, fechainicio: string) {
+    const url = 'crearUsuarioProyecto'
+    let apiURL = `${url}/${id_usuario}/${nombreproyecto}/${fechainicio}`;
+    return this.http.post(this.api + apiURL, this.httpOptions)
+  }
 }

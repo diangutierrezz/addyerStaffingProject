@@ -1,7 +1,5 @@
-import { IfStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CanDeactivate } from '@angular/router';
 import { StaffingService } from "src/app/staffing.service";
 
 @Component({
@@ -12,17 +10,19 @@ import { StaffingService } from "src/app/staffing.service";
 
 export class HomecolabComponent implements OnInit {
 
+  //Variables
   opened = false;
-
-  toggleSidebar(){
-    this.opened = !this.opened;
-  }
-  
-  constructor(private service: StaffingService,private router: Router) { }
-
   dato;
   rol;
+
+  
+  constructor(
+    private service: StaffingService,
+    private router: Router) { }
+
+ 
   ngOnInit(): void {
+    //Obtener el id del usuario
     this.dato = JSON.parse(localStorage.getItem("usuario")).id;
     this.rol = JSON.parse(localStorage.getItem("usuario")).rol;
     console.log(this.dato)
@@ -30,11 +30,15 @@ export class HomecolabComponent implements OnInit {
 
   }
 
+  //Abrir sidebar
+  toggleSidebar(){
+    this.opened = !this.opened;
+  }
 
+  //Borrar ID del usuario.
   cerrarsesion(){
     localStorage.removeItem("usuario");
   }
-
 
 
 }

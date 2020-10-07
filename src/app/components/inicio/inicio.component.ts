@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-inicio',
@@ -12,8 +11,10 @@ export class InicioComponent implements OnInit {
 
 
 
-  constructor(private_config: NgbCarouselConfig) { }
+  constructor( ) { }
 
+
+  //Eliminar informacion del usuario.
   ngOnInit(): void {
     localStorage.clear()
   }

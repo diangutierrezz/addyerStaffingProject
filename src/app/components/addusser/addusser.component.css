@@ -6,13 +6,19 @@ ng-sidebar-container{
   height: 100vh;
 }
 
-
-
 ::ng-deep .ng-sidebar{
   background-color: #f0a500;
   width: 300px;
   padding: 2em 3em;
   box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
+}
+
+mat-form-field {
+  width: 80%;
+}
+
+mat-header-cell{
+  background-color: rgb(32, 28, 28);
 }
 
 .menu{
@@ -28,10 +34,10 @@ ng-sidebar-container{
   display: block;
   width: 100%;
 }
+
 .example-chip-list {
   width: 80%;
 }
-
 
 button{
   width: 40%;
@@ -46,15 +52,6 @@ button{
 .titulo{
   text-decoration-color: #ff7171;
 }
-
-mat-form-field {
-  width: 80%;
-}
-
-mat-header-cell{
-  background-color: rgb(240, 231, 231);
-}
-
 
 .cajita{
   border-radius: 60px 60px 60px 60px;
@@ -82,17 +79,6 @@ mat-header-cell{
   flex: 1 1 auto;
 }
 
-ng-sidebar-container{
-  height: 100vh;
-}
-
-::ng-deep .ng-sidebar{
-  background-color: #f0a500;
-  width: 300px;
-  padding: 2em 3em;
-  box-shadow: 0 0 2.5em rgba(85, 85, 85, 0.5);
-}
-
 .menu{
   margin-top: 2em;
   display: block;
@@ -115,10 +101,12 @@ ng-sidebar-container{
 .mat-column-apellido {
   justify-content: center;
 }
+
 .mat-column-rut {
   justify-content: center;
  
 }
+
 .mat-column-fecha {
   justify-content: center;
  

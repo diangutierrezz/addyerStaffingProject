@@ -1,16 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Usuario } from "src/app/models/usuario";
 import { StaffingService } from "src/app/staffing.service";
 import { RutValidator } from 'ng9-rut';
-import { RouterLink } from '@angular/router';
 import { AddSkillService } from "../addusser/add-skill.service";
 import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 import { Habilidades } from "src/app/models/habilidades";
 import { MatStepper } from '@angular/material/stepper';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-addusser',
@@ -20,7 +17,7 @@ import {MatDialog} from '@angular/material/dialog';
 export class AddusserComponent implements OnInit {
 
 
-  //Funciones Sidebar
+  //variables
   opened = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -32,14 +29,13 @@ export class AddusserComponent implements OnInit {
   mensaje;
   usuario: Usuario[] = [];
 
-  toggleSidebar() {
-    this.opened = !this.opened;
-  }
 
-
-  constructor(private _formBuilder: FormBuilder, public rutValidator: RutValidator,
-    private service: StaffingService, private addSkillService: AddSkillService,
-    private viewproyectsservice: ViewprojectsService, public dialog: MatDialog) { }
+  constructor(private _formBuilder: FormBuilder,
+    public rutValidator: RutValidator,
+    private service: StaffingService,
+    private addSkillService: AddSkillService,
+    private viewproyectsservice: ViewprojectsService,
+    public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -52,7 +48,7 @@ export class AddusserComponent implements OnInit {
       contrasena: [null, [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
       cargo: ['', Validators.required],
       correo: new FormControl('', Validators.compose([
-        Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+      Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
       ])),
 
 
@@ -61,11 +57,19 @@ export class AddusserComponent implements OnInit {
 
     });
 
+    // select con todas las Habilidades
     this.viewproyectsservice.obtenerHabilidades()
       .subscribe(habilidades => this.habilidades = habilidades);
 
-      this.openDialog()
+    //Instrucciones para crear usuario
+    this.openDialog()
   }
+
+  //Metodo abrir sidebar
+  toggleSidebar() {
+    this.opened = !this.opened;
+  }
+
 
   //Error en Campo Vacio o Dato Erroneo
   get f() {
@@ -80,6 +84,7 @@ export class AddusserComponent implements OnInit {
     "Profesor habilidades blandas",
     "Coordinador",
     "Tutor",
+    "Director"
   ]
 
   // Roles
@@ -88,16 +93,13 @@ export class AddusserComponent implements OnInit {
     "Administrador"
   ]
 
-
+  //Cerrar sesion
   cerrarsesion() {
     localStorage.removeItem("usuario");
   }
 
 
-
-
-
-  // Servicio Para Crear Usuario
+  // Metodo Para Crear Usuario
   crearUsuario(rol: String, nombre: String, apellido: String, rut: String, correo: String, contrasena: String, cargo: String, stepper: MatStepper) {
     this.service.AgregarUsuario({ rol, nombre, apellido, rut, correo, contrasena, cargo } as Usuario).subscribe(usuario => {
       if (usuario[0] == "Usuario Existe") {
@@ -113,7 +115,7 @@ export class AddusserComponent implements OnInit {
 
   }
 
-  // Servicio para Asociar Habilidad al usuario Creado.
+  // Metodo para Asociar Habilidad al usuario Creado.
   crearUsuarioHabilidad(rut: string) {
     console.log(rut)
     console.log(this.habilidadElegida)
@@ -128,11 +130,13 @@ export class AddusserComponent implements OnInit {
     }, 3000);
   }
 
+  //Instrucciones
   openDialog() {
     this.dialog.open(AddusserComponentDialog);
   }
 }
 
+//Exportar clase de las instrucciones
 @Component({
   selector: 'addusser.component.dialog',
   templateUrl: 'addusser.component.dialog.html',
@@ -142,7 +146,9 @@ export class AddusserComponentDialog {
 
   constructor(public dialog: MatDialog) { }
 
+  //Cerrar Instrucciones
   closeDialog() {
     this.dialog.closeAll();
   }
+
 }

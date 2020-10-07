@@ -71,10 +71,7 @@ export class ViewcolabsComponent implements OnInit {
 
   }
 
-  ObtenerProyectoPorId() {
-
-  }
-
+  
   //Método modificar datos del usuario
   modificar(ro: string, nombre: string, apellido: string, carg: string) {
     this.viewcolabsService.modificarUsuario(this.usuario[this.index].id, ro, nombre, apellido, carg).subscribe(_ => alert('Usuario actualizado'));

@@ -7,20 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeAdminComponent implements OnInit {
 
+  //Variables
   opened = false;
+  dato;
 
+  //Sidebar
   toggleSidebar() {
     this.opened = !this.opened;
   }
 
   constructor() { }
 
-  dato;
+  
+  
   ngOnInit(): void {
+    //Guardar ID del usuario
     this.dato = JSON.parse(localStorage.getItem("usuario")).id;
     console.log(this.dato)
   }
 
+  // Cerrar Sesión
   cerrarsesion() {
     localStorage.removeItem("usuario");
   }

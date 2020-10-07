@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject  } from '@angular/core';
 import { ViewprojectsService } from "../viewprojectsadmin/viewprojects.service";
 import { UsuarioHabilidad } from "src/app/models/UsuarioHabilidad";
 import { StaffingService } from "src/app/staffing.service";
 import { Habilidades } from "src/app/models/habilidades";
 import { Proyecto } from "src/app/models/Proyecto";
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-viewprojectsadmin',
@@ -26,14 +27,14 @@ export class ViewprojectsadminComponent implements OnInit {
   idProyecto;
   filterPost = '';
   usuarioHabilidad: UsuarioHabilidad[] = [];
+  show: boolean;
   index: number = null;
+  VM: string = "ver más"
 
 
-  constructor(
-    private service: ViewprojectsService, 
-    private StaffingService: StaffingService
-  ) { }
-
+  constructor(private service: ViewprojectsService, private StaffingService: StaffingService, 
+    @Inject(DOCUMENT) document
+    ) { this.show = false; }
 
   ngOnInit(): void {
     //Cargar todos los proyectos
@@ -81,10 +82,6 @@ export class ViewprojectsadminComponent implements OnInit {
 
   }
 
-
-  finalizar() {
-
-  }
 
   //Método borrar colaborador de un proyecto
   borrarUsuarioProyecto(P, id: number, id_usuario: number) {
@@ -140,21 +137,30 @@ export class ViewprojectsadminComponent implements OnInit {
   infoproyecto;
   obtenerProyectoPorId(id: number) {
     console.log(id, "ID DEL PROYECTO")
-    this.service.ObtenerProyectoPorId(id).subscribe(result => this.infoproyecto = result)
+    this.service.ObtenerProyectoPorId(id).subscribe(     (result) => { 
+      this.infoproyecto = result;
+    },
+    (error) => console.log('NO saveJsonArchive'));
     console.log(this.infoproyecto)
 
   }
-  newProyecto = { nombreproyecto: "", descripcion: "", fechainicio: "", fechafinal: "" }
-
-
-
-  cambios: Proyecto = { nombreproyecto: "", descripcion: "", fechainicio: "", fechafinal: "" }
-
-  modificarProyecto() {
-    //this.service.modificarP(this.idProyecto, this.cambios).subscribe();
-    //console.log(this.idProyecto)
-    //console.log(this.cambios)
-    //window.location.reload();
+ 
+  //Metodo modificar proyecto
+  modificarProyecto(proyecto: Proyecto, idproyecto: number) {
+    this.service.modificarP( proyecto, idproyecto).subscribe();
+    console.log()
+    console.log(proyecto)
+    alert('Cambios Guardados')
   }
+
+  //Metodo ver mas - ver menos
+  mostrarInfo(){
+    if(this.show = !this.show){
+      this.VM = 'Ver Menos'
+    } else
+      this.VM = 'Ver mas'
+    
+  }
+
 
 }

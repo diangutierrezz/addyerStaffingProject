@@ -17,7 +17,7 @@
 
     </ul>
   </ng-sidebar>
-  <!--Page Header  -->
+  <!--Toolbar -->
   <div ng-sidebar-content>
     <mat-toolbar style="background-color: #000000; ">
       <a mat-raised-button style="background-color: #cf7500; color: #f4f4f4;" (click)="toggleSidebar()">Abrir menú </a>
@@ -25,11 +25,10 @@
       <a mat-raised-button style="margin-left: 1em;" routerLink="">Cerrar Sesión</a>
     </mat-toolbar>
 
-
     <div class="container">
       <!--STEPPER-->
       <mat-horizontal-stepper #stepper>
-        <!--PRIMERA VENTANA-->
+        <!--PRIMERA VENTANA STEPPER -->
         <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
           <!-- Inicio Formulario  -->
           <div style=" margin-left: auto; margin-right: auto;" class="cajita">
@@ -134,7 +133,7 @@
                   <div *ngIf="f.cargo.errors.required">Cargo requerido</div>
                 </div>
               </div>
-              <!-- Enviar Formulario  -->
+              <!-- ENVIAR FORMULARIO  -->
               <div>
                 <button class="btn btn-warning" style="margin-bottom: 2em;"
                   (click)="crearUsuario(rol.value,nombre.value,apellido.value,rut.value,correo.value,contrasena.value,cargo.value,stepper)">Siguiente</button>
@@ -147,7 +146,7 @@
             </form>
           </div>
         </mat-step>
-        <!-- Segundo Stepper -->
+        <!-- SEGUNDO STEPPER -->
 
         <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
           <div style=" margin-left: auto; margin-right: auto;" class="cajita2">
@@ -188,13 +187,13 @@
                 Mesa de Ayuda 22700345
                 <h5 class="text-muted mt-2">Addyer x Forge</h5>
               </div>
-              <!-- Final Formulario -->
+              <!-- FINAL DEL FORMULARIO -->
             </form>
           </div>
         </mat-step>
-        <!-- Final Stepper  -->
+        <!-- FINAL DEL STEPPER  -->
       </mat-horizontal-stepper>
     </div>
-    <!--final sidebar  -->
+    <!-- FINAL DEL SIDEBAR  -->
   </div>
 </ng-sidebar-container>

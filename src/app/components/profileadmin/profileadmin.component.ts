@@ -12,6 +12,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class ProfileadminComponent implements OnInit {
 
+  //Variables
   dato;
   contrasena: String = "";
   usuarios = null;

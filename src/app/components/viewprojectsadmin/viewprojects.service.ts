@@ -50,40 +50,38 @@ export class ViewprojectsService {
     const url = 'http://localhost:8080/api/borrarUsuarioProyecto';
     let apiURL = `${url}/${id_proyecto}/${id_usuario}/`
     return this.http.delete(apiURL, this.httpOptions)
-    
   }
-
-   //Servicio carga todas las habilidades
-  obtenerHabilidades(): Observable<Habilidades[]> {
+    
+//Servicio obtener todas las habilidades
+  obtenerHabilidades(): Observable<Habilidades[]>{
     const url = 'http://localhost:8080/api/obtenerHabilidades'
     return this.http.get<Habilidades[]>(url);
-
   }
 
-   //Servicio carga todas las habilidades por proyecto
-  agregarHabilidadProyecto(id_proyecto: number, habilidad: string) {
+  //Servicio agregar una nueva habilidad al proyecto
+  agregarHabilidadProyecto(id_proyecto: number, habilidad:string){
     const url = 'http://localhost:8080/api/agregarProyectoHabilidades'
     let apiURL = `${url}/${id_proyecto}/${habilidad}/`
-    return this.http.post(apiURL, this.httpOptions)
+    return this.http.post(apiURL,this.httpOptions)
 
   }
 
-  //Servicio borra las habilidades por proyecto
-  borrarHabilidadProyecto(id_proyecto: number, id_habilidad: number) {
+  //Servicio borrar una habilidad al proyecto
+  borrarHabilidadProyecto(id_proyecto: number, id_habilidad:number){
     const url = 'http://localhost:8080/api/borrarProyectoHabilidades'
     let apiURL = `${url}/${id_proyecto}/${id_habilidad}/`
-    return this.http.delete(apiURL, this.httpOptions)
+    return this.http.delete(apiURL,this.httpOptions)
   }
 
-  //Servicio modificar datos del proyecto
-  modificarP(id: number, cambios: Proyecto): Observable<Proyecto> {
+  //Servicio modificar proyecto
+  modificarP(cambios: Proyecto, id:number): Observable<Proyecto> {
     const url = 'http://localhost:8080/api/modificarProyecto'
     let apiURL = `${url}/${id}/`;
     return this.http.put<Proyecto>(apiURL, cambios, this.httpOptions);
   }
 
-  //Servicio obtener id por proyecto
-  ObtenerProyectoPorId(id: number) {
+  //Servicio obtener un proyecto por ID
+  ObtenerProyectoPorId(id:number){
     const url = 'http://localhost:8080/api/proyectoPorProyecto'
     let apiURL = `${url}/${id}/`;
     return this.http.get(apiURL, this.httpOptions)
